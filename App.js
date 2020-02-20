@@ -3,7 +3,7 @@ import { StyleSheet, View} from 'react-native';
 import * as Font from 'expo-font';
 import {AppLoading} from 'expo';
 
-import mainMenuConf from './assets/resources/MainMenuData'
+import mainMenuConf from './assets/constants/MainMenuData'
 
 import MainMenu from './components/menus/MainMenu'
 
