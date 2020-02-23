@@ -1,61 +1,67 @@
-import React, {Component} from 'react';
-import {StyleSheet ,View, Text, Image} from 'react-native'; 
+import React, { Component } from 'react';
+import { StyleSheet, View, Modal } from 'react-native';
 
-import {SubMenu} from './SubMenu';
+import { SubMenu } from './SubMenu';
+import InfoModal from '../alerts/InfoModal'
 
-export default class SixMenu extends Component{
-    constructor(props){
-        super(props);
-    }
+export default class SixMenu extends Component {
+	constructor(props) {
+		super(props);
 
-    render(){
-        return(
-            <View style = {styles.main}>
-                <View style = {styles.columns}>
-                    <SubMenu
-                        title = {this.props.menu1.title}
-                        src = {this.props.menu1.src}
-                        color = {this.props.menu1.color}/>
+		this.state = {
+			modalVisibility: false,
+			modalTitle: '',
+			modalText: ''
+		}
+	}
 
-                    <SubMenu
-                        title = {this.props.menu2.title}
-                        src = {this.props.menu2.src}
-                        color = {this.props.menu2.color}/>
+	showModal = (title ,text) => {
+		this.setState({
+			modalVisibility: true,
+			modalTitle: title,
+			modalText: text,
+		})
+	}
 
-                    <SubMenu
-                        title = {this.props.menu3.title}
-                        src = {this.props.menu3.src}
-                        color = {this.props.menu3.color}/>
-                </View>
+	closeModal = () => {
+		this.setState({
+			modalVisibility: false,
+			modalTitle: '',
+			modalText: '',
+		})	
+	}
 
-                <View style = {styles.columns}>
-                    <SubMenu
-                        title = {this.props.menu4.title}
-                        src = {this.props.menu4.src}
-                        color = {this.props.menu4.color}/>
+	render() {
+		const submenus = this.props.menus.map((menu, index) => <SubMenu
+			key={index}
+			title={menu.title}
+			src={menu.src}
+			color={menu.color}
+			isSourceBg = {menu.isSourceBg}
+			showModal = {()=>{this.showModal(menu.title, menu.info)}}
+		/>)
 
-                    <SubMenu
-                        title = {this.props.menu5.title}
-                        src = {this.props.menu5.src}
-                        color = {this.props.menu5.color}/>
+		return (
+			<View style={{ justifyContent:'center', alignItems:'center' }}>
+				<InfoModal
+					visible = {this.state.modalVisibility}
+					closeModal = {this.closeModal}
+					title = {this.state.modalTitle}
+					text = {this.state.modalText}
+					/>
 
-                    <SubMenu
-                        title = {this.props.menu6.title}
-                        src = {this.props.menu6.src}
-                        color = {this.props.menu6.color}/>
-                </View>
-            </View>
-        );   
-    }
+				<View style={styles.main}>
+					{submenus}
+				</View>
+			</View>
+		);
+	}
 }
 
 const styles = StyleSheet.create({
-    main:{
-        flex:1,
-        flexDirection:'row',
-        justifyContent:'center'
-    },
-    columns:{
-        flex: 1,
-    },
+	main: {
+		flexWrap: 'wrap',
+
+		justifyContent: 'center',
+	},
 });

@@ -19,7 +19,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <MainMenu {...budgetMenuConf}/>
+      <MainMenu menus = {mainMenuConf}/>
     </View>
   );
 }
@@ -27,7 +27,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+	backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -37,6 +37,6 @@ const fetchFonts = () => {
   return Font.loadAsync({
     'roboto': require('./assets/fonts/Roboto-Light.ttf'),
     'roboto-light': require('./assets/fonts/Roboto-Thin.ttf'),
-    'roboto-Bold': require('./assets/fonts/Roboto-Regular.ttf'),
+    'roboto-bold': require('./assets/fonts/Roboto-Regular.ttf'),
   })
 }

@@ -1,4 +1,5 @@
 export default {
+	shadowBg:'#00000088',
     blue500: '#2196F3',
     blue700: '#1976D2',
     blue900: '#0D47A1',
@@ -10,5 +11,8 @@ export default {
     cyan900: '#006064',
     teal500: '#009688',
     teal700: '#00796B',
-    teal900: '#004D40',
+	teal900: '#004D40',
+	ModalTitleColor: '#1A237E',
+	ModalTextColor: '#424242',
+	
 }

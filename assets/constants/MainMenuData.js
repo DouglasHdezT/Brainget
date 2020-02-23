@@ -1,39 +1,51 @@
 import Colors from './Colors'
 
-export default  {
-    menu1:{
+export default  [
+    {
       title: 'Mis Metas Financieras',
       color: Colors.lightBlue500,
-      src: require('../img/metas_financieras.png')
+	  src: require('../img/metas_financieras.png'),
+	  info:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.',
+	  isSourceBg: false
     },
   
-    menu2:{
+    {
       title: 'Resultados',
       color: Colors.lightBlue700,
-      src: require('../img/resultados.png')
+	  src: require('../img/resultados.png'),
+	  info:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.',
+	  isSourceBg: false
     },
   
-    menu3:{
+    {
       title: 'Mis Servicios Financieros',
       color: Colors.lightBlue900,
-      src: require('../img/servicios_financieros.png')
+	  src: require('../img/main_photo.jpeg'),
+	  info:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.',
+	  isSourceBg: true
     },
   
-    menu4:{
+    {
       title: 'Mi Presupuesto',
       color: Colors.blue500,
-      src: require('../img/presupuesto.png')
+	  src: require('../img/presupuesto.png'),
+	  info:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.',
+	  isSourceBg: false
     },
   
-    menu5:{
+    {
       title: 'Estadísticas',
       color: Colors.blue700,
-      src: require('../img/estadisticas.png')
+	  src: require('../img/estadisticas.png'),
+	  info:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.',
+	  isSourceBg: false
     },
   
-    menu6:{
+    {
       title: 'Acerca de...',
       color: Colors.blue900,
-      src: require('../img/acerca_de.png')
+	  src: require('../img/acerca_de.png'),
+	  info:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.',
+	  isSourceBg: false
     },
-  }
+]
