@@ -4,6 +4,7 @@ import * as Font from 'expo-font';
 import {AppLoading} from 'expo';
 
 import mainMenuConf from './assets/constants/MainMenuData'
+import budgetMenuConf from './assets/constants/BudgetMenuData'
 
 import MainMenu from './components/menus/MainMenu'
 
@@ -18,7 +19,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <MainMenu {...mainMenuConf}/>
+      <MainMenu {...budgetMenuConf}/>
     </View>
   );
 }
