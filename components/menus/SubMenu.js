@@ -47,12 +47,13 @@ const styles = StyleSheet.create({
         padding: 24,
         minHeight:"33.33%",
         maxWidth:"50%",
+        minWidth:"50%",
 
         justifyContent: 'flex-end',
         alignItems:'center',
 	},
     icon:{
-        flex:2,
+		flex:2,
         resizeMode: 'contain'
     },
     title:{

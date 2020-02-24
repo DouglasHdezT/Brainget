@@ -14,5 +14,5 @@ export default {
 	teal900: '#004D40',
 	ModalTitleColor: '#1A237E',
 	ModalTextColor: '#424242',
-	
+	indigo500: '#3F51B5',
 }

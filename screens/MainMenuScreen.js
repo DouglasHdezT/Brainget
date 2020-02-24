@@ -12,7 +12,7 @@ const MainMenuScreen = props => {
 
 	return(
 		<View style={styles.container}>
-			<MainMenu menus = {mainMenuConf} navigate = {navigate}/>
+			<MainMenu menus = {mainMenuConf} navigate = {navigate} flex = {1}/>
 		</View>
 	);
 }

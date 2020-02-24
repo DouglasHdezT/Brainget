@@ -43,7 +43,7 @@ export default class SixMenu extends Component {
 		/>)
 
 		return (
-			<View style={{ justifyContent:'center', alignItems:'center' }}>
+			<View style={{ justifyContent:'center', alignItems:'center' , flex:this.props.flex}}>
 				<InfoModal
 					visible = {this.state.modalVisibility}
 					closeModal = {this.closeModal}
