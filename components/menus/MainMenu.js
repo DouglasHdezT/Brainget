@@ -39,6 +39,7 @@ export default class SixMenu extends Component {
 			color={menu.color}
 			isSourceBg = {menu.isSourceBg}
 			showModal = {()=>{this.showModal(menu.title, menu.info)}}
+			onClick = {()=>this.props.navigate(menu.redirect)}
 		/>)
 
 		return (

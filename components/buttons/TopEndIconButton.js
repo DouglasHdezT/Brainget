@@ -1,17 +1,16 @@
 import React from 'react';
 
-import { TouchableHighlight, Image, StyleSheet } from 'react-native';
+import { TouchableOpacity, Image, StyleSheet } from 'react-native';
 
 const TopEndIconButton = props => {
 	return(
-		<TouchableHighlight 
+		<TouchableOpacity 
 			style= {styles.iconContainer} 
-			underlayColor = '#ffffff00'
 			onPress = {props.onPress}>
 			<Image 
 				style= {styles.icon} 
 				source = {props.src}/>
-		</TouchableHighlight>
+		</TouchableOpacity>
 	);
 }
 

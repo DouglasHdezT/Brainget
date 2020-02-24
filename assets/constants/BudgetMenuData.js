@@ -6,7 +6,8 @@ export default  [
       color: Colors.cyan500,
 	  src: require('../img/gastos_fijos.png'), 
 	  info:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.',
-	  isSourceBg: false
+	  isSourceBg: false,
+	  redirect: 'BudgetMenu'
     },
   
     {
@@ -14,7 +15,8 @@ export default  [
       color: Colors.cyan700,
 	  src: require('../img/gastos_opcionales.png'),
 	  info:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.',
-	  isSourceBg: false
+	  isSourceBg: false,
+	  redirect: 'BudgetMenu'
     },
   
     {
@@ -22,7 +24,8 @@ export default  [
       color: Colors.cyan900,
 	  src: require('../img/gastos_salud.png'),
 	  info:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.',
-	  isSourceBg: false
+	  isSourceBg: false,
+	  redirect: 'BudgetMenu'
     },
   
     {
@@ -30,7 +33,8 @@ export default  [
       color: Colors.teal500,
 	  src: require('../img/gastos_variables.png'),
 	  info:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.',
-	  isSourceBg: false
+	  isSourceBg: false,
+	  redirect: 'BudgetMenu'
     },
   
     {
@@ -38,7 +42,8 @@ export default  [
       color: Colors.teal700,
 	  src: require('../img/imprevistos.png'),
 	  info:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.',
-	  isSourceBg: false
+	  isSourceBg: false,
+	  redirect: 'BudgetMenu'
     },
   
     {
@@ -46,6 +51,7 @@ export default  [
       color: Colors.teal900,
 	  src: require('../img/ahorros_ofrendas.png'),
 	  info:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.',
-	  isSourceBg: false
+	  isSourceBg: false,
+	  redirect: 'BudgetMenu'
     },
 ]

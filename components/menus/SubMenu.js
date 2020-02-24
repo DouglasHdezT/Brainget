@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, Text, Image, ImageBackground} from 'react-native';
+import {StyleSheet, View, Text, Image, ImageBackground, TouchableOpacity} from 'react-native';
 
 import TopEndIconButton from '../buttons/TopEndIconButton';
 
@@ -14,11 +14,13 @@ export const SubMenu = props => {
 				style = {{...styles.cell}}>
 
 				<TopEndIconButton	
-					src = {require('../../assets/img/acerca_de.png')}
+					src = {require('../../assets/img/info.png')}
 					onPress = {props.showModal}/>
 
-				<View style = {{flex:2}}/>
-				<Text style = {{...styles.title, backgroundColor: Colors.shadowBg,} }>{props.title}</Text>
+				<TouchableOpacity onPress = {props.onClick} style = {{flex:1}}>
+					<View style = {{flex:2}}/>
+					<Text style = {{...styles.title, backgroundColor: Colors.shadowBg,} }>{props.title}</Text>
+				</TouchableOpacity>
 
 			</ImageBackground>
 		);
@@ -27,11 +29,13 @@ export const SubMenu = props => {
     return(
         <View style = {{...styles.cell, backgroundColor: props.color}}>
 			<TopEndIconButton	
-				src = {require('../../assets/img/acerca_de.png')}
+				src = {require('../../assets/img/info.png')}
 				onPress = {props.showModal}/>
 
-            <Image style = {styles.icon} source= {props.src}/>
-            <Text style = {styles.title}>{props.title}</Text>
+            <TouchableOpacity onPress = {props.onClick} style = {{flex:1}}>
+				<Image style = {styles.icon} source= {props.src}/>
+				<Text style = {styles.title}>{props.title}</Text>
+			</TouchableOpacity>
 
         </View>
     );
@@ -46,12 +50,6 @@ const styles = StyleSheet.create({
 
         justifyContent: 'flex-end',
         alignItems:'center',
-
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.5,
-        shadowRadius: 5,
-        elevation: 2,
 	},
     icon:{
         flex:2,
