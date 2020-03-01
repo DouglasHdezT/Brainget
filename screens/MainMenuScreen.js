@@ -1,20 +1,27 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 import {View, StyleSheet} from 'react-native';
 import MainMenu from '../components/menus/MainMenu';
 
 import mainMenuConf from '../assets/constants/MainMenuData'
 
-const MainMenuScreen = props => {
-	const navigate = route => {
-		props.navigation.navigate(route);
+class MainMenuScreen extends Component {
+	constructor(props){
+		super(props);
 	}
 
-	return(
-		<View style={styles.container}>
-			<MainMenu menus = {mainMenuConf} navigate = {navigate} flex = {1}/>
-		</View>
-	);
+	navigate = route => {
+		this.props.navigation.navigate(route);
+	}
+
+	render(){
+		return(
+			<View style={styles.container}>
+				<MainMenu menus = {mainMenuConf} navigate = {this.navigate}/>
+			</View>
+		);
+	}
+	
 }
 
 const styles = StyleSheet.create({

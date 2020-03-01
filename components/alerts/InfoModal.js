@@ -4,6 +4,7 @@ import { Modal, View, Text, TouchableHighlight, Image, StyleSheet } from 'react-
 import TopEndIconButton from '../buttons/TopEndIconButton';
 
 import Colors from '../../assets/constants/Colors';
+import Icons from '../../assets/constants/Icons';
 
 const InfoModal = props => {
 	return(
@@ -16,7 +17,7 @@ const InfoModal = props => {
 			<View style = {styles.modalBackground}>
 				<View style = {styles.modalView}>
 					<TopEndIconButton
-						src = {require('../../assets/img/close.png')}
+						src = {Icons.close}
 						onPress = {props.closeModal}
 						/>
 

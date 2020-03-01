@@ -15,4 +15,7 @@ export default {
 	ModalTitleColor: '#1A237E',
 	ModalTextColor: '#424242',
 	indigo500: '#3F51B5',
+	indigo900: '#1A237E',
+	ItemsTitle: '#000',
+	ItemsSubtitles:  '#616161'
 }

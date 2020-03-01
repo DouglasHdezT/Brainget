@@ -4,7 +4,7 @@ import { StyleSheet, View, Modal } from 'react-native';
 import { SubMenu } from './SubMenu';
 import InfoModal from '../alerts/InfoModal'
 
-export default class SixMenu extends Component {
+export default class MainMenu extends Component {
 	constructor(props) {
 		super(props);
 
@@ -39,11 +39,11 @@ export default class SixMenu extends Component {
 			color={menu.color}
 			isSourceBg = {menu.isSourceBg}
 			showModal = {()=>{this.showModal(menu.title, menu.info)}}
-			onClick = {()=>this.props.navigate(menu.redirect)}
+			onPress = {()=>this.props.navigate(menu.redirect)}
 		/>)
 
 		return (
-			<View style={{flex:this.props.flex, width:'100%'}}>
+			<View style={{flex:1, width:'100%'}}>
 				<InfoModal
 					visible = {this.state.modalVisibility}
 					closeModal = {this.closeModal}

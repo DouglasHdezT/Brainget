@@ -2,10 +2,13 @@ import React from 'react';
 
 import {View, StyleSheet} from 'react-native';
 import MainMenu from '../components/menus/MainMenu';
-import MoneyPeriodFootPanel from '../components/infos/MoneyPeriodFootPanel'
 
 import budgetMenuConf from '../assets/constants/BudgetMenuData'
 import Colors from '../assets/constants/Colors'
+
+import FootLeftRight from '../components/footers/FootLeftRight';
+import MoneyContainer from '../components/footers/containers/MoneyContainer';
+import PeriodContainer from '../components/footers/containers/PeriodContainer';
 
 
 const BudgetMenuScreen = props => {
@@ -13,14 +16,17 @@ const BudgetMenuScreen = props => {
 		props.navigation.navigate(route);
 	}
 
+	const leftFootContent = <MoneyContainer money = "100.03"/>;
+	const rightFootContent = <PeriodContainer period = "1 -31 enero"/>;
+
 	return(
 		<View style={styles.container}>
-			<MainMenu menus = {budgetMenuConf} navigate = {navigate} flex = {9}/>
-			<MoneyPeriodFootPanel
+			<MainMenu menus = {budgetMenuConf} navigate = {navigate}/>
+			<FootLeftRight
 				leftPanelColor = {Colors.blue900}
 				rightPanelColor = {Colors.lightBlue500}
-				money = {100.05}
-				period = '1 - 31 enero'
+				leftContent = {leftFootContent}
+				rightContent = {rightFootContent}
 				/>
 		</View>
 	);

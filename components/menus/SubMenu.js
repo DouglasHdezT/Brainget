@@ -4,6 +4,7 @@ import {StyleSheet, View, Text, Image, ImageBackground, TouchableOpacity} from '
 import TopEndIconButton from '../buttons/TopEndIconButton';
 
 import Colors from '../../assets/constants/Colors';
+import Icons from '../../assets/constants/Icons';
 
 export const SubMenu = props => {
 
@@ -13,10 +14,10 @@ export const SubMenu = props => {
 			style = {{...styles.cell}}>
 
 			<TopEndIconButton	
-				src = {require('../../assets/img/info.png')}
+				src = {Icons.info}
 				onPress = {props.showModal}/>
 
-			<TouchableOpacity onPress = {props.onClick} style = {{flex:1}}>
+			<TouchableOpacity onPress = {props.onPress} style = {{flex:1}}>
 				<View style = {{flex:2}}/>
 				<Text style = {{...styles.title, backgroundColor: Colors.shadowBg,} }>{props.title}</Text>
 			</TouchableOpacity>
@@ -27,10 +28,10 @@ export const SubMenu = props => {
 	let iconCell = (
 		<View style = {{...styles.cell, backgroundColor: props.color}}>
 			<TopEndIconButton	
-				src = {require('../../assets/img/info.png')}
+				src = {Icons.info}
 				onPress = {props.showModal}/>
 
-			<TouchableOpacity onPress = {props.onClick} style = {{flex:1}}>
+			<TouchableOpacity onPress = {props.onPress} style = {{flex:1}}>
 				<Image style = {styles.icon} source= {props.src}/>
 				<Text style = {styles.title}>{props.title}</Text>
 			</TouchableOpacity>

@@ -7,7 +7,7 @@ export default  [
 	  src: require('../img/metas_financieras.png'),
 	  info:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.',
 	  isSourceBg: false,
-	  redirect: 'BudgetMenu'
+	  redirect: 'Goals'
     },
   
     {
