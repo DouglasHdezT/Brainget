@@ -7,48 +7,45 @@ import Colors from '../../assets/constants/Colors';
 
 export const SubMenu = props => {
 
-	if( props.isSourceBg ){
-		return(
-			<ImageBackground
-				source = {props.src}
-				style = {{...styles.cell}}>
+	const imageBackgroundCell = (
+		<ImageBackground
+			source = {props.src}
+			style = {{...styles.cell}}>
 
-				<TopEndIconButton	
-					src = {require('../../assets/img/info.png')}
-					onPress = {props.showModal}/>
-
-				<TouchableOpacity onPress = {props.onClick} style = {{flex:1}}>
-					<View style = {{flex:2}}/>
-					<Text style = {{...styles.title, backgroundColor: Colors.shadowBg,} }>{props.title}</Text>
-				</TouchableOpacity>
-
-			</ImageBackground>
-		);
-	}
-
-    return(
-        <View style = {{...styles.cell, backgroundColor: props.color}}>
 			<TopEndIconButton	
 				src = {require('../../assets/img/info.png')}
 				onPress = {props.showModal}/>
 
-            <TouchableOpacity onPress = {props.onClick} style = {{flex:1}}>
+			<TouchableOpacity onPress = {props.onClick} style = {{flex:1}}>
+				<View style = {{flex:2}}/>
+				<Text style = {{...styles.title, backgroundColor: Colors.shadowBg,} }>{props.title}</Text>
+			</TouchableOpacity>
+
+		</ImageBackground>
+	);
+
+	let iconCell = (
+		<View style = {{...styles.cell, backgroundColor: props.color}}>
+			<TopEndIconButton	
+				src = {require('../../assets/img/info.png')}
+				onPress = {props.showModal}/>
+
+			<TouchableOpacity onPress = {props.onClick} style = {{flex:1}}>
 				<Image style = {styles.icon} source= {props.src}/>
 				<Text style = {styles.title}>{props.title}</Text>
 			</TouchableOpacity>
 
-        </View>
-    );
+		</View>
+	);
+
+	return props.isSourceBg ? imageBackgroundCell : iconCell;
 }
 
 const styles = StyleSheet.create({
     cell:{
         flex:1,
-        padding: 24,
-        minHeight:"33.33%",
-        maxWidth:"50%",
-        minWidth:"50%",
-
+		padding: 24,
+		
         justifyContent: 'flex-end',
         alignItems:'center',
 	},

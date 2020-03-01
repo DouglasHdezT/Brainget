@@ -43,7 +43,7 @@ export default class SixMenu extends Component {
 		/>)
 
 		return (
-			<View style={{ justifyContent:'center', alignItems:'center' , flex:this.props.flex}}>
+			<View style={{flex:this.props.flex, width:'100%'}}>
 				<InfoModal
 					visible = {this.state.modalVisibility}
 					closeModal = {this.closeModal}
@@ -52,7 +52,13 @@ export default class SixMenu extends Component {
 					/>
 
 				<View style={styles.main}>
-					{submenus}
+					<View style = {styles.column}>
+						{submenus.slice(0,3)}
+					</View>
+
+					<View style = {styles.column}>
+						{submenus.slice(3,6)}
+					</View>
 				</View>
 			</View>
 		);
@@ -61,8 +67,11 @@ export default class SixMenu extends Component {
 
 const styles = StyleSheet.create({
 	main: {
-		flexWrap: 'wrap',
-
-		justifyContent: 'center',
+		flex: 1,
+		flexDirection: 'row'
 	},
+	column:{
+		flex: 1,
+		flexDirection: 'column'
+	}
 });
