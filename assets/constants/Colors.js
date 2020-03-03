@@ -12,6 +12,7 @@ export default {
     teal500: '#009688',
     teal700: '#00796B',
 	teal900: '#004D40',
+	gray800: '#424242',
 	ModalTitleColor: '#1A237E',
 	ModalTextColor: '#424242',
 	indigo500: '#3F51B5',

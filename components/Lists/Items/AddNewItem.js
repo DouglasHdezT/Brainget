@@ -7,7 +7,9 @@ import Colors from '../../../assets/constants/Colors';
 
 const AddNewItem = props => {
 	return(
-		<TouchableOpacity style = {styles.container}>
+		<TouchableOpacity 
+			onPress = {props.openAddModal}
+			style = {styles.container}>
 			<View style = {styles.textContainer}>
 				<Text style = {styles.title}>Añadir ingreso</Text>
 			</View>

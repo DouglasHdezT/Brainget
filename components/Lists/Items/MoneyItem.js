@@ -9,9 +9,9 @@ const MoneyItem = props => {
 	return(
 		<View style = {styles.container}>
 			<View style = {styles.textContainer}>
-				<Text style = {styles.title}>Titulo</Text>
-				<Text style = {styles.subtitle}>Money</Text>
-				<Text style = {styles.subtitle}>Date</Text>
+				<Text style = {styles.title}>{props.title}</Text>
+				<Text style = {styles.subtitle}>$ {props.money}</Text>
+				<Text style = {styles.subtitle}>{props.date}</Text>
 			</View>
 			<TouchableOpacity style = {styles.iconContainer}>
 				<Image

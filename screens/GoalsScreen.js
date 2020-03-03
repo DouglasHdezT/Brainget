@@ -14,6 +14,7 @@ import MoneyContainer from '../components/footers/containers/MoneyContainer';
 import NavContainer from '../components/footers/containers/NavContainer';
 import TextButtonContainer from '../components/footers/containers/TextButtonContainer';
 import GoalsForm from '../components/forms/GoalsForm';
+import AddIncomeModal from '../components/alerts/AddIncomeModal';
 
 class GoalsScreen extends Component {
 	constructor(props){
@@ -24,6 +25,7 @@ class GoalsScreen extends Component {
 			question1:'',
 			question2:'',
 			question3:'',
+			addModal: false,
 		}
 	}
 
@@ -36,6 +38,19 @@ class GoalsScreen extends Component {
 	insideNavigate = () => {
 		this.setState({
 			isFirstScreen : !this.state.isFirstScreen
+		})
+	}
+
+	addNewIncome = (title, money) => {
+		this.props.addIncome(title, money),
+		this.setState({
+			addModal: false,
+		})
+	}
+
+	toggleAddModal = () =>{
+		this.setState({
+			addModal: !this.state.addModal,
 		})
 	}
 	
@@ -54,7 +69,7 @@ class GoalsScreen extends Component {
 
 		const mainContent = (
 			this.state.isFirstScreen ? 
-				<IncomeList items = {this.state.incomeItems}/> :
+				<IncomeList items = {this.props.incomes} openAddModal = {this.toggleAddModal}/> :
 				<GoalsForm
 					changeHandler = {this.changeHandler}
 					question1 = {this.state.question1}
@@ -65,6 +80,11 @@ class GoalsScreen extends Component {
 
 		return(
 			<View style = {{flex: 1}}>
+				<AddIncomeModal
+					visible = {this.state.addModal}
+					addIncome = {this.addNewIncome}
+					closeModal = {this.toggleAddModal}
+				/>
 				<ImageBackground
 					source = {BGImages.goalsScreen}
 					style = {styles.imageContainer}>

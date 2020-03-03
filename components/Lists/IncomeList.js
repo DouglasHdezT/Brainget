@@ -18,13 +18,13 @@ const IncomeList = props => {
 					data = {props.items}
 					renderItem = {({item}) => createItem(item)}
 				/>
-				<AddNewItem/>
+				<AddNewItem openAddModal = {props.openAddModal}/>
 			</View>
 		</>
 	);
 }
 
-const createItem = (item) => <MoneyItem/>;
+const createItem = (item) => <MoneyItem title = {item.title} money = {item.money} date = {item.createdAt.toLocaleDateString('en-US')}/>;
 
 const styles = StyleSheet.create({
 	view:{

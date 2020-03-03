@@ -6,7 +6,7 @@ export const addIncome = (title, money) => {
 		type: ADD_INCOME,
 		payload:{
 			title,
-			money
+			money: parseFloat(money)
 		}
 	}
 }

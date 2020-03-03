@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Modal, View, Text, TouchableHighlight, Image, StyleSheet } from 'react-native';
+import { Modal, View, Text, StyleSheet } from 'react-native';
 import TopEndIconButton from '../buttons/TopEndIconButton';
 
 import Colors from '../../assets/constants/Colors';
