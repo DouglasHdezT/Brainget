@@ -17,7 +17,7 @@ class GoalsScreen extends Component {
 		super(props);
 
 		this.state = {
-			incomeItems: [{id:'1',dummy:"1"}, {id:'2',dummy:"1"}, {id:'3',dummy:"1"}, {id:'4',dummy:"1"},lastValue],
+			incomeItems: [{id:'1',money:"100"}, {id:'2',dummy:"1"}, {id:'3',dummy:"1"}, {id:'4',dummy:"1"},lastValue],
 			isFirstScreen: true,
 			question1:'',
 			question2:'',

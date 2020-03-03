@@ -25,7 +25,7 @@ const NavigationStack = createStackNavigator({
 		  },
 		  headerTintColor: Platform.OS === 'android' ?'#fff':Colors.indigo900,
 		  headerTitleStyle: {
-			  fontFamily:'roboto-bold'
+			  fontFamily:'roboto'
 		  },
 		},
 	  });

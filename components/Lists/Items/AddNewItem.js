@@ -7,17 +7,17 @@ import Colors from '../../../assets/constants/Colors';
 
 const AddNewItem = props => {
 	return(
-		<View style = {styles.container}>
+		<TouchableOpacity style = {styles.container}>
 			<View style = {styles.textContainer}>
 				<Text style = {styles.title}>Añadir ingreso</Text>
 			</View>
-			<TouchableOpacity style = {styles.iconContainer}>
+			<View style = {styles.iconContainer}>
 				<Image
 					source = {Icons.add}
 					style = {styles.icon}	
 				/>
-			</TouchableOpacity>
-		</View>
+			</View>
+		</TouchableOpacity>
 	);
 }
 
