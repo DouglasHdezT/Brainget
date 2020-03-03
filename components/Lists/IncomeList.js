@@ -12,32 +12,19 @@ const IncomeList = props => {
 				<Text style={styles.title}>¿Cuánto dinero obtendrás?</Text>
 			</View>
 
-			<View style = {{...styles.view, flex: 2, alignItems: 'stretch'}}>
+			<View style = {{...styles.view, flex: 3, alignItems: 'stretch'}}>
 				<FlatList
 					contentContainerStyle ={{alignItems: 'stretch'}}
 					data = {props.items}
 					renderItem = {({item}) => createItem(item)}
 				/>
+				<AddNewItem/>
 			</View>
 		</>
 	);
 }
 
-const createItem = (item) =>{
-	let itemComponent;
-
-	if(!item.isLast){
-		itemComponent = (
-			<MoneyItem/>
-		);
-	}else{
-		itemComponent = (
-			<AddNewItem/>
-		);
-	}
-
-	return itemComponent;
-}
+const createItem = (item) => <MoneyItem/>;
 
 const styles = StyleSheet.create({
 	view:{

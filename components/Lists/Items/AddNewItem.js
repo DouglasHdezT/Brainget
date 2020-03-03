@@ -25,13 +25,13 @@ const styles = StyleSheet.create({
 	container:{
 		height:'auto',
 
-		paddingVertical:8,
+		paddingVertical:16,
 		paddingHorizontal:16,
 
-		backgroundColor:'#fff',
+		backgroundColor:Colors.indigo900,
 
 		borderBottomEndRadius: 15,
-		borderTopStartRadius: 15,
+		borderBottomStartRadius: 15,
 
 		flexDirection: 'row',
 		justifyContent:'space-between',
@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
 	},
 	iconContainer:{
 		width: '10%',
+		maxHeight:32,
 		justifyContent:"center",
 		alignItems:'center'
 	},
@@ -53,11 +54,8 @@ const styles = StyleSheet.create({
 	},
 	title:{
 		fontFamily: 'roboto-bold',
-		color: Colors.ItemsTitle,
-		fontSize: 24,
-
-		textAlign: "center",
-		textAlignVertical: "center",
+		color: 'white',
+		fontSize: 20,
 	},
 })
 

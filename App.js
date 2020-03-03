@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
+import { Provider } from 'react-redux';
+
+import store from './store/Store'
 
 import MainNavigationStack from './components/navigations/MainNavigationStack'
 
@@ -15,7 +18,9 @@ export default function App() {
 	}
 
 	return (
-		<MainNavigationStack />	
+		<Provider store = {store}>
+			<MainNavigationStack />
+		</Provider>	
  	);
 }
 

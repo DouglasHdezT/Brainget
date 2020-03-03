@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 
 import { View, ImageBackground, StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
+
+import { addIncome } from '../store/actions/BudgetActions'
 
 import BGImages from '../assets/constants/BackgroundImages'
 import Colors from '../assets/constants/Colors'
@@ -17,7 +20,6 @@ class GoalsScreen extends Component {
 		super(props);
 
 		this.state = {
-			incomeItems: [{id:'1',money:"100"}, {id:'2',dummy:"1"}, {id:'3',dummy:"1"}, {id:'4',dummy:"1"},lastValue],
 			isFirstScreen: true,
 			question1:'',
 			question2:'',
@@ -40,7 +42,7 @@ class GoalsScreen extends Component {
 	render(){
 		const leftFootContent = (
 			this.state.isFirstScreen ? 
-				<MoneyContainer money = '1000'/> : 
+				<MoneyContainer money = {this.props.totalIncome}/> : 
 				<NavContainer left onPress = {this.insideNavigate}/>
 		);
 		
@@ -77,7 +79,6 @@ class GoalsScreen extends Component {
 						leftContent = {leftFootContent}
 						rightContent = {rightFootContent}
 						/>
-	
 				</ImageBackground>
 			</View>
 		);
@@ -97,9 +98,13 @@ const styles = StyleSheet.create({
 
 });
 
-const lastValue = {
-	id:'Last',
-	isLast: true
+const mapStateToProps = state => ({
+	incomes: state.budget.incomes,
+	totalIncome: state.budget.totalIncome,
+});
+
+const mapDispatchToProps = {
+	addIncome
 }
 
-export default GoalsScreen;
+export default connect(mapStateToProps, mapDispatchToProps)(GoalsScreen);
