@@ -57,7 +57,7 @@ class GoalsScreen extends Component {
 	render(){
 		const leftFootContent = (
 			this.state.isFirstScreen ? 
-				<MoneyContainer money = {this.props.totalIncome}/> : 
+				<MoneyContainer money = {this.props.totalIncome.toFixed(2)}/> : 
 				<NavContainer left onPress = {this.insideNavigate}/>
 		);
 		

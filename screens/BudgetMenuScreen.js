@@ -17,7 +17,7 @@ const BudgetMenuScreen = props => {
 		props.navigation.navigate(route);
 	}
 
-	const leftFootContent = <MoneyContainer money = {props.currentBalance}/>;
+	const leftFootContent = <MoneyContainer money = {props.currentBalance.toFixed(2)}/>;
 	const rightFootContent = <PeriodContainer period = "1 -31 enero"/>;
 
 	return(

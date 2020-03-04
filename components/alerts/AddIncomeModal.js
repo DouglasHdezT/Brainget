@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Modal, View, Text, StyleSheet, TouchableWithoutFeedback, Keyboard, Dimensions } from 'react-native';
+import { Modal, View, Text, StyleSheet, TouchableWithoutFeedback, Keyboard, Dimensions, Alert } from 'react-native';
 
 import Icons from '../../assets/constants/Icons';
 import Colors from '../../assets/constants/Colors';
@@ -11,7 +11,7 @@ import TopEndIconButton from '../buttons/TopEndIconButton';
 
 const initState = {
 	incomeName: '',
-	incomeValue: 0,
+	incomeValue: '',
 }
 
 class AddIncomeModal extends Component {
@@ -62,8 +62,31 @@ class AddIncomeModal extends Component {
 									color={Colors.indigo900}
 									text="Añadir"
 									onPress = {() => {
-										this.props.addIncome(this.state.incomeName, this.state.incomeValue)
-										this.setState({...initState})
+										if (!this.state.incomeName || !this.state.incomeValue) {
+											Alert.alert(
+												'No dejes vacio los campos',
+												'Ambos campos deben de poseer un valor',
+												[
+													{
+														text: 'OK',
+													}
+												]
+											);
+										} else if (typeof parseFloat(this.state.incomeValue) != 'number'){
+											Alert.alert(
+												'El campo debe ser un numero',
+												'',
+												[
+													{
+														text: 'OK',
+													}
+												]
+											);
+										}else{
+											this.props.addIncome(this.state.incomeName, this.state.incomeValue);
+											this.setState({...initState});
+										}
+										
 									}}
 								/>
 							</View>

@@ -10,7 +10,7 @@ const MoneyItem = props => {
 		<View style = {styles.container}>
 			<View style = {styles.textContainer}>
 				<Text style = {styles.title}>{props.title}</Text>
-				<Text style = {styles.subtitle}>$ {props.money}</Text>
+				<Text style = {styles.subtitle}>$ {props.money.toFixed(2)}</Text>
 				<Text style = {styles.subtitle}>{props.date}</Text>
 			</View>
 			<TouchableOpacity style = {styles.iconContainer}>
@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
 	textContainer:{
 		width:'50%',
 		alignItems:'stretch',
+		justifyContent: 'center'
 	},
 	iconContainer:{
 		width: '10%',

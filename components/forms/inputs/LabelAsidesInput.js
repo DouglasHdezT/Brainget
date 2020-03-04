@@ -11,8 +11,9 @@ const LabelAsidesInput = props => {
 				<Text style = {{fontFamily: 'roboto'}}>$ </Text>
 				<TextInput
 					onChangeText={text => props.changeHandler(props.id, text)}
-					value={props.value.toString()}
+					value={props.value}
 					style={styles.input}
+					placeholder = '00.00'
 					keyboardType='numeric'
 				/>
 			</View>

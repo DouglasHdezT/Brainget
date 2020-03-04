@@ -9,7 +9,7 @@ const NavContainer = props => {
 	const icon = props.left ? Icons.left : Icons.right;
 
 	const textComponent = <Text style = {styles.text}>{text}</Text>;
-	const iconComponent = <View style= {styles.iconContainer}><Image source = {icon} style = {styles.icon}/></View>
+	const iconComponent = <Image source = {icon} style = {styles.icon}/>
 
 	return(
 		<TouchableOpacity onPress = {props.onPress} style = {styles.container}>
@@ -25,8 +25,8 @@ const styles = StyleSheet.create({
 		flex:1,
 
 		flexDirection:'row',
-		justifyContent:'space-between',
-		alignItems:'stretch'
+		justifyContent:'center',
+		alignItems:'center'
 	},
 	iconContainer:{
 		width:'10%',
@@ -34,17 +34,17 @@ const styles = StyleSheet.create({
 		alignItems:'center'
 	},
 	icon:{
-		width:'100%',
+		flex:1,
 		resizeMode: 'contain',
 	},
 	text:{
-		flex:1,
+		flex:5,
 		fontFamily:'roboto',
 		fontSize: 20,
 		color:'#fff',
 
-		textAlignVertical:'center',
-		textAlign:'center',
+		textAlignVertical:"center",
+		textAlign:"center"
 	}
 });
 

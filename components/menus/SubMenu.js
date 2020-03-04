@@ -18,8 +18,10 @@ export const SubMenu = props => {
 				onPress = {props.showModal}/>
 
 			<TouchableOpacity onPress = {props.onPress} style = {{flex:1}}>
-				<View style = {{flex:2}}/>
-				<Text style = {{...styles.title, backgroundColor: Colors.shadowBg,} }>{props.title}</Text>
+				<View style = {{flex:1}}/>
+				<View style = {{...styles.titleContainer, backgroundColor: Colors.shadowBg, borderTopStartRadius:15, borderBottomEndRadius:15}}>
+					<Text style = {styles.title }>{props.title}</Text>
+				</View>
 			</TouchableOpacity>
 
 		</ImageBackground>
@@ -33,7 +35,9 @@ export const SubMenu = props => {
 
 			<TouchableOpacity onPress = {props.onPress} style = {{flex:1}}>
 				<Image style = {styles.icon} source= {props.src}/>
-				<Text style = {styles.title}>{props.title}</Text>
+				<View style = {styles.titleContainer}>
+					<Text style = {styles.title}>{props.title}</Text>
+				</View>
 			</TouchableOpacity>
 
 		</View>
@@ -45,7 +49,7 @@ export const SubMenu = props => {
 const styles = StyleSheet.create({
     cell:{
         flex:1,
-		padding: 24,
+		padding: 16,
 		
         justifyContent: 'flex-end',
         alignItems:'center',
@@ -53,16 +57,21 @@ const styles = StyleSheet.create({
     icon:{
 		flex:2,
         resizeMode: 'contain'
-    },
-    title:{
-        flex:1,
-		marginTop: 16,
+	},
+	titleContainer:{
+		flex:1,
+		marginTop: 8,
+		padding:8,
 
+		justifyContent:'center',
+		alignItems:"stretch"
+	},
+    title:{
         color: 'white',
         fontSize: 16,
-        fontFamily:'roboto',
+		fontFamily:'roboto',
 
-        textAlign:'center',
-        textAlignVertical:'center'
+		textAlign:"center", 
+		textAlignVertical:"center"
     },
 })
