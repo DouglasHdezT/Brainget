@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Modal, View, Text, StyleSheet, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { Modal, View, Text, StyleSheet, TouchableWithoutFeedback, Keyboard, Dimensions } from 'react-native';
 
 import Icons from '../../assets/constants/Icons';
 import Colors from '../../assets/constants/Colors';
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
 	},
 	modalView: {
 		width: '90%',
-		minHeight: '50%',
+		minHeight: Math.round(Dimensions.get('window').height) / 2,
 
 		padding: 24,
 

@@ -19,7 +19,7 @@ const NavigationStack = createStackNavigator({
 	{
 		initialRouteName: 'MainMenu',
 		/* The header config from HomeScreen is now here */
-		defaultNavigationOptions: {
+		/* defaultNavigationOptions: {
 		  headerStyle: {
 			backgroundColor: Platform.OS === 'android' ? Colors.indigo900 : '#fff',
 		  },
@@ -27,7 +27,16 @@ const NavigationStack = createStackNavigator({
 		  headerTitleStyle: {
 			  fontFamily:'roboto'
 		  },
-		},
+		}, */
+		defaultNavigationOptions: {
+			headerStyle: {
+			  backgroundColor: Colors.indigo900,
+			},
+			headerTintColor: '#fff',
+			headerTitleStyle: {
+				fontFamily:'roboto'
+			},
+		  },
 	  });
 
 export default createAppContainer(NavigationStack);

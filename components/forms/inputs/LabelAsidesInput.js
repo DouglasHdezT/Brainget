@@ -8,11 +8,12 @@ const LabelAsidesInput = props => {
 		<View style={styles.container}>
 			<Text style={styles.title}>Cantidad: </Text>
 			<View style={styles.inputContainer}>
+				<Text style = {{fontFamily: 'roboto'}}>$ </Text>
 				<TextInput
 					onChangeText={text => props.changeHandler(props.id, text)}
-					value={props.value ? props.value : 0}
+					value={props.value.toString()}
 					style={styles.input}
-					keyboardType='decimal-pad'
+					keyboardType='numeric'
 				/>
 			</View>
 		</View>
@@ -41,9 +42,12 @@ const styles = StyleSheet.create({
 	},
 	inputContainer: {
 		flex: 1,
+		flexDirection:'row',
+		alignItems:"center",
+
 		marginHorizontal: 4,
 		padding: 8,
-		justifyContent: "center",
+		justifyContent: "flex-start",
 
 		borderStyle: "solid",
 		borderColor: Colors.gray800,
@@ -54,10 +58,13 @@ const styles = StyleSheet.create({
 		borderBottomEndRadius: 15,
 	},
 	input: {
+		flex:1,
 		paddingHorizontal: 8,
 
 		fontFamily: 'roboto',
 		fontSize: 16,
+
+		color: Colors.inputText,
 	}
 });
 

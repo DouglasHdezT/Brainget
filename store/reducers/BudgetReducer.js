@@ -13,7 +13,7 @@ const BudgetReducer = (state = initialState, {type, payload}) => {
 			const income = {
 				...payload,
 				createdAt: new Date(),
-				id: new Date(),
+				id: new Date().toString(),
 			};
 
 			return {

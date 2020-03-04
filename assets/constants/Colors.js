@@ -18,5 +18,6 @@ export default {
 	indigo500: '#3F51B5',
 	indigo900: '#1A237E',
 	ItemsTitle: '#000',
-	ItemsSubtitles:  '#616161'
+	ItemsSubtitles:  '#616161',
+	inputText: '#000'
 }

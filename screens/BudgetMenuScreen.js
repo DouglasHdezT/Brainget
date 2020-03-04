@@ -1,11 +1,12 @@
 import React from 'react';
 
 import {View, StyleSheet} from 'react-native';
-import MainMenu from '../components/menus/MainMenu';
+import { connect } from 'react-redux'
 
 import budgetMenuConf from '../assets/constants/BudgetMenuData'
 import Colors from '../assets/constants/Colors'
 
+import MainMenu from '../components/menus/MainMenu';
 import FootLeftRight from '../components/footers/FootLeftRight';
 import MoneyContainer from '../components/footers/containers/MoneyContainer';
 import PeriodContainer from '../components/footers/containers/PeriodContainer';
@@ -16,7 +17,7 @@ const BudgetMenuScreen = props => {
 		props.navigation.navigate(route);
 	}
 
-	const leftFootContent = <MoneyContainer money = "100.03"/>;
+	const leftFootContent = <MoneyContainer money = {props.currentBalance}/>;
 	const rightFootContent = <PeriodContainer period = "1 -31 enero"/>;
 
 	return(
@@ -41,4 +42,8 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default BudgetMenuScreen;
+const mapStateToProps = state => ({
+	currentBalance: state.budget.currentBalance
+});
+
+export default connect(mapStateToProps, null)(BudgetMenuScreen);

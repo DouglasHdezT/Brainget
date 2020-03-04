@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { StyleSheet, View, Text, TextInput } from 'react-native';
+import  Colors  from '../../../assets/constants/Colors';
 
 const LabeledInput = props => {
 	return(
@@ -54,6 +55,7 @@ const styles = StyleSheet.create({
 
 		fontSize: 16,
 		fontFamily:'roboto',
+		color: Colors.inputText
 	}
 });
 

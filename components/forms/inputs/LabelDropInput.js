@@ -12,7 +12,7 @@ const LabelDropInput = props => {
 					onChangeText={text => props.changeHandler(props.id, text)}
 					value={props.value}
 					style={styles.input}
-					placeholder="p.e. Préstamo casa"
+					placeholder="p.e. Alquiler casa"
 				/>
 			</View>
 		</View>
@@ -49,6 +49,8 @@ const styles = StyleSheet.create({
 
 		fontFamily: 'roboto',
 		fontSize: 16,
+
+		color: Colors.inputText,
 	}
 });
 
