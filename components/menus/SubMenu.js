@@ -18,7 +18,7 @@ export const SubMenu = props => {
 				onPress = {props.showModal}/>
 
 			<TouchableOpacity onPress = {props.onPress} style = {{flex:1}}>
-				<View style = {{flex:1}}/>
+				<View style = {{flex:1.75}}/>
 				<View style = {{...styles.titleContainer, backgroundColor: Colors.shadowBg, borderTopStartRadius:15, borderBottomEndRadius:15}}>
 					<Text style = {styles.title }>{props.title}</Text>
 				</View>
@@ -33,7 +33,7 @@ export const SubMenu = props => {
 				src = {Icons.info}
 				onPress = {props.showModal}/>
 
-			<TouchableOpacity onPress = {props.onPress} style = {{flex:1}}>
+			<TouchableOpacity onPress = {props.onPress} style = {{flex:1, alignItems:"center", justifyContent:'flex-end'}}>
 				<Image style = {styles.icon} source= {props.src}/>
 				<View style = {styles.titleContainer}>
 					<Text style = {styles.title}>{props.title}</Text>
@@ -50,13 +50,11 @@ const styles = StyleSheet.create({
     cell:{
         flex:1,
 		padding: 16,
-		
-        justifyContent: 'flex-end',
-        alignItems:'center',
 	},
     icon:{
+		width: 128,
 		flex:2,
-        resizeMode: 'contain'
+		resizeMode: 'contain'
 	},
 	titleContainer:{
 		flex:1,

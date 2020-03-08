@@ -11,7 +11,7 @@ const AddNewItem = props => {
 			onPress = {props.openAddModal}
 			style = {styles.container}>
 			<View style = {styles.textContainer}>
-				<Text style = {styles.title}>Añadir ingreso</Text>
+				<Text style = {styles.title}>{props.cost ? 'Añadir gasto' : 'Añadir ingreso'}</Text>
 			</View>
 			<View style = {styles.iconContainer}>
 				<Image
