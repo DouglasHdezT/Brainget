@@ -13,7 +13,7 @@ const MoneyItem = props => {
 				<Text style = {styles.subtitle}>$ {props.money.toFixed(2)}</Text>
 				<Text style = {styles.subtitle}>{props.date}</Text>
 			</View>
-			<TouchableOpacity style = {styles.iconContainer}>
+			<TouchableOpacity style = {styles.iconContainer} onPress = {props.update}>
 				<Image
 					source = {Icons.edit}
 					style = {styles.icon}	

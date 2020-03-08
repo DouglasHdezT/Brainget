@@ -13,7 +13,7 @@ const BudgetReducer = (state = initialState, {type, payload}) => {
 			const income = {
 				...payload,
 				createdAt: new Date(),
-				id: new Date().toString(),
+				_id: `ID${new Date().getTime()}`,
 			};
 
 			return {
@@ -24,13 +24,13 @@ const BudgetReducer = (state = initialState, {type, payload}) => {
 			}
 
 		case REMOVE_INCOME:
-			const value = state.incomes.find(income => income.id === payload.id).money; 
+			const value = state.incomes.find(income => income._id === payload.id).money; 
 			
 			return {
 				...state,
 				totalIncome: state.totalIncome - value,
 				currentBalance: state.currentBalance - value,
-				incomes: state.incomes.filter(income => income.id !== payload.id)
+				incomes: state.incomes.filter(income => income._id !== payload.id)
 			}
 
 		default:

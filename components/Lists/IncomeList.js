@@ -6,6 +6,14 @@ import AddNewItem from './Items/AddNewItem';
 
 
 const IncomeList = props => {
+
+	const createItem = (item) => (
+		<MoneyItem 
+			update = {() => props.openAddModal(false, item._id)}
+			title = {item.title} 
+			money = {item.money} 
+			date = {item.createdAt.toLocaleDateString('en-US')}/>);
+
 	return(
 		<>
 			<View style = {{...styles.view, flex: 1}}>
@@ -17,14 +25,14 @@ const IncomeList = props => {
 					contentContainerStyle ={{alignItems: 'stretch'}}
 					data = {props.items}
 					renderItem = {({item}) => createItem(item)}
+					keyExtractor = {item => item._id}
 				/>
-				<AddNewItem openAddModal = {props.openAddModal}/>
+				<AddNewItem openAddModal = {() => props.openAddModal(true)}/>
 			</View>
 		</>
 	);
 }
 
-const createItem = (item) => <MoneyItem title = {item.title} money = {item.money} date = {item.createdAt.toLocaleDateString('en-US')}/>;
 
 const styles = StyleSheet.create({
 	view:{

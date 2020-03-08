@@ -19,5 +19,8 @@ export default {
 	indigo900: '#1A237E',
 	ItemsTitle: '#000',
 	ItemsSubtitles:  '#616161',
-	inputText: '#000'
+	inputText: '#000',
+	btnNeutral: '#1A237E',
+	btnDelete: '#B71C1C',
+	btnOk: '#33691E',
 }

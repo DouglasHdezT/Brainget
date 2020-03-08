@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import { View, ImageBackground, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 
-import { addIncome } from '../store/actions/BudgetActions'
+import { addIncome, removeIncome } from '../store/actions/BudgetActions'
 
 import BGImages from '../assets/constants/BackgroundImages'
 import Colors from '../assets/constants/Colors'
@@ -26,6 +26,8 @@ class GoalsScreen extends Component {
 			question2:'',
 			question3:'',
 			addModal: false,
+			isNewIncome: true,
+			editableIncome: {},
 		}
 	}
 
@@ -53,6 +55,14 @@ class GoalsScreen extends Component {
 			addModal: !this.state.addModal,
 		})
 	}
+
+	openAddModal = (isNewIncome, id = undefined) =>{
+		this.setState({
+			addModal: !this.state.addModal,
+			isNewIncome: isNewIncome,
+			editableIncome: id ? this.props.incomes.find(income => income._id == id) : {},
+		})
+	}
 	
 	render(){
 		const leftFootContent = (
@@ -69,7 +79,7 @@ class GoalsScreen extends Component {
 
 		const mainContent = (
 			this.state.isFirstScreen ? 
-				<IncomeList items = {this.props.incomes} openAddModal = {this.toggleAddModal}/> :
+				<IncomeList items = {this.props.incomes} openAddModal = {this.openAddModal}/> :
 				<GoalsForm
 					changeHandler = {this.changeHandler}
 					question1 = {this.state.question1}
@@ -83,7 +93,10 @@ class GoalsScreen extends Component {
 				<AddIncomeModal
 					visible = {this.state.addModal}
 					addIncome = {this.addNewIncome}
+					removeIncome = {this.props.removeIncome}
 					closeModal = {this.toggleAddModal}
+					isNewIncome = {this.state.isNewIncome}
+					oldIncome = {this.state.editableIncome}
 				/>
 				<ImageBackground
 					source = {BGImages.goalsScreen}
@@ -124,7 +137,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-	addIncome
+	addIncome,
+	removeIncome
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(GoalsScreen);

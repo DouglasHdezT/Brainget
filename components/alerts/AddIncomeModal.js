@@ -9,18 +9,19 @@ import BorderedButton from '../buttons/BorderedButton';
 import IncomeForm from '../forms/IncomeForm';
 import TopEndIconButton from '../buttons/TopEndIconButton';
 
-const initState = {
-	incomeName: '',
-	incomeValue: '',
-}
-
 class AddIncomeModal extends Component {
 
 	constructor(props){
 		super(props);
 
+		this.initState = {
+			incomeName: '',
+			incomeValue: '',
+			_id:''
+		}
+
 		this.state = {
-			...initState,
+			...this.initState,
 		}
 	}
 
@@ -30,13 +31,64 @@ class AddIncomeModal extends Component {
 		})
 	}
 
+	addIncomeVerified = () => {
+		if (!this.state.incomeName || !this.state.incomeValue) {
+			Alert.alert(
+				'No dejes vacio los campos',
+				'Ambos campos deben de poseer un valor',
+				[{ text: 'OK', }]
+			);
+		} else if (typeof parseFloat(this.state.incomeValue) != 'number'){
+			Alert.alert(
+				'El campo debe ser un numero',
+				'',
+				[{ text: 'OK', }]
+			);
+		}else{
+			this.props.addIncome(this.state.incomeName, this.state.incomeValue);
+			this.setState({...this.initState});
+		}
+	}
+
+	verifyFields = () => {
+		this.props.isNewIncome ? this.setState({...this.initState}) : this.setState ({
+			incomeName: this.props.oldIncome.title,
+			incomeValue: this.props.oldIncome.money.toFixed(2),
+			_id: this.props.oldIncome._id,
+		})
+	}
+
 	render() {
+		const addButton = (
+			<BorderedButton
+				color={Colors.btnNeutral}
+				text="Añadir"
+				onPress = {this.addIncomeVerified}
+			/>);
+		
+		const updateDeleteButtons = (
+			<>
+				<BorderedButton
+					color={Colors.btnDelete}
+					text="Eliminar"
+					onPress = {() => {
+						this.props.removeIncome(this.state._id);
+						this.props.closeModal(); 
+					}}
+					/>
+				<BorderedButton
+					color={Colors.btnOk}
+					text="Modificar"
+					/>
+			</>
+		);
+
 		return (
 			<Modal
 				animationType="fade"
 				transparent={true}
 				visible={this.props.visible}
-
+				onShow = {this.verifyFields}
 				onRequestClose={this.props.closeModal}>
 
 				<TouchableWithoutFeedback onPress = {() => {Keyboard.dismiss()}}>
@@ -58,37 +110,7 @@ class AddIncomeModal extends Component {
 							</View>
 	
 							<View style={{ flex: 1, flexDirection: 'row', justifyContent: "center", alignItems:'center' }}>
-								<BorderedButton
-									color={Colors.indigo900}
-									text="Añadir"
-									onPress = {() => {
-										if (!this.state.incomeName || !this.state.incomeValue) {
-											Alert.alert(
-												'No dejes vacio los campos',
-												'Ambos campos deben de poseer un valor',
-												[
-													{
-														text: 'OK',
-													}
-												]
-											);
-										} else if (typeof parseFloat(this.state.incomeValue) != 'number'){
-											Alert.alert(
-												'El campo debe ser un numero',
-												'',
-												[
-													{
-														text: 'OK',
-													}
-												]
-											);
-										}else{
-											this.props.addIncome(this.state.incomeName, this.state.incomeValue);
-											this.setState({...initState});
-										}
-										
-									}}
-								/>
+								{this.props.isNewIncome ? addButton : updateDeleteButtons}
 							</View>
 						</View>
 					</View>
