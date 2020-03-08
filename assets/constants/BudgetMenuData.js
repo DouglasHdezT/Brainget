@@ -1,4 +1,5 @@
 import Colors from './Colors'
+import Expenses from './ExpensesTags';
 
 export default  [
     {
@@ -7,7 +8,14 @@ export default  [
 	  src: require('../img/gastos_fijos.png'), 
 	  info:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.',
 	  isSourceBg: false,
-	  redirect: 'BudgetMenu'
+	  redirect: {
+		  route: 'Costs',
+		  params : {
+			  title: 'Gastos Fijos',
+			  TAG : Expenses.Fixed,
+			  canRepeatElems : false
+		  }
+	  }
     },
   
     {
@@ -16,7 +24,14 @@ export default  [
 	  src: require('../img/gastos_opcionales.png'),
 	  info:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.',
 	  isSourceBg: false,
-	  redirect: 'BudgetMenu'
+	  redirect: {
+		route: 'Costs',
+		params : {
+			title: 'Gastos Opcionales',
+			TAG : Expenses.Optional,
+			canRepeatElems : true
+		}
+	}
     },
   
     {
@@ -25,7 +40,14 @@ export default  [
 	  src: require('../img/gastos_salud.png'),
 	  info:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.',
 	  isSourceBg: false,
-	  redirect: 'BudgetMenu'
+	  redirect: {
+		route: 'Costs',
+		params : {
+			title: 'Gastos en Salud',
+			TAG : Expenses.Health,
+			canRepeatElems : true
+		}
+	}
     },
   
     {
@@ -34,7 +56,14 @@ export default  [
 	  src: require('../img/gastos_variables.png'),
 	  info:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.',
 	  isSourceBg: false,
-	  redirect: 'BudgetMenu'
+	  redirect: {
+		route: 'Costs',
+		params : {
+			title: 'Gastos Variables',
+			TAG : Expenses.Variable,
+			canRepeatElems : true
+		}
+	}
     },
   
     {
@@ -43,7 +72,14 @@ export default  [
 	  src: require('../img/imprevistos.png'),
 	  info:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.',
 	  isSourceBg: false,
-	  redirect: 'BudgetMenu'
+	  redirect: {
+		route: 'Costs',
+		params : {
+			title: 'Imprevistos',
+			TAG : Expenses.Unexpected,
+			canRepeatElems : true
+		}
+	}
     },
   
     {
@@ -52,6 +88,13 @@ export default  [
 	  src: require('../img/ahorros_ofrendas.png'),
 	  info:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.',
 	  isSourceBg: false,
-	  redirect: 'BudgetMenu'
+	  redirect: {
+		route: 'Costs',
+		params : {
+			title: 'Ahorros | Ofrendas',
+			TAG : Expenses.Aid,
+			canRepeatElems : true
+		}
+	}
     },
 ]

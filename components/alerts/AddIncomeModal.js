@@ -31,7 +31,7 @@ class AddIncomeModal extends Component {
 		})
 	}
 
-	addIncomeVerified = () => {
+	addIncomeVerified = (isUpdating = false) => {
 		if (!this.state.incomeName || !this.state.incomeValue) {
 			Alert.alert(
 				'No dejes vacio los campos',
@@ -44,9 +44,14 @@ class AddIncomeModal extends Component {
 				'',
 				[{ text: 'OK', }]
 			);
-		}else{
+		}else if(isUpdating){
+			this.props.updateIncome(this.state._id, this.state.incomeName, this.state.incomeValue);
+			this.setState({...this.initState});
+			this.props.closeModal();
+		} else{
 			this.props.addIncome(this.state.incomeName, this.state.incomeValue);
 			this.setState({...this.initState});
+			this.props.closeModal();
 		}
 	}
 
@@ -63,7 +68,9 @@ class AddIncomeModal extends Component {
 			<BorderedButton
 				color={Colors.btnNeutral}
 				text="Añadir"
-				onPress = {this.addIncomeVerified}
+				onPress = {() => {
+					this.addIncomeVerified();
+				}}
 			/>);
 		
 		const updateDeleteButtons = (
@@ -79,6 +86,9 @@ class AddIncomeModal extends Component {
 				<BorderedButton
 					color={Colors.btnOk}
 					text="Modificar"
+					onPress = {() => {
+						this.addIncomeVerified(true);
+					}}
 					/>
 			</>
 		);

@@ -13,8 +13,9 @@ import PeriodContainer from '../components/footers/containers/PeriodContainer';
 
 
 const BudgetMenuScreen = props => {
-	const navigate = route => {
-		props.navigation.navigate(route);
+	const navigate = redirect => {
+		const {route, params} = redirect;
+		props.navigation.navigate(route, params);
 	}
 
 	const leftFootContent = <MoneyContainer money = {props.currentBalance.toFixed(2)}/>;
@@ -31,6 +32,12 @@ const BudgetMenuScreen = props => {
 				/>
 		</View>
 	);
+}
+
+BudgetMenuScreen.navigationOptions = navigationData => {
+	return {
+		headerTitle: navigationData.navigation.getParam('title', 'Budget Menu')
+	}
 }
 
 const styles = StyleSheet.create({

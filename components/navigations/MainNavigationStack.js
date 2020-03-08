@@ -5,16 +5,18 @@ import MainMenuScreen from '../../screens/MainMenuScreen'
 import BudgetMenuScreen from '../../screens/BudgetMenuScreen'
 import GoalsScreen from '../../screens/GoalsScreen'
 import Colors from '../../assets/constants/Colors';
-import { Platform } from 'react-native';
+import CostsScreen from '../../screens/CostsScreen';
 
 
 
 
 
-const NavigationStack = createStackNavigator({
-	MainMenu: MainMenuScreen,
-	BudgetMenu: BudgetMenuScreen,
-	Goals: GoalsScreen, 
+const NavigationStack = createStackNavigator(
+	{
+		MainMenu: MainMenuScreen,
+		BudgetMenu: BudgetMenuScreen,
+		Goals: GoalsScreen, 
+		Costs: CostsScreen
 	}, 
 	{
 		initialRouteName: 'MainMenu',

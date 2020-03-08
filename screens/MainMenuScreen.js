@@ -6,12 +6,17 @@ import MainMenu from '../components/menus/MainMenu';
 import mainMenuConf from '../assets/constants/MainMenuData'
 
 class MainMenuScreen extends Component {
+	static navigationOptions = {
+		title: 'Brainget'
+	}
+
 	constructor(props){
 		super(props);
 	}
 
-	navigate = route => {
-		this.props.navigation.navigate(route);
+	navigate = redirect => {
+		const {route, params} = redirect;
+		this.props.navigation.navigate(route, params);
 	}
 
 	render(){

@@ -37,7 +37,7 @@
 			"import React, { Component } from 'react';\n",
 			"import { StyleSheet } from 'react-native';\n",
 			"class $TM_FILENAME_BASE extends Component {",
-			"\tconsturctor(props){",
+			"\tconstructor(props){",
 			"\t\tsuper(props);",
 			"\t}\n",
 			"\trender(){",
