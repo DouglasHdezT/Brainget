@@ -1,4 +1,4 @@
-import { ADD_INCOME, REMOVE_INCOME, UPDATE_INCOME, ADD_COST, REMOVE_COST } from '../actions/BudgetActions'
+import { ADD_INCOME, REMOVE_INCOME, UPDATE_INCOME, ADD_COST, REMOVE_COST, UPDATE_COST } from '../actions/BudgetActions'
 import Income from '../../models/Income';
 import Cost from '../../models/Cost';
 
@@ -14,6 +14,7 @@ const BudgetReducer = (state = initialState, {type, payload}) => {
 	let newTotalIncome = 0;
 	let newExpenses = [];
 	let newCurrentBalance = 0;
+	let money = 0;
 
 	switch(type){
 		case ADD_INCOME:
@@ -63,7 +64,7 @@ const BudgetReducer = (state = initialState, {type, payload}) => {
 				incomes: newIncomes
 			}
 		case ADD_COST:
-			const money = payload.isPercent ? parseFloat((state.totalIncome * payload.value)/100) : payload.value;
+			money = payload.isPercent ? parseFloat((state.totalIncome * payload.value)/100) : payload.value;
 			const cost = new Cost(payload.title, money, payload.TAG);
 
 			newExpenses = [...state.expenses, cost];
@@ -73,6 +74,33 @@ const BudgetReducer = (state = initialState, {type, payload}) => {
 				...state,
 				expenses: newExpenses,
 				currentBalance: newCurrentBalance,
+			}
+		case REMOVE_COST:
+			newExpenses = state.expenses.filter(cost => cost._id !== payload.id);
+			newCurrentBalance = updateCurrentBalance(newExpenses, state.totalIncome);
+			
+			return {
+				...state,
+				expenses: newExpenses,
+				currentBalance: newCurrentBalance,
+			}
+		case UPDATE_COST:
+			newExpenses = [...state.expenses];
+			
+			money = payload.isPercent ? parseFloat((state.totalIncome * payload.value)/100) : payload.value;
+			const oldCost = newExpenses.findIndex(cost => cost._id === payload.id);
+			newExpenses[oldCost] = {
+				...newExpenses[oldCost],
+				money: money,
+				title: payload.title
+			}
+
+			newCurrentBalance = updateCurrentBalance(newExpenses, state.totalIncome);
+
+			return {
+				...state,
+				expenses: newExpenses,
+				currentBalance: newCurrentBalance
 			}
 		default:
 			return state;

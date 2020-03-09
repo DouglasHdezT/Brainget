@@ -2,9 +2,9 @@ import React from 'react';
 
 import { StyleSheet, View } from 'react-native';
 import LabelDropInput from './inputs/LabelDropInput';
-import LabelAsidesInput from './inputs/LabelAsidesInput';
+import LabelAsideDropMoney from './inputs/LabelAsideDropMoney';
 
-const IncomeForm = props => {
+const CostForm = props => {
 	return (
 		<View style={{ flex: 1 }}>
 			<LabelDropInput
@@ -12,9 +12,10 @@ const IncomeForm = props => {
 				value={props.incomeName}
 				changeHandler={props.changeHandler}
 			/>
-			<LabelAsidesInput
+			<LabelAsideDropMoney
 				id='costValue'
 				value={props.incomeValue}
+				isPercentage={props.isPercent}
 				changeHandler={props.changeHandler}
 			/>
 		</View>
@@ -23,4 +24,4 @@ const IncomeForm = props => {
 
 const styles = StyleSheet.create({});
 
-export default IncomeForm;
+export default CostForm;

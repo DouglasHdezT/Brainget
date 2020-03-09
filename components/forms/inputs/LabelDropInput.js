@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
 
 		color: '#000',
 		fontFamily: 'roboto',
-		fontSize: 20,
+		fontSize: 16,
 	},
 	inputContainer: {
 		padding: 8,

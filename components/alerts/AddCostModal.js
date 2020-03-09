@@ -114,15 +114,16 @@ class AddCostModal extends Component {
 	
 							<Text style={styles.title}>Gasto</Text>
 	
-							<View style={{ flex: 3 }}>
+							<View style={{ flex: 3, marginVertical: 8 }}>
 								<CostForm
 									incomeName={this.state.costName}
 									incomeValue={this.state.costValue}
+									isPercent = {this.state.isPercent}
 									changeHandler={this.changeHandler}
 								/>
 							</View>
 	
-							<View style={{ flex: 1, flexDirection: 'row', justifyContent: "center", alignItems:'center' }}>
+							<View style={{ flex: 2, flexDirection: 'row', justifyContent: "center", alignItems:'center' }}>
 								{this.props.isNewCost ? addButton : updateDeleteButtons}
 							</View>
 						</View>
@@ -143,7 +144,7 @@ const styles = StyleSheet.create({
 	},
 	modalView: {
 		width: '90%',
-		minHeight: Math.round(Dimensions.get('window').height) / 2,
+		minHeight: Math.round(Dimensions.get('window').height)* 3 / 5,
 
 		padding: 24,
 
