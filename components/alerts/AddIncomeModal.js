@@ -8,6 +8,7 @@ import Colors from '../../assets/constants/Colors';
 import BorderedButton from '../buttons/BorderedButton';
 import IncomeForm from '../forms/IncomeForm';
 import TopEndIconButton from '../buttons/TopEndIconButton';
+import { dropConfimation } from './Alerts';
 
 class AddIncomeModal extends Component {
 
@@ -79,8 +80,10 @@ class AddIncomeModal extends Component {
 					color={Colors.btnDelete}
 					text="Eliminar"
 					onPress = {() => {
-						this.props.removeIncome(this.state._id);
-						this.props.closeModal(); 
+						dropConfimation(() => {
+							this.props.removeIncome(this.state._id);
+							this.props.closeModal(); 
+						});
 					}}
 					/>
 				<BorderedButton

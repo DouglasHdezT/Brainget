@@ -15,6 +15,7 @@ const LabelDropInput = props => {
 					style={styles.input}
 					placeholder="p.e. Alquiler casa"
 				/>
+				
 			</View>
 		</View>
 	);

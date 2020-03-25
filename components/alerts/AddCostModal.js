@@ -8,6 +8,7 @@ import Colors from '../../assets/constants/Colors';
 import BorderedButton from '../buttons/BorderedButton';
 import CostForm from '../forms/CostForm';
 import TopEndIconButton from '../buttons/TopEndIconButton';
+import { dropConfimation } from './Alerts';
 
 class AddCostModal extends Component {
 
@@ -81,9 +82,11 @@ class AddCostModal extends Component {
 				<BorderedButton
 					color={Colors.btnDelete}
 					text="Eliminar"
-					onPress = {() => {
-						this.props.removeCost(this.state._id);
-						this.props.closeModal(); 
+					onPress = {()=>{
+						dropConfimation(() => {
+							this.props.removeCost(this.state._id);
+							this.props.closeModal(); 
+						});
 					}}
 					/>
 				<BorderedButton
