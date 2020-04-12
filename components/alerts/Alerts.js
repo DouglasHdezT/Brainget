@@ -21,3 +21,28 @@ export const dropConfimation = action => {
 		}
 	);
 }
+
+export const periodsSettings = () =>{
+	return new Promise((resolve, reject) => {
+		Alert.alert(
+			"Configuración básica",
+			'¿Cada cuanto harás tu presupuesto?',
+			[
+				{
+					text: "Quincenal",
+					onPress: () => { resolve("2") },
+					style: "default"
+				},
+				{
+					text: "Mensual",
+					onPress: () => { resolve("1") },
+					style: "default"
+				}
+			],
+			{
+				cancelable: false,
+				onDismiss: () => { resolve("1") }
+			}
+		);
+	});
+}
