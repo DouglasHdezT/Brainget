@@ -1,0 +1,1 @@
+export const PERIODS_KEY = "PERIODS_KEY"
