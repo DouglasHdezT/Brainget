@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {Component } from 'react';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 import { Provider } from 'react-redux';
@@ -12,20 +12,34 @@ import { periodsSettings } from './components/alerts/Alerts';
 import MainNavigationStack from './components/navigations/MainNavigationStack'
 
 
-export default function App() {
-	const [dataLoaded, setDataLoaded] = useState(false);
+export default class App extends Component {
+	constructor(props){
+		super(props);
 
-	if (!dataLoaded) {
-		return (<AppLoading
-			startAsync={loadData}
-			onFinish={() => setDataLoaded(true)} />);
+		this.state = {
+			dataLoaded: false,
+		}
 	}
 
-	return (
-		<Provider store = {store}>
-			<MainNavigationStack />
-		</Provider>	
- 	);
+	setDataLoaded = (value) => {
+		this.setState({
+			dataLoaded: value,
+		});
+	}
+	
+	render(){
+		if (!this.state.dataLoaded) {
+			return (<AppLoading
+				startAsync={loadData}
+				onFinish={() => this.setDataLoaded(true)} />);
+		}
+
+		return (
+			<Provider store = {store}>
+				<MainNavigationStack />
+			</Provider>	
+		);
+	}
 }
 
 const loadData = async () => {
