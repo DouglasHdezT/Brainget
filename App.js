@@ -24,8 +24,6 @@ export default function App() {
  	);
 }
 
-
-
 const fetchFonts = () => {
 	return Font.loadAsync({
 		'roboto': require('./assets/fonts/Roboto-Light.ttf'),
