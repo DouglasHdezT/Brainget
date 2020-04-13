@@ -41,7 +41,7 @@ export const getPeriodLimits = (periods) => {
 
 	} 
 
-	limitTop +=1;
+	limitBot +=1;
 
 	return {
 		startDay: limitBot,

@@ -5,7 +5,8 @@ import { Provider } from 'react-redux';
 import { AsyncStorage } from 'react-native';
 import PouchDB from './database/config/builder';
 
-import store from './store/Store'
+import store from './store/Store';
+import * as budgetService from './database/services/BudgetService'
 
 import { PERIODS_KEY, DB_NAME } from './assets/constants/KeyValues';
 import { periodsSettings } from './components/alerts/Alerts';
@@ -51,13 +52,31 @@ export default class App extends Component {
 			
 			console.log(`Configuraciones cargadas ${periodsConfig}`);
 
-			this.db.info().then(info => {
-				console.log(info);
-			});
-	
+			//Database checking
+			budgetService.showInfo();
+			console.log(await budgetService.configIndex());
+
+			//Budget actual
+			const budgetActual = await (await budgetService.getActual()).docs
+			console.log(await budgetService.getActual());
+			
+			if(budgetActual.length === 0){
+				console.log("Creando Budget");
+				await budgetService.createBudget(periodsConfig);
+			}
+
+			const budget = await (await budgetService.getActual()).docs
+			console.log(budget[0])
+
 		} catch(err) {
 			console.log(err)
 		}
+	}
+
+	componentWillUnmount(){
+		this.db.close().then(()=>{
+			console.log("Database closed!");
+		})
 	}
 	
 	render(){

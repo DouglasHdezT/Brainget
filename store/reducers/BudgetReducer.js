@@ -3,6 +3,11 @@ import Income from '../../models/Income';
 import Cost from '../../models/Cost';
 
 const initialState = {
+	title: "",
+	year:0,
+	month:0,
+	startDay: 0,
+	endDay: 0,
 	incomes: [],
 	expenses: [],
 	totalIncome: 0,
