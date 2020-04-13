@@ -54,19 +54,15 @@ export default class App extends Component {
 
 			//Database checking
 			budgetService.showInfo();
-			console.log(await budgetService.configIndex());
+			await budgetService.configIndex();
 
 			//Budget actual
 			const budgetActual = await (await budgetService.getActual()).docs
-			console.log(await budgetService.getActual());
 			
 			if(budgetActual.length === 0){
 				console.log("Creando Budget");
 				await budgetService.createBudget(periodsConfig);
 			}
-
-			const budget = await (await budgetService.getActual()).docs
-			console.log(budget[0])
 
 		} catch(err) {
 			console.log(err)
