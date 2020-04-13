@@ -6,12 +6,14 @@ import { AsyncStorage } from 'react-native';
 import PouchDB from './database/config/builder';
 
 import store from './store/Store';
+import { syncBudget } from './store/actions/BudgetActions'
 import * as budgetService from './database/services/BudgetService'
 
 import { PERIODS_KEY, DB_NAME } from './assets/constants/KeyValues';
 import { periodsSettings } from './components/alerts/Alerts';
 
 import MainNavigationStack from './components/navigations/MainNavigationStack'
+import LoadingModal from './components/alerts/LoadingModal'
 
 
 export default class App extends Component {
@@ -20,9 +22,23 @@ export default class App extends Component {
 
 		this.state = {
 			dataLoaded: false,
+			loading: false,
 		}
 
 		this.db = new PouchDB(DB_NAME, {adapter: 'react-native-sqlite'});
+		
+		/* this.changeListener = this.db.changes({
+			live: true,
+			since: "now"
+		}).on("change", async (info) => {
+			console.log("Capturando cambio")
+			let budgetActual = await (await budgetService.getActual()).docs
+			
+			if(budgetActual.length !== 0){
+				console.log(budgetActual[0]._rev);
+				store.dispatch(syncBudget(budgetActual[0]));
+			}
+		}); */
 	}
 
 	setDataLoaded = (value) => {
@@ -53,26 +69,47 @@ export default class App extends Component {
 			console.log(`Configuraciones cargadas ${periodsConfig}`);
 
 			//Database checking
+			budgetService.openConnection();
 			budgetService.showInfo();
 			await budgetService.configIndex();
 
 			//Budget actual
-			const budgetActual = await (await budgetService.getActual()).docs
+			let budgetActual = await (await budgetService.getActual()).docs
 			
 			if(budgetActual.length === 0){
 				console.log("Creando Budget");
 				await budgetService.createBudget(periodsConfig);
+				budgetActual = await (await budgetService.getActual()).docs
 			}
+
+			store.dispatch(syncBudget(budgetActual[0]));
 
 		} catch(err) {
 			console.log(err)
 		}
 	}
 
+	componentDidMount(){
+		this.subscription = store.subscribe(() => {
+			const newLoading = store.getState().config.isLoading;
+			
+			if(newLoading !== this.state.loading){
+				console.log("Llegue");
+				
+				this.setState({
+					loading: newLoading,
+				})
+			}
+		})
+	}
+
 	componentWillUnmount(){
+		/* this.changeListener.cancel();
 		this.db.close().then(()=>{
 			console.log("Database closed!");
-		})
+		}) */
+		this.subscription();
+		budgetService.closeConnection();
 	}
 	
 	render(){
@@ -84,6 +121,7 @@ export default class App extends Component {
 
 		return (
 			<Provider store = {store}>
+				<LoadingModal visible = { this.state.loading } />
 				<MainNavigationStack />
 			</Provider>	
 		);

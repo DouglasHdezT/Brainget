@@ -6,6 +6,11 @@ import { updateValues } from '../../utils/BudgetUtils'
 
 import { errorWarning } from '../../components/alerts/Alerts'
 
+import store from '../../store/Store';
+import { syncBudget } from '../../store/actions/BudgetActions';
+import { setLoading } from '../../store/actions/ConfigActions';
+
+
 import Budget from '../../models/Budget';
 import Income from '../../models/Income';
 import Cost from '../../models/Cost';
@@ -26,7 +31,11 @@ export const configIndex = () => {
 	})
 }
 
-export const closeConncetion = () => {
+export const openConnection = () => {
+	db = new PouchDB(DB_NAME, { adapter: 'react-native-sqlite' });
+}
+
+export const closeConnection = () => {
 	db.close().then(()=>{
 		console.log("DB of BService closed!");
 	})
@@ -51,8 +60,10 @@ export const createBudget = (periods) => {
 }
 
 export const addIncome = (budgetId, title, money) => {
-	const newIncome = Income(title, money);
-
+	startLoading();
+	
+	const newIncome = new Income(title, money);
+	
 	db.get(budgetId).then(budget => {
 		budget.incomes = [...budget.incomes, newIncome];
 		
@@ -61,14 +72,19 @@ export const addIncome = (budgetId, title, money) => {
 		budget.totalIncome = totalIncome;
 		budget.currentBalance = currentBalance;
 
-		db.put(budget);
+		db.put(budget).then(info => { 
+			stopLoading(budget);
+		});
 	})
 	.catch(err => {
+		console.log(err);
 		errorWarning();
 	});
 }
 
 export const addCost = (budgetId, title, value, isPercent, TAG) => {
+	startLoading();
+
 	db.get(budgetId).then(budget => {
 		const money = isPercent ? parseFloat(( value * budget.totalIncome) / 100) : value;
 		const newCost = new Cost(title, money, TAG);
@@ -80,7 +96,9 @@ export const addCost = (budgetId, title, value, isPercent, TAG) => {
 		budget.totalIncome = totalIncome;
 		budget.currentBalance = currentBalance;
 
-		db.put(budget);
+		db.put(budget).then(info => { 
+			stopLoading(budget);
+		});
 	})
 	.catch(err => {
 		errorWarning();
@@ -88,6 +106,8 @@ export const addCost = (budgetId, title, value, isPercent, TAG) => {
 }
 
 export const updateIncome = (budgetId, id, title, money) => {
+	startLoading();
+
 	db.get(budgetId).then(budget => {
 		const index = budget.incomes.findIndex(income => income._id === id);
 
@@ -95,7 +115,7 @@ export const updateIncome = (budgetId, id, title, money) => {
 			budget.incomes[index] = {
 				...budget.incomes[index],
 				title: title,
-				money: money,
+				money: parseFloat(money),
 			}
 
 			const { totalIncome, currentBalance } = updateValues(budget);
@@ -103,7 +123,9 @@ export const updateIncome = (budgetId, id, title, money) => {
 			budget.totalIncome = totalIncome;
 			budget.currentBalance = currentBalance;
 
-			db.put(budget);
+			db.put(budget).then(info => { 
+				stopLoading(budget);
+			});
 		}
 	})
 	.catch(err=>{
@@ -112,8 +134,10 @@ export const updateIncome = (budgetId, id, title, money) => {
 }
 
 export const updateCost = (budgetId, id, title, value, isPercent) => {
+	startLoading();
+
 	db.get(budgetId).then(budget => {
-		const money = isPercent ? parseFloat(( value * budget.totalIncome) / 100) : value;
+		const money = isPercent ? parseFloat(( parseFloat(value) * budget.totalIncome) / 100) : parseFloat(value);
 		
 		const index = budget.expenses.findIndex( cost => cost._id === id );
 
@@ -129,7 +153,9 @@ export const updateCost = (budgetId, id, title, value, isPercent) => {
 			budget.totalIncome = totalIncome;
 			budget.currentBalance = currentBalance;
 
-			db.put(budget);
+			db.put(budget).then(info => { 
+				stopLoading(budget);
+			});
 		}
 	})
 	.catch(err => {
@@ -138,6 +164,8 @@ export const updateCost = (budgetId, id, title, value, isPercent) => {
 }
 
 export const removeIncome = (budgetId, id) => {
+	startLoading();
+
 	db.get(budgetId).then(budget => {
 		budget.incomes = budget.incomes.filter(income => income._id !== id);
 		
@@ -146,7 +174,9 @@ export const removeIncome = (budgetId, id) => {
 			budget.totalIncome = totalIncome;
 			budget.currentBalance = currentBalance;
 
-			db.put(budget);
+			db.put(budget).then(info => { 
+				stopLoading(budget);
+			});
 	})
 	.catch(err => {
 		errorWarning();
@@ -154,6 +184,8 @@ export const removeIncome = (budgetId, id) => {
 }
 
 export const removeCost = (budgetId, id) => {
+	startLoading();
+
 	db.get(budgetId).then(budget => {
 		budget.expenses = budget.expenses.filter(cost => cost._id !== id);
 		
@@ -162,9 +194,20 @@ export const removeCost = (budgetId, id) => {
 			budget.totalIncome = totalIncome;
 			budget.currentBalance = currentBalance;
 
-			db.put(budget);
+			db.put(budget).then(info => { 
+				stopLoading(budget);
+			});
 	})
 	.catch(err => {
 		errorWarning();
 	});
+}
+
+const startLoading = () => {
+	store.dispatch(setLoading(true));
+}
+
+const stopLoading = (budget) => {
+	store.dispatch(syncBudget(budget));
+	store.dispatch(setLoading(false));
 }

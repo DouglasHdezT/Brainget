@@ -5,6 +5,7 @@ export default class Budget {
 		const date = dateInObject();
 		const {startDay, endDay} = getPeriodLimits(periods);
 
+		this.createdAt = new Date().toLocaleDateString();
 		this.title = `${date.day}/${date.month}/${date.year}`;
 
 		this.year = date.year;

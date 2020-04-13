@@ -4,6 +4,8 @@ import { StyleSheet, View, Text, ImageBackground } from 'react-native';
 
 import { connect } from 'react-redux'; 
 
+import { addCost, removeCost, updateCost } from "../database/services/BudgetService";
+
 import ExpensesList from '../components/Lists/ExpensesList';
 import FootLeftRight from '../components/footers/FootLeftRight';
 import MoneyContainer from '../components/footers/containers/MoneyContainer';
@@ -11,7 +13,6 @@ import PeriodContainer from '../components/footers/containers/PeriodContainer';
 
 import Colors from '../assets/constants/Colors';
 import BackgroundImages from '../assets/constants/BackgroundImages';
-import { addCost, removeCost, updateCost } from "../store/actions/BudgetActions";
 import AddCostModal from '../components/alerts/AddCostModal';
 
 class CostsScreen extends Component {
@@ -51,9 +52,9 @@ class CostsScreen extends Component {
 			<View style = {{flex:1}}>
 				<AddCostModal
 					closeModal = {()=>this.setState({addModal: !this.state.addModal})}
-					addCost = {this.props.addCost}
-					removeCost = {this.props.removeCost}
-					updateCost = {this.props.updateCost}
+					addCost = { (title, value, isPercent, TAG) => addCost(this.props.budgetId, title, value, isPercent, TAG) }
+					removeCost = { (id) => removeCost(this.props.budgetId, id) }
+					updateCost = { (id, title, value, isPercent) => updateCost(this.props.budgetId, id, title, value, isPercent) }
 					isNewCost = {this.state.isNewCost}
 					oldCost = {this.state.editableCost}
 					visible = {this.state.addModal}
@@ -96,14 +97,10 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => ({
+	budgetId: state.budget._id,
 	expenses : state.budget.expenses,
 	currentBalance: state.budget.currentBalance
 });
 
-const mapDispatchToProps = {
-	addCost,
-	removeCost,
-	updateCost
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(CostsScreen);
+export default connect(mapStateToProps, null)(CostsScreen);

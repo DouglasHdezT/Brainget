@@ -12,7 +12,7 @@ const IncomeList = props => {
 			update = {() => props.openAddModal(false, item._id)}
 			title = {item.title} 
 			money = {item.money} 
-			date = {item.createdAt.toLocaleDateString('en-US')}/>);
+			date = {item.createdAt}/>);
 
 	return(
 		<>

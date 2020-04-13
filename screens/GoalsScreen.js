@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import { View, ImageBackground, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 
-import { addIncome, removeIncome, updateIncome } from '../store/actions/BudgetActions'
+import { addIncome, removeIncome, updateIncome } from '../database/services/BudgetService'
 
 import BGImages from '../assets/constants/BackgroundImages'
 import Colors from '../assets/constants/Colors'
@@ -93,9 +93,9 @@ class GoalsScreen extends Component {
 			<View style = {{flex: 1}}>
 				<AddIncomeModal
 					visible = {this.state.addModal}
-					addIncome = {this.props.addIncome}
-					removeIncome = {this.props.removeIncome}
-					updateIncome = {this.props.updateIncome}
+					addIncome = { (title, money) => { addIncome(this.props.budgetId, title, money) } }
+					removeIncome = { (id) => { removeIncome(this.props.budgetId, id) } }
+					updateIncome = { (id, title, money) => updateIncome(this.props.budgetId, id, title, money) }
 					closeModal = {this.toggleAddModal}
 					isNewIncome = {this.state.isNewIncome}
 					oldIncome = {this.state.editableIncome}
@@ -134,14 +134,9 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => ({
+	budgetId: state.budget._id,
 	incomes: state.budget.incomes,
 	totalIncome: state.budget.totalIncome,
 });
 
-const mapDispatchToProps = {
-	addIncome,
-	removeIncome,
-	updateIncome
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(GoalsScreen);
+export default connect(mapStateToProps, null)(GoalsScreen);

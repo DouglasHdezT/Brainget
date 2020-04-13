@@ -24,9 +24,11 @@ const BudgetReducer = (state = initialState, {type, payload}) => {
 
 	switch(type){
 		case SYNC_BUDGET:
+			const budget = payload.budget ? payload.budget : initialState;
+			
 			return {
 				...state,
-				...payload.budget,
+				...budget,
 			}
 		case ADD_INCOME:
 			const income = new Income(payload.title, payload.money);
