@@ -6,6 +6,17 @@ export const ADD_COST = 'ADD_COST';
 export const REMOVE_COST = 'REMOVE_COST';
 export const UPDATE_COST = 'UPDATE_COST';
 
+export const SYNC_BUDGET = 'SYNC_BUDGET';
+
+export const syncBudget = (budget) => {
+	return {
+		type: SYNC_BUDGET,
+		payload:{
+			budget: budget,
+		}
+	}
+}
+
 export const addIncome = (title, money) => {
 	return {
 		type: ADD_INCOME,

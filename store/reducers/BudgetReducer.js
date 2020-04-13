@@ -1,8 +1,9 @@
-import { ADD_INCOME, REMOVE_INCOME, UPDATE_INCOME, ADD_COST, REMOVE_COST, UPDATE_COST } from '../actions/BudgetActions'
+import { ADD_INCOME, REMOVE_INCOME, UPDATE_INCOME, ADD_COST, REMOVE_COST, UPDATE_COST, SYNC_BUDGET } from '../actions/BudgetActions'
 import Income from '../../models/Income';
 import Cost from '../../models/Cost';
 
 const initialState = {
+	_id:"ID_GENERICO", 
 	title: "",
 	year:0,
 	month:0,
@@ -22,6 +23,11 @@ const BudgetReducer = (state = initialState, {type, payload}) => {
 	let money = 0;
 
 	switch(type){
+		case SYNC_BUDGET:
+			return {
+				...state,
+				...payload.budget,
+			}
 		case ADD_INCOME:
 			const income = new Income(payload.title, payload.money);
 

@@ -1,4 +1,5 @@
-import { Alert } from "react-native"
+import { Alert } from "react-native";
+import { BackHandler } from 'react-native';
 
 export const dropConfimation = action => {
 	Alert.alert(
@@ -45,4 +46,22 @@ export const periodsSettings = () =>{
 			}
 		);
 	});
+}
+
+export const errorWarning = () => {
+	Alert.alert(
+		"Error inserperado",
+		"Ha ocurrido un error interno en la app",
+		[
+			{
+				text: "Entendido",
+				onPress: () => { BackHandler.exitApp() },
+				style: 'destructive'
+			}
+		],
+		{
+			cancelable: true,
+			onDismiss: () => { BackHandler.exitApp() }
+		}
+	);
 }
