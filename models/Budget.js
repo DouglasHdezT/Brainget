@@ -18,6 +18,7 @@ export default class Budget {
 		this.expenses = [];
 
 		this.totalIncome = 0;
+		this.totalCosts = 0;
 		this.currentBalance = 0;
 	}
 }

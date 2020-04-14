@@ -22,7 +22,7 @@ export default [
 		info: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.',
 		isSourceBg: false,
 		redirect: {
-			route: 'BudgetMenu',
+			route: 'Results',
 			params: {
 				title: 'Resultados'
 			}
@@ -36,7 +36,7 @@ export default [
 		info: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.',
 		isSourceBg: true,
 		redirect: {
-			route: 'BudgetMenu',
+			route: 'Services',
 			params: {
 				title: 'Mis Servicios Financieros'
 			}
@@ -64,7 +64,7 @@ export default [
 		info: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.',
 		isSourceBg: false,
 		redirect: {
-			route: 'BudgetMenu',
+			route: 'Stats',
 			params: {
 				title: 'Estadísticas'
 			}
@@ -78,7 +78,7 @@ export default [
 		info: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.',
 		isSourceBg: false,
 		redirect: {
-			route: 'BudgetMenu',
+			route: 'About',
 			params: {
 				title: 'Acerca de ...'
 			}

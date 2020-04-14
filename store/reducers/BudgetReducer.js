@@ -12,6 +12,7 @@ const initialState = {
 	incomes: [],
 	expenses: [],
 	totalIncome: 0,
+	totalCosts: 0,
 	currentBalance: 0,
 }
 

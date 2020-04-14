@@ -70,7 +70,8 @@ export default class App extends Component {
 
 			//Database checking
 			budgetService.openConnection();
-			budgetService.showInfo();
+			//budgetService.showInfo();
+			//budgetService.showAll()
 			await budgetService.configIndex();
 
 			//Budget actual
@@ -94,7 +95,7 @@ export default class App extends Component {
 			const newLoading = store.getState().config.isLoading;
 			
 			if(newLoading !== this.state.loading){
-				console.log("Llegue");
+				//console.log("Llegue");
 				
 				this.setState({
 					loading: newLoading,

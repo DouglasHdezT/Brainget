@@ -23,4 +23,8 @@ export default {
 	btnNeutral: '#1A237E',
 	btnDelete: '#B71C1C',
 	btnOk: '#33691E',
+	red700: '#D32F2F',
+	red800: '#C62828',
+	green700: '#689F38',
+	green800: '#2E7D32'
 }

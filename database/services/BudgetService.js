@@ -1,7 +1,7 @@
 import PouchDB from '../config/builder';
 
 import { DB_NAME } from '../../assets/constants/KeyValues';
-import { dateInObject } from '../../utils/DateUtils'
+import { dateInObject, intToMonth } from '../../utils/DateUtils'
 import { updateValues } from '../../utils/BudgetUtils'
 
 import { errorWarning } from '../../components/alerts/Alerts'
@@ -54,6 +54,45 @@ export const getActual = () => {
 	})
 }
 
+export const getBudgetsPerYear = async (year) => {
+	startLoading();
+
+	try{
+		const rawBudgets = await (await db.find({ selector: {"year": year} })).docs;
+		let budgetsPerMonth = [];
+		
+		rawBudgets.forEach(budget => {
+			const month = budget.month;
+
+			if( budgetsPerMonth[month] === undefined ){
+				budgetsPerMonth[month] = {
+					name: intToMonth(month),
+					monthlyBalance: 0,
+					budgets: []
+				};
+			}
+
+			budgetsPerMonth[month].monthlyBalance += budget.currentBalance;
+			budgetsPerMonth[month].budgets = [...budgetsPerMonth[month].budgets, budget]; 
+		})
+
+		budgetsPerMonth = budgetsPerMonth.filter(budget => budget !== undefined);
+
+		stopLoadingSimple();
+		return budgetsPerMonth;
+	}catch(err){
+		stopLoadingSimple();
+		errorWarning();
+		return [];
+	}
+}
+
+export const showAll = () => {
+	db.allDocs({include_docs:true}).then(docs => {
+		console.log(docs);
+	})
+}
+
 export const createBudget = (periods) => {
 	const newBudget = new Budget(periods);
 	return db.post({...newBudget});
@@ -67,9 +106,10 @@ export const addIncome = (budgetId, title, money) => {
 	db.get(budgetId).then(budget => {
 		budget.incomes = [...budget.incomes, newIncome];
 		
-		const { totalIncome, currentBalance } = updateValues(budget);
+		const { totalIncome, totalCosts, currentBalance } = updateValues(budget);
 
 		budget.totalIncome = totalIncome;
+		budget.totalCosts = totalCosts;
 		budget.currentBalance = currentBalance;
 
 		db.put(budget).then(info => { 
@@ -77,7 +117,7 @@ export const addIncome = (budgetId, title, money) => {
 		});
 	})
 	.catch(err => {
-		console.log(err);
+		stopLoadingSimple()
 		errorWarning();
 	});
 }
@@ -91,9 +131,10 @@ export const addCost = (budgetId, title, value, isPercent, TAG) => {
 
 		budget.expenses = [...budget.expenses, newCost];
 
-		const { totalIncome, currentBalance } = updateValues(budget);
+		const { totalIncome, totalCosts, currentBalance } = updateValues(budget);
 
 		budget.totalIncome = totalIncome;
+		budget.totalCosts = totalCosts;
 		budget.currentBalance = currentBalance;
 
 		db.put(budget).then(info => { 
@@ -101,6 +142,7 @@ export const addCost = (budgetId, title, value, isPercent, TAG) => {
 		});
 	})
 	.catch(err => {
+		stopLoadingSimple()
 		errorWarning();
 	})
 }
@@ -118,9 +160,10 @@ export const updateIncome = (budgetId, id, title, money) => {
 				money: parseFloat(money),
 			}
 
-			const { totalIncome, currentBalance } = updateValues(budget);
+			const { totalIncome, totalCosts, currentBalance } = updateValues(budget);
 
 			budget.totalIncome = totalIncome;
+			budget.totalCosts = totalCosts;
 			budget.currentBalance = currentBalance;
 
 			db.put(budget).then(info => { 
@@ -129,6 +172,7 @@ export const updateIncome = (budgetId, id, title, money) => {
 		}
 	})
 	.catch(err=>{
+		stopLoadingSimple()
 		errorWarning();
 	})
 }
@@ -148,9 +192,10 @@ export const updateCost = (budgetId, id, title, value, isPercent) => {
 				money: money,
 			}
 
-			const { totalIncome, currentBalance } = updateValues(budget);
+			const { totalIncome, totalCosts, currentBalance } = updateValues(budget);
 
 			budget.totalIncome = totalIncome;
+			budget.totalCosts = totalCosts;
 			budget.currentBalance = currentBalance;
 
 			db.put(budget).then(info => { 
@@ -159,6 +204,7 @@ export const updateCost = (budgetId, id, title, value, isPercent) => {
 		}
 	})
 	.catch(err => {
+		stopLoadingSimple()
 		errorWarning();
 	});
 }
@@ -169,9 +215,10 @@ export const removeIncome = (budgetId, id) => {
 	db.get(budgetId).then(budget => {
 		budget.incomes = budget.incomes.filter(income => income._id !== id);
 		
-		const { totalIncome, currentBalance } = updateValues(budget);
+		const { totalIncome, totalCosts, currentBalance } = updateValues(budget);
 
 			budget.totalIncome = totalIncome;
+			budget.totalCosts = totalCosts;
 			budget.currentBalance = currentBalance;
 
 			db.put(budget).then(info => { 
@@ -179,6 +226,7 @@ export const removeIncome = (budgetId, id) => {
 			});
 	})
 	.catch(err => {
+		stopLoadingSimple()
 		errorWarning();
 	});
 }
@@ -189,9 +237,10 @@ export const removeCost = (budgetId, id) => {
 	db.get(budgetId).then(budget => {
 		budget.expenses = budget.expenses.filter(cost => cost._id !== id);
 		
-		const { totalIncome, currentBalance } = updateValues(budget);
+		const { totalIncome, totalCosts, currentBalance } = updateValues(budget);
 
 			budget.totalIncome = totalIncome;
+			budget.totalCosts = totalCosts;
 			budget.currentBalance = currentBalance;
 
 			db.put(budget).then(info => { 
@@ -199,6 +248,7 @@ export const removeCost = (budgetId, id) => {
 			});
 	})
 	.catch(err => {
+		stopLoadingSimple()
 		errorWarning();
 	});
 }
@@ -209,5 +259,9 @@ const startLoading = () => {
 
 const stopLoading = (budget) => {
 	store.dispatch(syncBudget(budget));
+	store.dispatch(setLoading(false));
+}
+
+const stopLoadingSimple = () => {
 	store.dispatch(setLoading(false));
 }

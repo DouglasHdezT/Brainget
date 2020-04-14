@@ -4,19 +4,24 @@ import { createAppContainer } from 'react-navigation';
 import MainMenuScreen from '../../screens/MainMenuScreen'
 import BudgetMenuScreen from '../../screens/BudgetMenuScreen'
 import GoalsScreen from '../../screens/GoalsScreen'
-import Colors from '../../assets/constants/Colors';
 import CostsScreen from '../../screens/CostsScreen';
+import ResultsScreen from '../../screens/ResultsScreen';
+import StatsScreen from '../../screens/StatsScreen';
+import ServicesScreen from '../../screens/ServicesScreen';
+import AboutScreen from '../../screens/AboutScreen';
 
-
-
-
+import Colors from '../../assets/constants/Colors';
 
 const NavigationStack = createStackNavigator(
 	{
 		MainMenu: MainMenuScreen,
 		BudgetMenu: BudgetMenuScreen,
 		Goals: GoalsScreen, 
-		Costs: CostsScreen
+		Costs: CostsScreen,
+		Results: ResultsScreen,
+		Stats: StatsScreen,
+		Services: ServicesScreen,
+		About: AboutScreen
 	}, 
 	{
 		initialRouteName: 'MainMenu',
