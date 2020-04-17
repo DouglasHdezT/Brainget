@@ -15,7 +15,7 @@ const CostForm = props => {
 			<LabelAsideDropMoney
 				id='costValue'
 				value={props.incomeValue}
-				isPercentage={props.isPercent}
+				isPercent={props.isPercent}
 				changeHandler={props.changeHandler}
 			/>
 		</View>

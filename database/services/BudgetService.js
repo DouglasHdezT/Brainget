@@ -54,6 +54,26 @@ export const getActual = () => {
 	})
 }
 
+export const getYears = async () => {
+	try{
+		startLoading();
+		let result = (await db.find({
+			selector: {},
+			fields: ["year"]
+		}))
+
+		result = (await result.docs).map(n => n.year)
+		result = result.filter((n, i) => result.indexOf(n) === i)
+		result.sort((a,b) => b - a)
+
+		stopLoadingSimple();
+		return result;		
+	}catch(err){
+		stopLoadingSimple()
+		errorWarning()
+	}
+}
+
 export const getBudgetsPerYear = async (year) => {
 	startLoading();
 
@@ -93,9 +113,16 @@ export const showAll = () => {
 	})
 }
 
-export const createBudget = (periods) => {
-	const newBudget = new Budget(periods);
-	return db.post({...newBudget});
+export const createBudget = async (periods) => {
+	try{
+		startLoading()
+		const newBudget = new Budget(periods);
+		await db.post({...newBudget});
+		stopLoadingSimple()
+	}catch(err){
+		stopLoadingSimple()
+		errorWarning()
+	}
 }
 
 export const addIncome = (budgetId, title, money) => {

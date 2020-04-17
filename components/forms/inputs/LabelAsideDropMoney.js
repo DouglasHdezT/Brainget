@@ -2,9 +2,15 @@ import React from 'react';
 
 import { StyleSheet, View, Text, TextInput } from 'react-native';
 import RNPicker from 'react-native-picker-select';
+import OptionsModalButton, {DOWN} from '../../buttons/OptionsModalButton';
+
 import Colors from '../../../assets/constants/Colors';
 
+const PERCENTAGE = "Porcentaje (%)"
+const CASH = "Efectivo ($)"
+
 const LabelAsidesInput = props => {
+	
 	return (
 		<View style={styles.container}>
 			<Text style={styles.title}>Monto</Text>
@@ -18,16 +24,24 @@ const LabelAsidesInput = props => {
 					keyboardType='numeric'
 				/>
 
-				<RNPicker
+				<OptionsModalButton
+					items = { [CASH, PERCENTAGE] }
+					onChange = { (value) => { props.changeHandler('isPercent', value === PERCENTAGE ? true : false) } }
+					value = { props.isPercent ? "%" : "$" }
+					direction = { DOWN } 
+					small
+					dark
+					/>
+				{/* <RNPicker
 					onValueChange={(value) => { props.changeHandler('isPercent', value) }}
 					placeholder = {{}}
 					style={{viewContainer : {flex:1 , alignSelf : 'center'}}}
-					value={props.isPercent}
+					value={props.isPercent }
 					items={[
 						{ label: '$', value: false },
 						{ label: '%', value: true }
 					]}
-				/>	
+				/> */}	
 				{/* <Picker
 					style = {{flex:1,}}
 					selectedValue = {props.isPercent}

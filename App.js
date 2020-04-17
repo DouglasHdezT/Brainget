@@ -2,7 +2,7 @@ import React, {Component } from 'react';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 import { Provider } from 'react-redux';
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage, AppState } from 'react-native';
 import PouchDB from './database/config/builder';
 
 import store from './store/Store';
@@ -72,6 +72,7 @@ export default class App extends Component {
 			budgetService.openConnection();
 			//budgetService.showInfo();
 			//budgetService.showAll()
+			//budgetService.getYears();
 			await budgetService.configIndex();
 
 			//Budget actual
@@ -90,6 +91,28 @@ export default class App extends Component {
 		}
 	}
 
+	verifyBudgetListener = async (nextState) => {
+		if(nextState === "active"){
+			if(this.state.dataLoaded){
+				console.log("Comprobando...");
+				
+				let budgetActual = await (await budgetService.getActual()).docs
+				let periodsConfig = await AsyncStorage.getItem(PERIODS_KEY);
+			
+				if(budgetActual.length === 0){
+					console.log("Arregando");
+					
+					console.log("Creando Budget");
+					await budgetService.createBudget(periodsConfig);
+					budgetActual = await (await budgetService.getActual()).docs
+					store.dispatch(syncBudget(budgetActual[0]));
+				}
+
+				console.log("Todo nice!");
+			}
+		}		
+	}
+
 	componentDidMount(){
 		this.subscription = store.subscribe(() => {
 			const newLoading = store.getState().config.isLoading;
@@ -101,7 +124,9 @@ export default class App extends Component {
 					loading: newLoading,
 				})
 			}
-		})
+		});
+
+		AppState.addEventListener("change", this.verifyBudgetListener)
 	}
 
 	componentWillUnmount(){
@@ -110,6 +135,7 @@ export default class App extends Component {
 			console.log("Database closed!");
 		}) */
 		this.subscription();
+		AppState.removeEventListener("change", this.verifyBudgetListener)
 		budgetService.closeConnection();
 	}
 	

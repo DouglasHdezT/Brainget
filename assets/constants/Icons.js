@@ -6,7 +6,10 @@ export default {
 	cash: require('../../assets/img/cash.png'),
 	left: require('../../assets/img/left_arrow.png'),
 	right: require('../../assets/img/right_arrow.png'),
-	right_gray: require('../../assets/img/right_arrow_gray.png'),
 	up: require('../../assets/img/up_arrow.png'),
 	down: require('../../assets/img/down_arrow.png'),
+	right_gray: require('../../assets/img/right_arrow_gray.png'),
+	left_gray: require('../../assets/img/left_arrow_gray.png'),
+	up_gray: require('../../assets/img/up_arrow_gray.png'),
+	down_gray: require('../../assets/img/down_arrow_gray.png'),
 }

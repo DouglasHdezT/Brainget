@@ -5,8 +5,9 @@ import { StyleSheet, View, Text, ImageBackground } from 'react-native';
 import FootLeftRight from '../components/footers/FootLeftRight';
 import MoneyContainer from '../components/footers/containers/MoneyContainer';
 import ResultsList from '../components/Lists/ResultsList';
+import OptionsModalButton, {UP} from '../components/buttons/OptionsModalButton'
 
-import { getBudgetsPerYear } from '../database/services/BudgetService'
+import { getBudgetsPerYear, getYears } from '../database/services/BudgetService'
 
 import BackgroundImages from '../assets/constants/BackgroundImages';
 import Colors from '../assets/constants/Colors';
@@ -23,32 +24,63 @@ class ResultsScreen extends Component {
 
 		this.state = {
 			money: 0,
-			currentYear: new Date().getFullYear(),
-			currentResults: []
+			currentYear: 0,
+			currentResults: [],
+			years:[]
 		}
 	}
 
-	fetchResults = () => {
-		getBudgetsPerYear(this.state.currentYear).then(results => {
+	fetchResults = (year) => {
+		if (year === this.state.currentYear){
+			return;
+		}
+
+		getBudgetsPerYear(year).then(results => {
 			if(results !== undefined && results.length !== 0){
 				const yearlyBalance = results.reduce((total, month) => { return total + month.monthlyBalance; }, 0);
-				console.log(yearlyBalance);
-				
+
 				this.setState({
+					currentYear: year,
 					currentResults: results,
 					money: yearlyBalance,
 				})
 			}
 		});
-	}	
+	}
+
+	fetchYears = () => {
+		getYears().then(years => {
+			let newYears = years
+			const actualYear = new Date().getFullYear();
+
+			if(years.findIndex(year => year === actualYear) === -1){
+				newYears = [actualYear, ...years];
+			}	
+
+			this.fetchResults(newYears[0])
+
+			this.setState({
+				years: years
+			})
+		});
+	}
+	
+	changeYear = (year) => {
+		this.fetchResults(year)
+	}
 
 	componentDidMount(){
-		this.fetchResults();	
+		this.fetchYears();	
 	}
 
 	render(){
 		const moneyColor = this.state.money < 0 ? Colors.red800 : Colors.green800;
 		const moneyPanel = (<MoneyContainer money = { this.state.money.toFixed(2) } />);
+		const yearPanel = (<OptionsModalButton 
+								items = { this.state.years }
+								onChange = {this.changeYear} 
+								value = { this.state.currentYear } 
+								direction = { UP } />);
 
 		return(
 			<View style = {{flex: 1}}>
@@ -71,7 +103,7 @@ class ResultsScreen extends Component {
 						leftContent = { moneyPanel }
 
 						rightPanelColor = { Colors.blue500 }
-						rightContent
+						rightContent = { yearPanel }
 					/>
 
 				</ImageBackground>

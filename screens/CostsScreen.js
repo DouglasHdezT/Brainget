@@ -5,6 +5,7 @@ import { StyleSheet, View, Text, ImageBackground } from 'react-native';
 import { connect } from 'react-redux'; 
 
 import { addCost, removeCost, updateCost } from "../database/services/BudgetService";
+import { intToMonth } from '../utils/DateUtils';
 
 import ExpensesList from '../components/Lists/ExpensesList';
 import FootLeftRight from '../components/footers/FootLeftRight';
@@ -46,7 +47,7 @@ class CostsScreen extends Component {
 		const itemsFiltered = this.props.expenses.filter(cost => cost.TAG === TAG);
 
 		const leftFootContent = <MoneyContainer money = {this.props.currentBalance.toFixed(2)}/>;
-		const rightFootContent = <PeriodContainer period = "1 -31 enero"/>;
+		const rightFootContent = <PeriodContainer period = { `${this.props.startDay} - ${this.props.endDay} ${intToMonth(this.props.month)}` }/>;
 
 		return(
 			<View style = {{flex:1}}>
@@ -99,7 +100,10 @@ const styles = StyleSheet.create({
 const mapStateToProps = state => ({
 	budgetId: state.budget._id,
 	expenses : state.budget.expenses,
-	currentBalance: state.budget.currentBalance
+	currentBalance: state.budget.currentBalance,
+	startDay: state.budget.startDay,
+	endDay: state.budget.endDay,
+	month: state.budget.month,
 });
 
 

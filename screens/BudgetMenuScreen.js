@@ -3,6 +3,8 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import { connect } from 'react-redux'
 
+import { intToMonth } from '../utils/DateUtils';
+
 import budgetMenuConf from '../assets/constants/BudgetMenuData'
 import Colors from '../assets/constants/Colors'
 
@@ -19,7 +21,7 @@ const BudgetMenuScreen = props => {
 	}
 
 	const leftFootContent = <MoneyContainer money = {props.currentBalance.toFixed(2)}/>;
-	const rightFootContent = <PeriodContainer period = "1 -31 enero"/>;
+	const rightFootContent = <PeriodContainer period = { `${props.startDay} - ${props.endDay} ${intToMonth(props.month)}` }/>;
 
 	return(
 		<View style={styles.container}>
@@ -50,7 +52,10 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => ({
-	currentBalance: state.budget.currentBalance
+	currentBalance: state.budget.currentBalance,
+	startDay: state.budget.startDay,
+	endDay: state.budget.endDay,
+	month: state.budget.month,
 });
 
 export default connect(mapStateToProps, null)(BudgetMenuScreen);
