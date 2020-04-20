@@ -73,6 +73,7 @@ export default class App extends Component {
 			//budgetService.showInfo();
 			//budgetService.showAll()
 			//budgetService.getYears();
+			//console.log( await (await budgetService.getYearsAndBudgetsOfLast()).budgetsOfLastYear )
 			await budgetService.configIndex();
 
 			//Budget actual
@@ -85,6 +86,7 @@ export default class App extends Component {
 			}
 
 			store.dispatch(syncBudget(budgetActual[0]));
+			console.log("Budget cargado");
 
 		} catch(err) {
 			console.log(err)

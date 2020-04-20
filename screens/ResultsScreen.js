@@ -7,7 +7,7 @@ import MoneyContainer from '../components/footers/containers/MoneyContainer';
 import ResultsList from '../components/Lists/ResultsList';
 import OptionsModalButton, {UP} from '../components/buttons/OptionsModalButton'
 
-import { getBudgetsPerYear, getYears } from '../database/services/BudgetService'
+import { getBudgetsPerYear, getYearsAndBudgetsOfLast } from '../database/services/BudgetService'
 
 import BackgroundImages from '../assets/constants/BackgroundImages';
 import Colors from '../assets/constants/Colors';
@@ -49,18 +49,26 @@ class ResultsScreen extends Component {
 	}
 
 	fetchYears = () => {
-		getYears().then(years => {
-			let newYears = years
+		getYearsAndBudgetsOfLast().then(result => {
+			let newYears = [...result.years];
 			const actualYear = new Date().getFullYear();
 
-			if(years.findIndex(year => year === actualYear) === -1){
+			if(newYears.findIndex(year => year === actualYear) === -1){
 				newYears = [actualYear, ...years];
 			}	
 
-			this.fetchResults(newYears[0])
+			const yearlyResume = result.budgetsOfLastYear;
+			let yearlyBalance = 0;
+
+			if (yearlyResume !== undefined && yearlyResume.length !== 0){
+				yearlyBalance = yearlyResume.reduce((total, month) => { return total + month.monthlyBalance; }, 0);
+			}
 
 			this.setState({
-				years: years
+				years: newYears,
+				currentYear: newYears[0],
+				currentResults: yearlyResume,
+				money: yearlyBalance
 			})
 		});
 	}

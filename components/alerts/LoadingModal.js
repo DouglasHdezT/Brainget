@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { StyleSheet, Modal, View, ActivityIndicator } from 'react-native';
+import { PacmanIndicator } from 'react-native-indicators'
 import Colors from '../../assets/constants/Colors';
 
 class LoadingModal extends Component {
@@ -16,8 +17,8 @@ class LoadingModal extends Component {
 				visible = { this.props.visible } >
 
 				<View style = { styles.modalBg }>
-					<ActivityIndicator
-						size = "large"
+					<PacmanIndicator
+						size = { 80 }
 						color = { Colors.lightBlue500 }
 						animating = { this.props.visible }
 					/>

@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
 
 	},		
 	listContainer:{
-		height: (Math.round(Dimensions.get('window').height) / 3),
+		height: (Math.round(Dimensions.get('window').height) / 3) * 1.5,
 		width:"80%",
 
 		marginVertical: 32,
@@ -147,12 +147,13 @@ const styles = StyleSheet.create({
 		flex:1,
 
 		flexDirection: "row",
-		alignItems: "center"
+		alignItems: "center",
+		justifyContent: "center"
 	},
 	rederedIcon:{
-		maxHeight: 16,
+		width: 16,
+		height:16,
 		marginEnd:4, 
-		flex:1,
 		resizeMode:"cover"
 	},
 	titleText:{
@@ -168,8 +169,8 @@ const styles = StyleSheet.create({
 		color: Colors.ModalTextColor
 	},
 	rederedText:{
-		flex: 6,
-		marginEnd:4,
+		marginEnd:8,
+		marginStart: 4,
 
 		fontFamily: "roboto",
 		textAlign: "center",

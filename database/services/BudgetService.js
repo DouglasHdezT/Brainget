@@ -74,7 +74,7 @@ export const getYears = async () => {
 	}
 }
 
-export const getBudgetsPerYear = async (year) => {
+export const getBudgetsPerYear = async (year, compress = false) => {
 	startLoading();
 
 	try{
@@ -87,13 +87,14 @@ export const getBudgetsPerYear = async (year) => {
 			if( budgetsPerMonth[month] === undefined ){
 				budgetsPerMonth[month] = {
 					name: intToMonth(month),
+					monthInt: month,
 					monthlyBalance: 0,
-					budgets: []
+					budgets: compress ? undefined : []
 				};
 			}
 
 			budgetsPerMonth[month].monthlyBalance += budget.currentBalance;
-			budgetsPerMonth[month].budgets = [...budgetsPerMonth[month].budgets, budget]; 
+			compress || (budgetsPerMonth[month].budgets = [...budgetsPerMonth[month].budgets, budget]); 
 		})
 
 		budgetsPerMonth = budgetsPerMonth.filter(budget => budget !== undefined);
@@ -104,6 +105,58 @@ export const getBudgetsPerYear = async (year) => {
 		stopLoadingSimple();
 		errorWarning();
 		return [];
+	}
+}
+
+export const getYearsAndBudgetsOfLast = async (compress = false) => {
+	try {
+		startLoading();
+
+		let years = (await db.find({
+			selector: {},
+			fields: ["year"]
+		}))
+
+		years = (await years.docs).map(n => n.year)
+		years = years.filter((n, i) => years.indexOf(n) === i)
+		years.sort((a,b) => b - a)
+
+		let budgetsInYear = [];
+
+		if (years.length >= 1) {
+			const rawBudgets = await (await db.find({ selector: {"year": years[0]} })).docs;
+			
+			rawBudgets.forEach(budget => {
+				const month = budget.month;
+	
+				if( budgetsInYear[month] === undefined ){
+					budgetsInYear[month] = {
+						name: intToMonth(month),
+						monthInt: month,
+						monthlyBalance: 0,
+						budgets: compress ? undefined : []
+					};
+				}
+				
+				budgetsInYear[month].monthlyBalance += budget.currentBalance;
+				compress || (budgetsInYear[month].budgets = [...budgetsInYear[month].budgets, budget]); 
+			})
+
+			budgetsInYear = budgetsInYear.filter(budget => budget !== undefined);
+		}
+
+		stopLoadingSimple();
+		return {
+			years: years,
+			budgetsOfLastYear: budgetsInYear
+		}
+	}catch (err){
+		stopLoadingSimple()
+		errorWarning()
+		return {
+			years: [],
+			budgetsOfLastYear: [],
+		}
 	}
 }
 

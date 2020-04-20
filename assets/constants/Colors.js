@@ -1,5 +1,6 @@
 export default {
 	shadowBg:'#00000088',
+	denseShadowBg:'#000000BB',
     blue500: '#2196F3',
     blue700: '#1976D2',
     blue900: '#0D47A1',
