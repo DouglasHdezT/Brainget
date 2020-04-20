@@ -107,6 +107,23 @@ export const getBudgetsPerYear = async (year) => {
 	}
 }
 
+export const getBudgetById = async (id) => {
+	try {
+		startLoading();
+
+		const budget = await db.get(id);
+
+		stopLoadingSimple();
+
+		return budget;
+
+	}catch(err) {
+		stopLoadingSimple()
+		errorWarning()
+	}
+
+}
+
 export const showAll = () => {
 	db.allDocs({include_docs:true}).then(docs => {
 		console.log(docs);

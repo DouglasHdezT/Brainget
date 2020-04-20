@@ -9,8 +9,10 @@ import ResultsScreen from '../../screens/ResultsScreen';
 import StatsScreen from '../../screens/StatsScreen';
 import ServicesScreen from '../../screens/ServicesScreen';
 import AboutScreen from '../../screens/AboutScreen';
+import BudgetReportScreen from '../../screens/BudgetReportScreen';
 
 import Colors from '../../assets/constants/Colors';
+
 
 const NavigationStack = createStackNavigator(
 	{
@@ -21,7 +23,8 @@ const NavigationStack = createStackNavigator(
 		Results: ResultsScreen,
 		Stats: StatsScreen,
 		Services: ServicesScreen,
-		About: AboutScreen
+		About: AboutScreen,
+		Report: BudgetReportScreen
 	}, 
 	{
 		initialRouteName: 'MainMenu',

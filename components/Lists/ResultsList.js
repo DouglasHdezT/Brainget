@@ -23,6 +23,15 @@ const ResultsList = props => {
 		);
 	}
 
+	const renderContent = budgetsPerMonth => {
+		return(
+			<BudgetList
+				budgets = { budgetsPerMonth.budgets }
+				onPress = { (id) => { props.onPress(id) } }
+			/>
+		);
+	}
+
 	return(
 		<ScrollView style = { {width: "100%"} }
 			contentContainerStyle = {{paddingVertical: 16, flexGrow:1, justifyContent:"center"}}
@@ -40,12 +49,6 @@ const ResultsList = props => {
 	);
 }
 
-const renderContent = budgetsPerMonth => {
-	return(
-		<BudgetList
-			budgets = { budgetsPerMonth.budgets }
-		/>
-	);
-}
+
 
 export default ResultsList;

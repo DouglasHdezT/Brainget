@@ -42,7 +42,7 @@ const SingleBudget = props => {
 				</View>
 
 				<View style = { styles.actionContainer }>
-					<TouchableOpacity >
+					<TouchableOpacity onPress = {()=>{props.onPress()}}>
 						<View style = {{ flexDirection:"row", alignItems:"center", justifyContent: "space-around"}}>
 							<Text style = { styles.buttonText }>Ver Balance</Text>
 							<Image style = { styles.icon } source = { Icons.right_gray }/>

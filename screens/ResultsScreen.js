@@ -69,6 +69,10 @@ class ResultsScreen extends Component {
 		this.fetchResults(year)
 	}
 
+	onPressBudgetHandler = (id) => {
+		this.props.navigation.navigate('Report', { budgetId : id })
+	}
+
 	componentDidMount(){
 		this.fetchYears();	
 	}
@@ -94,6 +98,7 @@ class ResultsScreen extends Component {
 						<ResultsList 
 							budgetsPerYear = { this.state.currentResults } 
 							total = { this.state.currentResults.length }
+							onPress = {(id) => { this.onPressBudgetHandler(id) }}
 						/>
 
 					</View>

@@ -10,6 +10,7 @@ const BudgetsList = props => {
 			<SingleBudgetItem
 				key = { budget._id }
 				budgetID = { budget._id }
+				onPress = { () => { props.onPress(budget._id) } }
 				index = { index + 1}
 				startDay = { budget.startDay }
 				endDay = { budget.endDay }
