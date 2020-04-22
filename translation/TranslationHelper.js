@@ -22,9 +22,9 @@ class TranslationHelper {
 	}
 
 	setLanguage = (language) => {
-		const languageRef = language === undefined ? this.language : language.length > 2 ? language.substring(0, 2) : language;
+		const languageRef = language === undefined ? this.language : language.substring(0, 2);
 
-		if (this.language !== languageRef) {
+		if (languageRef !== this.language) {
 			switch (languageRef) {
 				case EN_LANG:
 				case ES_LANG:
