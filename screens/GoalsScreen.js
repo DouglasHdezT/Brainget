@@ -16,6 +16,8 @@ import TextButtonContainer from '../components/footers/containers/TextButtonCont
 import GoalsForm from '../components/forms/GoalsForm';
 import AddIncomeModal from '../components/alerts/AddIncomeModal';
 
+import Trs from '../translation/TranslationHelper';
+
 class GoalsScreen extends Component {
 
 	static navigationOptions = ({ navigation }) => {

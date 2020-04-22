@@ -6,14 +6,17 @@ import { AsyncStorage, AppState } from 'react-native';
 import PouchDB from './database/config/builder';
 
 import store from './store/Store';
-import { syncBudget } from './store/actions/BudgetActions'
-import * as budgetService from './database/services/BudgetService'
+import { syncBudget } from './store/actions/BudgetActions';
+import * as budgetService from './database/services/BudgetService';
+
+import Translation from './translation/TranslationHelper';
+import * as Localization from 'expo-localization';
 
 import { PERIODS_KEY, DB_NAME } from './assets/constants/KeyValues';
 import { periodsSettings } from './components/alerts/Alerts';
 
-import MainNavigationStack from './components/navigations/MainNavigationStack'
-import LoadingModal from './components/alerts/LoadingModal'
+import MainNavigationStack from './components/navigations/MainNavigationStack';
+import LoadingModal from './components/alerts/LoadingModal';
 
 
 export default class App extends Component {
@@ -26,19 +29,6 @@ export default class App extends Component {
 		}
 
 		this.db = new PouchDB(DB_NAME, {adapter: 'react-native-sqlite'});
-		
-		/* this.changeListener = this.db.changes({
-			live: true,
-			since: "now"
-		}).on("change", async (info) => {
-			console.log("Capturando cambio")
-			let budgetActual = await (await budgetService.getActual()).docs
-			
-			if(budgetActual.length !== 0){
-				console.log(budgetActual[0]._rev);
-				store.dispatch(syncBudget(budgetActual[0]));
-			}
-		}); */
 	}
 
 	setDataLoaded = (value) => {
@@ -57,6 +47,10 @@ export default class App extends Component {
 				});
 							
 			console.log("Fuentes Cargadas");
+
+			//Cargando lenguaje
+			Translation.setLanguage(Localization.locale);
+			//console.log(Translation.getStringValue("test"));
 			
 			//Configuración básica
 			let periodsConfig = await AsyncStorage.getItem(PERIODS_KEY);
@@ -97,6 +91,8 @@ export default class App extends Component {
 		if(nextState === "active"){
 			if(this.state.dataLoaded){
 				console.log("Comprobando...");
+
+				Translation.setLanguage(await Localization.getLocalizationAsync().locale);
 				
 				let budgetActual = await (await budgetService.getActual()).docs
 				let periodsConfig = await AsyncStorage.getItem(PERIODS_KEY);
@@ -132,10 +128,6 @@ export default class App extends Component {
 	}
 
 	componentWillUnmount(){
-		/* this.changeListener.cancel();
-		this.db.close().then(()=>{
-			console.log("Database closed!");
-		}) */
 		this.subscription();
 		AppState.removeEventListener("change", this.verifyBudgetListener)
 		budgetService.closeConnection();
