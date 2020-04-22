@@ -8,14 +8,14 @@ import Colors from '../../../assets/constants/Colors';
 
 import Translation, { Keys } from '../../../translation/TranslationHelper';
 
-const PERCENTAGE = Translation.getStringValue(Keys.percentage_modal_field_text);
-const CASH = Translation.getStringValue(Keys.cash_modal_field_text)
-
 const LabelAsidesInput = props => {
+
+	const PERCENTAGE = Translation.getStringValue(Keys.percentage_modal_field_text);
+const CASH = Translation.getStringValue(Keys.cash_modal_field_text);
 	
 	return (
 		<View style={styles.container}>
-			<Text style={styles.title}>Monto</Text>
+			<Text style={styles.title}> { Translation.getStringValue(Keys.amount_modal_field_text) } </Text>
 			<View style={styles.inputContainer}>
 
 				<TextInput
@@ -28,7 +28,7 @@ const LabelAsidesInput = props => {
 
 				<OptionsModalButton
 					items = { [CASH, PERCENTAGE] }
-					onChange = { (value) => { props.changeHandler('isPercent', value === PERCENTAGE ? true : false) } }
+					onChange = { (value, index) => { props.changeHandler('isPercent', index === 1 ? true : false) } }
 					value = { props.isPercent ? "%" : "$" }
 					direction = { DOWN } 
 					small

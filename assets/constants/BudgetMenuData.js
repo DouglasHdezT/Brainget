@@ -77,7 +77,7 @@ export default [
 		redirect: {
 			route: 'Costs',
 			params: {
-				title: 'Imprevistos',
+				title: () => Translation.getStringValue(Keys.unexpected_costs_title_text),
 				TAG: Expenses.Unexpected,
 				canRepeatElems: true
 			}

@@ -48,13 +48,13 @@ class OptionsModalButton extends Component {
 		})
 	}
 
-	renderItem = (item) => {
+	renderItem = (item, index) => {
 		return (
 			<TouchableOpacity
 				style= { styles.item }
 				onPress = { () => {
 					this.setState({isVisible: false});
-					this.props.onChange(item);
+					this.props.onChange(item, index);
 				} }>
 				<Text style = {styles.itemText} >{ item }</Text>
 			</TouchableOpacity>
@@ -92,7 +92,7 @@ class OptionsModalButton extends Component {
 									contentContainerStyle = {{ alignItems:"stretch", justifyContent: "center", flexGrow:1 }}
 									data = { this.props.items }
 									keyExtractor = { item => `${item}` }
-									renderItem = {({item}) => { return this.renderItem(item) } }/>
+									renderItem = {({item, index}) => { return this.renderItem(item, index) } }/>
 							</View>
 						</View>
 				</Modal>
