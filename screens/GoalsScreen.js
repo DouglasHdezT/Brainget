@@ -16,7 +16,7 @@ import TextButtonContainer from '../components/footers/containers/TextButtonCont
 import GoalsForm from '../components/forms/GoalsForm';
 import AddIncomeModal from '../components/alerts/AddIncomeModal';
 
-import Trs from '../translation/TranslationHelper';
+import Translation, { Keys } from '../translation/TranslationHelper';
 
 class GoalsScreen extends Component {
 
@@ -77,7 +77,7 @@ class GoalsScreen extends Component {
 		const rightFootContent = (
 			this.state.isFirstScreen ? 
 				<NavContainer right onPress = {this.insideNavigate}/> : 
-				<TextButtonContainer text = 'Finalizar'/>
+				<TextButtonContainer text = { Translation.getStringValue(Keys.submit_action_text) }/>
 		);
 
 		const mainContent = (

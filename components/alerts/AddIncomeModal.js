@@ -10,6 +10,8 @@ import IncomeForm from '../forms/IncomeForm';
 import TopEndIconButton from '../buttons/TopEndIconButton';
 import { dropConfimation } from './Alerts';
 
+import Translation, { Keys } from './../../translation/TranslationHelper';
+
 class AddIncomeModal extends Component {
 
 	constructor(props){
@@ -35,15 +37,15 @@ class AddIncomeModal extends Component {
 	addIncomeVerified = (isUpdating = false) => {
 		if (!this.state.incomeName || !this.state.incomeValue) {
 			Alert.alert(
-				'No dejes vacio los campos',
-				'Ambos campos deben de poseer un valor',
-				[{ text: 'OK', }]
+				Translation.getStringValue(Keys.empty_fields_alert_title),
+				Translation.getStringValue(Keys.empty_fields_alert_text),
+				[{ text: Translation.getStringValue(Keys.ok_action_alert_text), }]
 			);
 		} else if (typeof parseFloat(this.state.incomeValue) != 'number'){
 			Alert.alert(
-				'El campo debe ser un numero',
-				'',
-				[{ text: 'OK', }]
+				Translation.getStringValue(Keys.number_misstype_alert_title),
+				Translation.getStringValue(Keys.number_misstype_alert_text),
+				[{ text: Translation.getStringValue(Keys.ok_action_alert_text), }]
 			);
 		}else if(isUpdating){
 			this.props.updateIncome(this.state._id, this.state.incomeName, this.state.incomeValue);
@@ -68,7 +70,7 @@ class AddIncomeModal extends Component {
 		const addButton = (
 			<BorderedButton
 				color={Colors.btnNeutral}
-				text="Añadir"
+				text={ Translation.getStringValue(Keys.add_action_text) } 
 				onPress = {() => {
 					this.addIncomeVerified();
 				}}
@@ -78,7 +80,7 @@ class AddIncomeModal extends Component {
 			<>
 				<BorderedButton
 					color={Colors.btnDelete}
-					text="Eliminar"
+					text={ Translation.getStringValue(Keys.delete_action_text) } 
 					onPress = {() => {
 						dropConfimation(() => {
 							this.props.removeIncome(this.state._id);
@@ -88,7 +90,7 @@ class AddIncomeModal extends Component {
 					/>
 				<BorderedButton
 					color={Colors.btnOk}
-					text="Modificar"
+					text= { Translation.getStringValue(Keys.update_action_text) }
 					onPress = {() => {
 						this.addIncomeVerified(true);
 					}}
@@ -112,7 +114,7 @@ class AddIncomeModal extends Component {
 								onPress={this.props.closeModal}
 							/>
 	
-							<Text style={styles.title}>Ingreso</Text>
+							<Text style={styles.title}>{ Translation.getStringValue(Keys.income_modal_title_text) }</Text>
 	
 							<View style={{ flex: 3 }}>
 								<IncomeForm

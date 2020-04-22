@@ -13,10 +13,12 @@ import FootCenterItem from '../components/footers/FootCenterItem';
 import OptionsModalButton, { UP } from '../components/buttons/OptionsModalButton';
 import YearBalanceGraph from '../components/graphics/YearBalanceGraph';
 
+import Translation, {Keys} from '../translation/TranslationHelper';
+
 class StatsScreen extends Component {
 	static navigationOptions = ({ navigation }) => {
 		return {
-			title: "Estadísticas",
+			title: Translation.getStringValue(Keys.stats_title_text),
 		};
 	};
 

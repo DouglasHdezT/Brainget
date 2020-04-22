@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { StyleSheet, View, Text, ImageBackground } from 'react-native';
+import { StyleSheet, View, ImageBackground } from 'react-native';
 
 import FootLeftRight from '../components/footers/FootLeftRight';
 import MoneyContainer from '../components/footers/containers/MoneyContainer';

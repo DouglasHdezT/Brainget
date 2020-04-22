@@ -41,6 +41,7 @@ export default {
 	"february_month_text": "February",
 	"march_month_text": "March",
 	"april_month_text": "April",
+	"may_month_text": "May",
 	"june_month_text": "June",
 	"july_month_text": "July",
 	"august_month_text": "August",
@@ -73,6 +74,7 @@ export default {
 	"from_prefix_text": "From",
 	"to_prefix_text": "to",
 	"report_result_title": "Report",
+	"report_screen_title": "Budget Report",
 
 	
 	/**
@@ -111,4 +113,10 @@ export default {
 	"deny_action_alert_text": "Deny",
 	"confirmation_alert_title": "Are you sure?",
 	"confirmation_alert_text": "This information will be permanently deleted",
+	"configuration_alert_title": "Basic Configuration",
+	"configuration_alert_text": "How often will you make your budget?",
+	"configuration_biweekly_action_text": "Biweekly",
+	"configuration_monthly_action_text": "Monthly",
+	"error_alert_title": "Unexpected error",
+	"error_alert_text": "An internal error has occurred in the app",
 }

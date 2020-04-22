@@ -10,10 +10,12 @@ import Colors from '../assets/constants/Colors';
 import FootThreeTexts from '../components/footers/FootThreeTexts';
 import ReportList from '../components/Lists/ReportList';
 
+import Translation, { Keys } from '../translation/TranslationHelper';
+
 class BudgetReportScreen extends Component {
 	static navigationOptions = ({ navigation }) => {
 		return {
-			title: "Reporte de presupuesto",
+			title: Translation.getStringValue(Keys.report_screen_title),
 		};
 	};
 
@@ -49,7 +51,7 @@ class BudgetReportScreen extends Component {
 
 					<View style={styles.mainContainer}>
 						<View style={styles.titleContainer}>
-							<Text style = {styles.title}> Reporte </Text>
+							<Text style = {styles.title}>{ Translation.getStringValue(Keys.report_result_title) }</Text>
 							<Text style = {styles.subtitle}> {`${startDay} - ${endDay} / ${intToMonth(month)} / ${year}`} </Text>
 						</View>
 						<View style = {styles.listContainer}>
@@ -57,9 +59,9 @@ class BudgetReportScreen extends Component {
 						</View>
 						<FootThreeTexts
 							style = { {marginBottom: 4} }
-							text1 = { `Ingresos` }
-							text2 = { `Gastos` }
-							text3 = { `Balance` }
+							text1 = { Translation.getStringValue(Keys.incomes_result_text) }
+							text2 = { Translation.getStringValue(Keys.costs_result_text) }
+							text3 = { Translation.getStringValue(Keys.balance_result_text) }
 						/>
 						<FootThreeTexts
 							text1 = { `$ ${totalIncome.toFixed(2)}` }

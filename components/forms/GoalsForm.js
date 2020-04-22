@@ -3,6 +3,8 @@ import React from 'react';
 import { StyleSheet, TouchableWithoutFeedback, View, Keyboard } from 'react-native';
 import LabeledMoneyInput from './inputs/LabeledMoneyInput';
 
+import Translation, { Keys } from '../../translation/TranslationHelper';
+
 const GoalsForm = props => {
 	return (
 		<TouchableWithoutFeedback onPress = { () => {Keyboard.dismiss()}}>
@@ -11,17 +13,17 @@ const GoalsForm = props => {
 					id = 'question1'
 					changeHandler = {props.changeHandler}
 					value = {props.question1}
-					label = "¿Cuánto dinero gastarás?"/>
+					label = { Translation.getStringValue(Keys.goals_screen_section_2_q1) }/>
 				<LabeledMoneyInput 
 					id = 'question2'
 					changeHandler = {props.changeHandler}
 					value = {props.question2}
-					label = "¿Cuánto deberías gastar?"/>
+					label = { Translation.getStringValue(Keys.goals_screen_section_2_q2) }/>
 				<LabeledMoneyInput 
 					id = 'question3'
 					changeHandler = {props.changeHandler}
 					value = {props.question3}
-					label = "¿Cuánto quieres ahorrar?"/>
+					label = { Translation.getStringValue(Keys.goals_screen_section_2_q3) }/>
 			</View>
 		</TouchableWithoutFeedback>
 	);

@@ -1,18 +1,20 @@
 import { Alert } from "react-native";
 import { BackHandler } from 'react-native';
 
+import Translation, { Keys } from '../../translation/TranslationHelper';
+
 export const dropConfimation = action => {
 	Alert.alert(
-		"¿Estás seguro?",
-		'Esta información se perderá definitivamente',
+		Translation.getStringValue(Keys.confirmation_alert_title),
+		Translation.getStringValue(Keys.confirmation_alert_text),
 		[
 			{
-				text: 'Si',
+				text: Translation.getStringValue(Keys.accept_action_alert_text),
 				onPress: action,
 				style: 'cancel'
 			},
 			{
-				text: 'No',
+				text: Translation.getStringValue(Keys.deny_action_alert_text),
 				onPress: () => {},
 				style: 'default'
 			}
@@ -26,16 +28,16 @@ export const dropConfimation = action => {
 export const periodsSettings = () =>{
 	return new Promise((resolve, reject) => {
 		Alert.alert(
-			"Configuración básica",
-			'¿Cada cuanto harás tu presupuesto?',
+			Translation.getStringValue(Keys.confirmation_alert_title),
+			Translation.getStringValue(Keys.confirmation_alert_text),
 			[
 				{
-					text: "Quincenal",
+					text: Translation.getStringValue(Keys.configuration_biweekly_action_text),
 					onPress: () => { resolve("2") },
 					style: "default"
 				},
 				{
-					text: "Mensual",
+					text: Translation.getStringValue(Keys.configuration_monthly_action_text),
 					onPress: () => { resolve("1") },
 					style: "default"
 				}
@@ -50,11 +52,11 @@ export const periodsSettings = () =>{
 
 export const errorWarning = () => {
 	Alert.alert(
-		"Error inserperado",
-		"Ha ocurrido un error interno en la app",
+		Translation.getStringValue(Keys.error_alert_title),
+		Translation.getStringValue(Keys.error_alert_text),
 		[
 			{
-				text: "Entendido",
+				text: Translation.getStringValue(Keys.ok_action_alert_text),
 				onPress: () => { BackHandler.exitApp() },
 				style: 'destructive'
 			}

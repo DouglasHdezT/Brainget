@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { StyleSheet, View, Text, ImageBackground } from 'react-native';
+import { StyleSheet, View, ImageBackground } from 'react-native';
 
 import { connect } from 'react-redux'; 
 
@@ -15,6 +15,8 @@ import PeriodContainer from '../components/footers/containers/PeriodContainer';
 import Colors from '../assets/constants/Colors';
 import BackgroundImages from '../assets/constants/BackgroundImages';
 import AddCostModal from '../components/alerts/AddCostModal';
+
+import Translation, { Keys } from '../translation/TranslationHelper';
 
 class CostsScreen extends Component {
 	static navigationOptions = ({ navigation }) => {

@@ -34,11 +34,11 @@ export default class MainMenu extends Component {
 	render() {
 		const submenus = this.props.menus.map((menu, index) => <SubMenu
 			key={index}
-			title={menu.title}
+			title={menu.title()}
 			src={menu.src}
 			color={menu.color}
 			isSourceBg = {menu.isSourceBg}
-			showModal = {()=>{this.showModal(menu.title, menu.info)}}
+			showModal = {()=>{this.showModal(menu.title, menu.info())}}
 			onPress = {()=>this.props.navigate(menu.redirect)}
 		/>)
 

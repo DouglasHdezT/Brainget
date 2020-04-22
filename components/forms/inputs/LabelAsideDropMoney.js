@@ -6,8 +6,10 @@ import OptionsModalButton, {DOWN} from '../../buttons/OptionsModalButton';
 
 import Colors from '../../../assets/constants/Colors';
 
-const PERCENTAGE = "Porcentaje (%)"
-const CASH = "Efectivo ($)"
+import Translation, { Keys } from '../../../translation/TranslationHelper';
+
+const PERCENTAGE = Translation.getStringValue(Keys.percentage_modal_field_text);
+const CASH = Translation.getStringValue(Keys.cash_modal_field_text)
 
 const LabelAsidesInput = props => {
 	
@@ -32,24 +34,6 @@ const LabelAsidesInput = props => {
 					small
 					dark
 					/>
-				{/* <RNPicker
-					onValueChange={(value) => { props.changeHandler('isPercent', value) }}
-					placeholder = {{}}
-					style={{viewContainer : {flex:1 , alignSelf : 'center'}}}
-					value={props.isPercent }
-					items={[
-						{ label: '$', value: false },
-						{ label: '%', value: true }
-					]}
-				/> */}	
-				{/* <Picker
-					style = {{flex:1,}}
-					selectedValue = {props.isPercent}
-					onValueChange = {value => {props.changeHandler('isPercent', value)}}
-					>
-					<Picker.Item label="$" value={false} />
-  					<Picker.Item label="%" value={true} />
-				</Picker> */}
 			</View>
 			
 		</View>

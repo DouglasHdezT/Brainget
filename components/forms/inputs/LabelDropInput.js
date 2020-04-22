@@ -1,12 +1,14 @@
 import React from 'react';
 
-import { StyleSheet, View, TextInput, Text, Picker } from 'react-native';
+import { StyleSheet, View, TextInput, Text } from 'react-native';
 import Colors from '../../../assets/constants/Colors';
+
+import Translation, { Keys } from '../../../translation/TranslationHelper';
 
 const LabelDropInput = props => {
 	return (
 		<View style={styles.container}>
-			<Text style={styles.title}>Nombre</Text>
+			<Text style={styles.title}>{ Translation.getStringValue(Keys.name_modal_field_text) }</Text>
 			
 			<View style={styles.inputContainer}>
 				<TextInput

@@ -4,10 +4,11 @@ import {View, StyleSheet} from 'react-native';
 import MainMenu from '../components/menus/MainMenu';
 
 import mainMenuConf from '../assets/constants/MainMenuData'
+import Translation, {Keys} from '../translation/TranslationHelper';
 
 class MainMenuScreen extends Component {
 	static navigationOptions = {
-		title: 'Brainget'
+		title: Translation.getStringValue(Keys.app_title_text)
 	}
 
 	constructor(props){
@@ -16,7 +17,7 @@ class MainMenuScreen extends Component {
 
 	navigate = redirect => {
 		const {route, params} = redirect;
-		this.props.navigation.navigate(route, params);
+		this.props.navigation.navigate(route, {...params, title: params.title()});
 	}
 
 	render(){

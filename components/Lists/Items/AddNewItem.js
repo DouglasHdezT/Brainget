@@ -5,13 +5,15 @@ import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import Icons from '../../../assets/constants/Icons';
 import Colors from '../../../assets/constants/Colors';
 
+import Translation, { Keys } from '../../../translation/TranslationHelper';
+
 const AddNewItem = props => {
 	return(
 		<TouchableOpacity 
 			onPress = {props.openAddModal}
 			style = {styles.container}>
 			<View style = {styles.textContainer}>
-				<Text style = {styles.title}>{props.cost ? 'Añadir gasto' : 'Añadir ingreso'}</Text>
+				<Text style = {styles.title}>{props.cost ? Translation.getStringValue(Keys.add_cost_action_text) : Translation.getStringValue(Keys.add_income_action_text)}</Text>
 			</View>
 			<View style = {styles.iconContainer}>
 				<Image

@@ -10,6 +10,8 @@ import CostForm from '../forms/CostForm';
 import TopEndIconButton from '../buttons/TopEndIconButton';
 import { dropConfimation } from './Alerts';
 
+import Translation, {Keys} from '../../translation/TranslationHelper';
+
 class AddCostModal extends Component {
 
 	constructor(props){
@@ -36,15 +38,15 @@ class AddCostModal extends Component {
 	addCost = (isUpdating = false) => {
 		if (!this.state.costName || !this.state.costValue) {
 			Alert.alert(
-				'No dejes vacio los campos',
-				'Ambos campos deben de poseer un valor',
-				[{ text: 'OK', }]
+				Translation.getStringValue(Keys.empty_fields_alert_title),
+				Translation.getStringValue(Keys.empty_fields_alert_text),
+				[{ text: Translation.getStringValue(Keys.ok_action_alert_text), }]
 			);
 		} else if (typeof parseFloat(this.state.costValue) != 'number'){
 			Alert.alert(
-				'El campo debe ser un numero',
-				'',
-				[{ text: 'OK', }]
+				Translation.getStringValue(Keys.number_misstype_alert_title),
+				Translation.getStringValue(Keys.number_misstype_alert_text),
+				[{ text: Translation.getStringValue(Keys.ok_action_alert_text), }]
 			);
 		}else if(isUpdating){
 			this.props.updateCost(this.state._id, this.state.costName, this.state.costValue, this.state.isPercent);
@@ -71,7 +73,7 @@ class AddCostModal extends Component {
 		const addButton = (
 			<BorderedButton
 				color={Colors.btnNeutral}
-				text="Añadir"
+				text={ Translation.getStringValue(Keys.add_action_text) }
 				onPress = {() => {
 					this.addCost();
 				}}
@@ -81,7 +83,7 @@ class AddCostModal extends Component {
 			<>
 				<BorderedButton
 					color={Colors.btnDelete}
-					text="Eliminar"
+					text= {Translation.getStringValue(Keys.delete_action_text) }
 					onPress = {()=>{
 						dropConfimation(() => {
 							this.props.removeCost(this.state._id);
@@ -91,7 +93,7 @@ class AddCostModal extends Component {
 					/>
 				<BorderedButton
 					color={Colors.btnOk}
-					text="Modificar"
+					text={ Translation.getStringValue(Keys.update_action_text) }
 					onPress = {() => {
 						this.addCost(true);
 					}}
@@ -115,7 +117,7 @@ class AddCostModal extends Component {
 								onPress={this.props.closeModal}
 							/>
 	
-							<Text style={styles.title}>Gasto</Text>
+							<Text style={styles.title}> { Translation.getStringValue(Keys.cost_modal_title_text) } </Text>
 	
 							<View style={{ flex: 3, marginVertical: 8 }}>
 								<CostForm

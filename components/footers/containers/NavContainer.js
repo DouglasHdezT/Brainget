@@ -3,9 +3,11 @@ import React from 'react';
 import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
 import Icons from '../../../assets/constants/Icons';
 
+import Translation, { Keys } from '../../../translation/TranslationHelper'
+
 const NavContainer = props => {
 
-	const text = props.left ? 'Anterior' : 'Siguiente';
+	const text = props.left ? Translation.getStringValue(Keys.previous_action_text) : Translation.getStringValue(Keys.next_action_text);
 	const icon = props.left ? Icons.left : Icons.right;
 
 	const textComponent = <Text style = {styles.text}>{text}</Text>;

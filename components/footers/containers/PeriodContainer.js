@@ -2,10 +2,12 @@ import React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
 
+import Translation, { Keys } from '../../../translation/TranslationHelper';
+
 const PeriodContainer = props => {
 	return(
 		<View>
-			<Text style = {styles.text}> Periodo</Text>
+			<Text style = {styles.text}> { Translation.getStringValue(Keys.period_prefix_footer_text) } </Text>
 			<Text style = {styles.text}> { props.period }</Text>
 		</View>
 	);

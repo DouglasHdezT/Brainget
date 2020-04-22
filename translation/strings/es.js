@@ -41,6 +41,7 @@ export default {
 	"february_month_text": "Febrero",
 	"march_month_text": "Marzo",
 	"april_month_text": "Abril",
+	"may_month_text": "Mayo",
 	"june_month_text": "Junio",
 	"july_month_text": "Julio",
 	"august_month_text": "Agosto",
@@ -73,6 +74,7 @@ export default {
 	"from_prefix_text": "Del",
 	"to_prefix_text": "al",
 	"report_result_title": "Reporte",
+	"report_screen_title": "Reporte de Presupuesto",
 
 	
 	/**
@@ -111,5 +113,10 @@ export default {
 	"deny_action_alert_text": "Denegar",
 	"confirmation_alert_title": "¿Extás seguro?",
 	"confirmation_alert_text": "Esta información se perderá definitivamente",
-
+	"configuration_alert_title": "Configuración Básica",
+	"configuration_alert_text": "¿Cada cuánto harás tu presupuesto?",
+	"configuration_biweekly_action_text": "Quincenal",
+	"configuration_monthly_action_text": "Mensual",
+	"error_alert_title": "Error inesperado",
+	"error_alert_text": "Ha ocurrido un error interno en la app",
 }

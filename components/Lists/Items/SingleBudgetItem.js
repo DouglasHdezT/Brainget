@@ -5,13 +5,15 @@ import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import Icons from '../../../assets/constants/Icons';
 import Colors from '../../../assets/constants/Colors';
 
+import Translation, { Keys } from '../../../translation/TranslationHelper';
+
 const SingleBudget = props => {
 	return(
 		<View style = { styles.mainContainer }>
 			<View style = { styles.titleContainer }>
 				
-				<Text style = { styles.title }> { `Presupuesto ${props.index}` } </Text>
-				<Text style = { styles.content }> { `Del ${props.startDay} al ${props.endDay}` } </Text>
+				<Text style = { styles.title }> { `${Translation.getStringValue(Keys.budget_result_title)} ${props.index}` } </Text>
+				<Text style = { styles.content }> { `${Translation.getStringValue(Keys.from_prefix_text)} ${props.startDay} ${Translation.getStringValue(Keys.to_prefix_text)} ${props.endDay}` } </Text>
 			
 			</View>
 
@@ -20,21 +22,21 @@ const SingleBudget = props => {
 					
 					<View style = { styles.valueContainer }>
 
-						<Text style = {{ ...styles.content, flex:1, textAlign:"left" }}>Ingresos:</Text>
+						<Text style = {{ ...styles.content, flex:1, textAlign:"left" }}> {Translation.getStringValue(Keys.incomes_result_text)} </Text>
 						<Text style = {{ ...styles.content, flex:1, textAlign:"right" }}>{ `$ ${props.totalIncome.toFixed(2)}` }</Text>
 					
 					</View>
 					
 					<View style = { styles.valueContainer }>
 						
-						<Text style = {{ ...styles.content, flex:1, textAlign:"left" }}>Gastos:</Text>
+						<Text style = {{ ...styles.content, flex:1, textAlign:"left" }}>{ Translation.getStringValue(Keys.costs_result_text) }</Text>
 						<Text style = {{ ...styles.content, flex:1, textAlign:"right" }}>{ `$ ${props.totalCosts.toFixed(2)}` }</Text>
 					
 					</View>
 					
 					<View style = { styles.valueContainer }>
 						
-						<Text style = {{ ...styles.content, flex:1, textAlign:"left" }}>Balance:</Text>
+						<Text style = {{ ...styles.content, flex:1, textAlign:"left" }}>{ Translation.getStringValue(Keys.balance_result_text) }</Text>
 						<Text style = {{ ...styles.content, flex:1, textAlign:"right" }}>{ `$ ${props.totalBalance.toFixed(2)}` }</Text>
 					
 					</View>
@@ -44,7 +46,7 @@ const SingleBudget = props => {
 				<View style = { styles.actionContainer }>
 					<TouchableOpacity onPress = {()=>{props.onPress()}}>
 						<View style = {{ flexDirection:"row", alignItems:"center", justifyContent: "space-around"}}>
-							<Text style = { styles.buttonText }>Ver Balance</Text>
+							<Text style = { styles.buttonText }>{ Translation.getStringValue(Keys.checkout_result_action_text) }</Text>
 							<Image style = { styles.icon } source = { Icons.right_gray }/>
 						</View>
 					</TouchableOpacity>

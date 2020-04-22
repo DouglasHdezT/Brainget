@@ -1,86 +1,87 @@
 import Colors from './Colors'
+import Translation, { Keys } from '../../translation/TranslationHelper'
 
 export default [
 	{
-		title: 'Mis Metas Financieras',
+		title: () => Translation.getStringValue(Keys.goals_title_text),
 		color: Colors.lightBlue500,
 		src: require('../img/metas_financieras.png'),
-		info: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.',
+		info: () => Translation.getStringValue(Keys.goals_info_text),
 		isSourceBg: false,
 		redirect: {
 			route: 'Goals',
 			params: {
-				title: 'Mis Metas Financieras'
+				title: () => Translation.getStringValue(Keys.goals_title_text),
 			}
 		}
 	},
 
 	{
-		title: 'Resultados',
+		title: () => Translation.getStringValue(Keys.results_title_text),
 		color: Colors.lightBlue700,
 		src: require('../img/resultados.png'),
-		info: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.',
+		info: () => Translation.getStringValue(Keys.results_info_text),
 		isSourceBg: false,
 		redirect: {
 			route: 'Results',
 			params: {
-				title: 'Resultados'
+				title: () => Translation.getStringValue(Keys.results_title_text)
 			}
 		}
 	},
 
 	{
-		title: 'Mis Servicios Financieros',
+		title: () => Translation.getStringValue(Keys.services_title_text),
 		color: Colors.lightBlue900,
 		src: require('../img/main_photo.jpeg'),
-		info: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.',
+		info: () => Translation.getStringValue(Keys.services_info_text),
 		isSourceBg: true,
 		redirect: {
 			route: 'Services',
 			params: {
-				title: 'Mis Servicios Financieros'
+				title: () => Translation.getStringValue(Keys.services_title_text)
 			}
 		}
 	},
 
 	{
-		title: 'Mi Presupuesto',
+		title: () => Translation.getStringValue(Keys.budget_title_text),
 		color: Colors.blue500,
 		src: require('../img/presupuesto.png'),
-		info: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.',
+		info: () => Translation.getStringValue(Keys.budget_info_text),
 		isSourceBg: false,
 		redirect: {
 			route: 'BudgetMenu',
 			params: {
-				title: 'Mi Presupuesto'
+				title: () => Translation.getStringValue(Keys.budget_title_text)
 			}
 		}
 	},
 
 	{
-		title: 'Estadísticas',
+		title: () => Translation.getStringValue(Keys.stats_title_text),
 		color: Colors.blue700,
 		src: require('../img/estadisticas.png'),
-		info: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.',
+		info: () => Translation.getStringValue(Keys.stats_info_text),
 		isSourceBg: false,
 		redirect: {
 			route: 'Stats',
 			params: {
-				title: 'Estadísticas'
+				title: () => Translation.getStringValue(Keys.stats_title_text)
 			}
 		}
 	},
 
 	{
-		title: 'Acerca de...',
+		title: () => Translation.getStringValue(Keys.about_title_text),
 		color: Colors.blue900,
 		src: require('../img/acerca_de.png'),
-		info: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.',
+		info: () => Translation.getStringValue(Keys.about_info_text),
 		isSourceBg: false,
 		redirect: {
 			route: 'About',
 			params: {
-				title: 'Acerca de ...'
+				title: () => Translation.getStringValue(Keys.about_title_text)
 			}
 		}
 	},

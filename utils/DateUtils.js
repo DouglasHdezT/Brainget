@@ -5,6 +5,8 @@
  * Day - 1 - 31 
  */
 
+import Translate, {Keys} from '../translation/TranslationHelper';
+
 export const getLastDayInMonth = (month, year) => {
 	return new Date(year, month + 1, 0).getDate();
 }
@@ -52,29 +54,29 @@ export const getPeriodLimits = (periods) => {
 export const intToMonth = (month) => {
 	switch(month){
 		case 0:
-			return "Enero";
+			return Translation.getStringValue(Keys.january_month_text);
 		case 1:
-			return "Febrero";
+			return Translation.getStringValue(Keys.february_month_text);
 		case 2:
-			return "Marzo";
+			return Translation.getStringValue(Keys.march_month_text);
 		case 3:
-			return "Abril";
+			return Translation.getStringValue(Keys.april_month_text);
 		case 4:
-			return "Mayo";
+			return Translation.getStringValue(Keys.may_month_text);
 		case 5:
-			return "Junio";
+			return Translation.getStringValue(Keys.june_month_text);
 		case 6:
-			return "Julio";
+			return Translation.getStringValue(Keys.july_month_text);
 		case 7:
-			return "Agosto";
+			return Translation.getStringValue(Keys.august_month_text);
 		case 8:
-			return "Septiembre";
+			return Translation.getStringValue(Keys.september_month_text);
 		case 9:
-			return "Octubre";
+			return Translation.getStringValue(Keys.october_month_text);
 		case 10:
-			return "Noviembre";
+			return Translation.getStringValue(Keys.november_month_text);
 		case 11:
-			return "Diciembre";
+			return Translation.getStringValue(Keys.december_month_text);
 		default:
 			return "Not Defined";
 	}

@@ -3,10 +3,12 @@ import React from 'react';
 import { StyleSheet, View, Text, TextInput } from 'react-native';
 import Colors from '../../../assets/constants/Colors';
 
+import Translation, { Keys } from '../../../translation/TranslationHelper'
+
 const LabelAsidesInput = props => {
 	return (
 		<View style={styles.container}>
-			<Text style={styles.title}>Cantidad: </Text>
+			<Text style={styles.title}>{ Translation.getStringValue(Keys.amount_modal_field_text) }</Text>
 			<View style={styles.inputContainer}>
 				<Text style = {{fontFamily: 'roboto'}}>$ </Text>
 				<TextInput
