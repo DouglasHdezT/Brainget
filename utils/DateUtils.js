@@ -5,7 +5,7 @@
  * Day - 1 - 31 
  */
 
-import Translate, {Keys} from '../translation/TranslationHelper';
+import Translation, {Keys} from '../translation/TranslationHelper';
 
 export const getLastDayInMonth = (month, year) => {
 	return new Date(year, month + 1, 0).getDate();
