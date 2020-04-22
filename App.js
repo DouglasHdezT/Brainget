@@ -49,7 +49,7 @@ export default class App extends Component {
 			console.log("Fuentes Cargadas");
 
 			//Cargando lenguaje
-			Translation.setLanguage(Localization.locale);
+			Translation.setLanguage((await Localization.getLocalizationAsync()).locale);
 			//console.log(Translation.getStringValue("test"));
 			
 			//Configuración básica

@@ -22,7 +22,7 @@ class TranslationHelper {
 	}
 
 	setLanguage = (language) => {
-		const languageRef = language.length > 2 ? language.substring(0, 2) : language;
+		const languageRef = language === undefined ? this.language : language.length > 2 ? language.substring(0, 2) : language;
 
 		if (this.language !== languageRef) {
 			switch (languageRef) {

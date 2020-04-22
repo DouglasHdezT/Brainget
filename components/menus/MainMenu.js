@@ -38,7 +38,7 @@ export default class MainMenu extends Component {
 			src={menu.src}
 			color={menu.color}
 			isSourceBg = {menu.isSourceBg}
-			showModal = {()=>{this.showModal(menu.title, menu.info())}}
+			showModal = {()=>{this.showModal(menu.title(), menu.info())}}
 			onPress = {()=>this.props.navigate(menu.redirect)}
 		/>)
 
