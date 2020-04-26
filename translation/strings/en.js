@@ -192,7 +192,7 @@ export default {
 	 * Alert strings
 	 */
 	"empty_fields_alert_title": "Don't leave empty fields",
-	"empty_fields_alert_text": "Both of them should have a value",
+	"empty_fields_alert_text": "all of them should have a value",
 	"ok_action_alert_text": "It's Ok",
 	"number_misstype_alert_title": "The amount should be a number",
 	"number_misstype_alert_text": "",

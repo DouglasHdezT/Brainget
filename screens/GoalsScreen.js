@@ -17,6 +17,7 @@ import GoalsForm from '../components/forms/GoalsForm';
 import AddIncomeModal from '../components/alerts/AddIncomeModal';
 
 import Translation, { Keys } from '../translation/TranslationHelper';
+import { emptyFieldsAlert, misstypeFields } from '../components/alerts/Alerts';
 
 class GoalsScreen extends Component {
 
@@ -41,28 +42,33 @@ class GoalsScreen extends Component {
 	}
 
 	changeHandler = (id, value) => {
-		console.log(value);
-		
 		this.setState({
 			[id]: value
 		})
 	}
 
 	submitForm = async () => {
-		const q1 = parseFloat(this.state.question1);
-		const q2 = parseFloat(this.state.question2);
-		const q3 = parseFloat(this.state.question3);
-		
-		
-		await updateBudgetQuestions(this.props.budgetId, 
-			q1, q2, q3);
-		
-		this.setState({
-			isFirstScreen: true,
-			question1: q1.toFixed(2),
-			question2: q2.toFixed(2),
-			question3: q3.toFixed(2),
-		})
+
+		if( !this.state.question1 || !this.state.question2 || !this.state.question3){
+			emptyFieldsAlert();
+		}else if (isNaN(this.state.question1) || isNaN(this.state.question2) || isNaN(this.state.question3)){
+			misstypeFields()
+		}else {
+			const q1 = parseFloat(this.state.question1);
+			const q2 = parseFloat(this.state.question2);
+			const q3 = parseFloat(this.state.question3);
+			
+			
+			await updateBudgetQuestions(this.props.budgetId, 
+				q1, q2, q3);
+			
+			this.setState({
+				isFirstScreen: true,
+				question1: q1.toFixed(2),
+				question2: q2.toFixed(2),
+				question3: q3.toFixed(2),
+			})
+		}
 	}
 
 	insideNavigate = () => {

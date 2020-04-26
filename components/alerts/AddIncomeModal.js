@@ -8,7 +8,7 @@ import Colors from '../../assets/constants/Colors';
 import BorderedButton from '../buttons/BorderedButton';
 import IncomeForm from '../forms/IncomeForm';
 import TopEndIconButton from '../buttons/TopEndIconButton';
-import { dropConfimation } from './Alerts';
+import { dropConfimation, emptyFieldsAlert, misstypeFields } from './Alerts';
 
 import Translation, { Keys } from './../../translation/TranslationHelper';
 
@@ -36,17 +36,9 @@ class AddIncomeModal extends Component {
 
 	addIncomeVerified = (isUpdating = false) => {
 		if (!this.state.incomeName || !this.state.incomeValue) {
-			Alert.alert(
-				Translation.getStringValue(Keys.empty_fields_alert_title),
-				Translation.getStringValue(Keys.empty_fields_alert_text),
-				[{ text: Translation.getStringValue(Keys.ok_action_alert_text), }]
-			);
-		} else if (typeof parseFloat(this.state.incomeValue) != 'number'){
-			Alert.alert(
-				Translation.getStringValue(Keys.number_misstype_alert_title),
-				Translation.getStringValue(Keys.number_misstype_alert_text),
-				[{ text: Translation.getStringValue(Keys.ok_action_alert_text), }]
-			);
+			emptyFieldsAlert();
+		} else if (isNaN(this.state.incomeValue)){
+			misstypeFields();
 		}else if(isUpdating){
 			this.props.updateIncome(this.state._id, this.state.incomeName, this.state.incomeValue);
 			this.setState({...this.initState});

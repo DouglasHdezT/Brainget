@@ -67,3 +67,19 @@ export const errorWarning = () => {
 		}
 	);
 }
+
+export const emptyFieldsAlert = () => {
+	Alert.alert(
+		Translation.getStringValue(Keys.empty_fields_alert_title),
+		Translation.getStringValue(Keys.empty_fields_alert_text),
+		[{ text: Translation.getStringValue(Keys.ok_action_alert_text), }]
+	);
+}
+
+export const misstypeFields = () => {
+	Alert.alert(
+		Translation.getStringValue(Keys.number_misstype_alert_title),
+		Translation.getStringValue(Keys.number_misstype_alert_text),
+		[{ text: Translation.getStringValue(Keys.ok_action_alert_text), }]
+	);
+}

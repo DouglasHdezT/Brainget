@@ -8,7 +8,7 @@ import Colors from '../../assets/constants/Colors';
 import BorderedButton from '../buttons/BorderedButton';
 import CostForm from '../forms/CostForm';
 import TopEndIconButton from '../buttons/TopEndIconButton';
-import { dropConfimation } from './Alerts';
+import { dropConfimation, emptyFieldsAlert, misstypeFields } from './Alerts';
 
 import Translation, {Keys} from '../../translation/TranslationHelper';
 
@@ -38,17 +38,9 @@ class AddCostModal extends Component {
 
 	addCost = (isUpdating = false) => {
 		if (!this.state.costName || !this.state.costValue) {
-			Alert.alert(
-				Translation.getStringValue(Keys.empty_fields_alert_title),
-				Translation.getStringValue(Keys.empty_fields_alert_text),
-				[{ text: Translation.getStringValue(Keys.ok_action_alert_text), }]
-			);
-		} else if (typeof parseFloat(this.state.costValue) != 'number'){
-			Alert.alert(
-				Translation.getStringValue(Keys.number_misstype_alert_title),
-				Translation.getStringValue(Keys.number_misstype_alert_text),
-				[{ text: Translation.getStringValue(Keys.ok_action_alert_text), }]
-			);
+			emptyFieldsAlert();
+		} else if (isNaN(this.state.incomeValue)){
+			misstypeFields();
 		}else if(isUpdating){
 			this.props.updateCost(this.state._id, this.state.costName, this.state.costValue, this.state.isPercent, this.state.isTaxable);
 			this.setState({...this.initState});
