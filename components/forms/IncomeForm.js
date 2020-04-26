@@ -11,6 +11,7 @@ const IncomeForm = props => {
 				id='incomeName'
 				value={props.incomeName}
 				changeHandler={props.changeHandler}
+				options = { props.options }
 			/>
 			<LabelAsidesInput
 				id='incomeValue'

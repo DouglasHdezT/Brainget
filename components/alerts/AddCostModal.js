@@ -124,6 +124,7 @@ class AddCostModal extends Component {
 									incomeName={this.state.costName}
 									incomeValue={this.state.costValue}
 									isPercent = {this.state.isPercent}
+									options = { this.props.options }
 									changeHandler={this.changeHandler}
 								/>
 							</View>

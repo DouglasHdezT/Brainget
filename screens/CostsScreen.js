@@ -47,6 +47,7 @@ class CostsScreen extends Component {
 	render(){
 		const TAG = this.props.navigation.getParam('TAG');
 		const itemsFiltered = this.props.expenses.filter(cost => cost.TAG === TAG);
+		const options = this.props.navigation.getParam("options", []).map(key => Translation.getStringValue(key));
 
 		const leftFootContent = <MoneyContainer money = {this.props.currentBalance.toFixed(2)}/>;
 		const rightFootContent = <PeriodContainer period = { `${this.props.startDay} - ${this.props.endDay} ${intToMonth(this.props.month)}` }/>;
@@ -60,6 +61,7 @@ class CostsScreen extends Component {
 					updateCost = { (id, title, value, isPercent) => updateCost(this.props.budgetId, id, title, value, isPercent) }
 					isNewCost = {this.state.isNewCost}
 					oldCost = {this.state.editableCost}
+					options = { options }
 					visible = {this.state.addModal}
 					TAG = {TAG}
 					/>

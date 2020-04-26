@@ -67,6 +67,7 @@ class GoalsScreen extends Component {
 	}
 	
 	render(){
+		const options = this.props.navigation.getParam("options", []).map(key => Translation.getStringValue(key));
 		
 		const leftFootContent = (
 			this.state.isFirstScreen ? 
@@ -101,6 +102,7 @@ class GoalsScreen extends Component {
 					closeModal = {this.toggleAddModal}
 					isNewIncome = {this.state.isNewIncome}
 					oldIncome = {this.state.editableIncome}
+					options = { options }
 				/>
 				<ImageBackground
 					source = {BGImages.goalsScreen}

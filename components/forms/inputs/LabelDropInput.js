@@ -4,6 +4,7 @@ import { StyleSheet, View, TextInput, Text } from 'react-native';
 import Colors from '../../../assets/constants/Colors';
 
 import Translation, { Keys } from '../../../translation/TranslationHelper';
+import OptionsModalButton, { DOWN } from '../../buttons/OptionsModalButton';
 
 const LabelDropInput = props => {
 	return (
@@ -17,7 +18,13 @@ const LabelDropInput = props => {
 					style={styles.input}
 					placeholder="p.e. Alquiler casa"
 				/>
-				
+				<OptionsModalButton
+					dark
+					small
+					direction = { DOWN }
+					items = { props.options ? props.options : [] }
+					onChange = { (text) => props.changeHandler(props.id, text)  }
+				/>				
 			</View>
 		</View>
 	);
@@ -53,7 +60,7 @@ const styles = StyleSheet.create({
 
 	},
 	input: {
-		flex:1,
+		flex:4,
 		paddingHorizontal: 8,
 
 		fontFamily: 'roboto',

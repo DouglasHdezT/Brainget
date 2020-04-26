@@ -10,6 +10,7 @@ const CostForm = props => {
 			<LabelDropInput
 				id='costName'
 				value={props.incomeName}
+				options = { props.options }
 				changeHandler={props.changeHandler}
 			/>
 			<LabelAsideDropMoney

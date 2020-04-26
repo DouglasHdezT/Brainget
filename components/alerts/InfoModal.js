@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Modal, View, Text, StyleSheet } from 'react-native';
+import { Modal, View, Text, ScrollView, StyleSheet } from 'react-native';
 import TopEndIconButton from '../buttons/TopEndIconButton';
 
 import Colors from '../../assets/constants/Colors';
@@ -22,7 +22,14 @@ const InfoModal = props => {
 						/>
 
 					<Text style = {styles.title}>{props.title}</Text>
-					<Text style = {styles.text}>{props.text}</Text>
+					
+					<ScrollView
+						style = { styles.textContainer }
+						contentContainerStyle = { {flexGrow: 1, justifyContent: "center", marginHorizontal: 12} }>
+
+						<Text style = {styles.text}>{props.text}</Text>
+					
+					</ScrollView>
 				</View>
 			</View>
 
@@ -41,6 +48,7 @@ const styles = StyleSheet.create({
 	modalView: {
 		width: '90%',
 		minHeight: '50%',
+		maxHeight: '60%',
 
 		padding: 24,
 
@@ -52,6 +60,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 	},
 	title:{
+		padding: 16,
 		fontFamily: 'roboto-bold',
 		fontSize: 24,
 		color:Colors.ModalTitleColor,
@@ -59,13 +68,11 @@ const styles = StyleSheet.create({
 		textAlign:'center',
 		textAlignVertical:'center',
 
-		flex: 1
 	},
-
+	textContainer:{
+		marginTop: 8,
+	},
 	text:{
-		marginTop: 16,
-		flex:3,
-
 		fontFamily: 'roboto',
 		fontSize: 16,
 		color:Colors.ModalTextColor,

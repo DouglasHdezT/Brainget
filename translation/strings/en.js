@@ -35,6 +35,93 @@ export default {
 	"aid_costs_info_text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.",
 
 	/**
+	 * Budget predefined options
+	 */
+	"fixed_op1": "Mortagage / Rent",
+	"fixed_op2": "Phone",
+	"fixed_op3": "Internet",
+	"fixed_op4": "Gas",
+	"fixed_op5": "Sewer",
+	"fixed_op6": "Water",
+	"fixed_op7": "Cable or Satellite",
+	"fixed_op8": "Electricity",
+	"fixed_op9": "Memberships",
+	"fixed_op10": "Car Payment",
+	"fixed_op11": "Life Insurance",
+	"fixed_op12": "Auto Insurance",
+	"fixed_op13": "Health Insurance",
+	"fixed_op14": "Tuition Payments",
+	"fixed_op15": "Personal loans",
+	"fixed_op16": "Credit Cards",
+	"fixed_op17": "Gym Membership",
+
+	"unexpected_op1": "Auto Maintenance & Repairs",
+	"unexpected_op2": "House Maintenance & Repairs",
+	"unexpected_op3": "Appliances Repairs",
+	"unexpected_op4": "Workforce (House or Car)",
+	"unexpected_op5": "Other",
+
+	"variable_op1": "Food",
+	"variable_op2": "Eating Out",
+	"variable_op3": "Babysister",
+	"variable_op4": "Vehicle Registration",
+	"variable_op5": "Gasoline",
+	"variable_op6": "Mileage",
+	"variable_op7": "Carwash",
+	"variable_op8": "Workshop",
+	"variable_op9": "Hardware",
+	"variable_op10": "Software",
+	"variable_op11": "Web Page Domain",
+	"variable_op12": "Web Page Hosting",
+	"variable_op13": "Web Page Manage",
+	"variable_op14": "Social Media Management",
+	"variable_op15": "Gifts",
+	"variable_op16": "Marketing Campaigns",
+	"variable_op17": "Goverment Transactions",
+	"variable_op18": "Office Supplies",
+	"variable_op19": "Dry Clean",
+	"variable_op20": "Clothing",
+	"variable_op21": "Work Lunches",
+
+	"optional_op1": "Stores",
+	"optional_op2": "Hairdressing",
+	"optional_op3": "Baber Shop",
+	"optional_op4": "Tools",
+	"optional_op5": "Recreation",
+	"optional_op6": "Internet Shopping",
+	"optional_op7": "Family Remittances",
+	"optional_op8": "Appliances and Furnitures",
+	"optional_op9": "Annual Memberships",
+	"optional_op10": "Transportation (Bus, Taxi, etc.)",
+	"optional_op11": "Books / Magazines",
+	"optional_op12": "Nursery",
+	"optional_op13": "Travels",
+	"optional_op14": "Vacations",
+	"optional_op15": "Gadgets",
+
+	"health_op1": "Health Checkup",
+	"health_op2": "Doctors Visits",
+	"health_op3": "Psychological Visits",
+	"health_op4": "Drugs",
+	"health_op5": "Vitamins and Supplements",
+	
+	"aid_op1": "Tithes and Offerings",
+	"aid_op2": "Savings",
+	"aid_op3": "Donations",
+	"aid_op4": "Emergency Funds",
+
+	/**
+	 * Income Predefined options
+	 */
+	"income_op1": "Salary",
+	"income_op2": "Rental of House",
+	"income_op3": "Rental of Car",
+	"income_op4": "Professional Services",
+	"income_op5": "Lottery",
+	"income_op6": "Remittance",
+	"income_op7": "Sales",
+
+	/**
 	 * Months strings
 	 */
 	"january_month_text": "January",

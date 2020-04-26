@@ -120,6 +120,7 @@ class AddIncomeModal extends Component {
 								<IncomeForm
 									incomeName={this.state.incomeName}
 									incomeValue={this.state.incomeValue}
+									options = {this.props.options}
 									changeHandler={this.changeHandler}
 								/>
 							</View>

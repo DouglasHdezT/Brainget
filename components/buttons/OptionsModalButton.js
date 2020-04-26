@@ -7,6 +7,8 @@ import CloseButton from './TopEndIconButton';
 import Icons from '../../assets/constants/Icons';
 import Colors from '../../assets/constants/Colors';
 
+import Traslation, { Keys } from '../../translation/TranslationHelper';
+
 export const RIGHT = "Right";
 export const LEFT = "Left";
 export const UP = "Up";
@@ -83,7 +85,7 @@ class OptionsModalButton extends Component {
 									src = {Icons.close}
 									onPress = {this.handleBackButton}
 								/>
-								<Text style = {styles.titleText} > Elige </Text>
+								<Text style = {styles.titleText} > { Traslation.getStringValue(Keys.choose_modal_title_text) } </Text>
 
 								<DividerHorizontal/>
 
@@ -98,9 +100,18 @@ class OptionsModalButton extends Component {
 				</Modal>
 
 				<TouchableOpacity 
-					onPress = {() => { this.setState({isVisible: true}) }}
+					onPress = {() => {
+						if(this.props.items && this.props.items.length > 0){
+							this.setState({isVisible: true})
+						}  
+					}}
 					style = { styles.renderedContainer }>
-					<Text style = {{...styles.rederedText, color: textColor, fontSize: fontSize}}> { this.props.value } </Text>
+					
+					{ 
+						this.props.withoutText ||
+						<Text style = {{...styles.rederedText, color: textColor, fontSize: fontSize}}> { this.props.value } </Text>
+					}
+
 					<Image style = {styles.rederedIcon} source = { icon } />
 				</TouchableOpacity>
 			</>
@@ -120,7 +131,8 @@ const styles = StyleSheet.create({
 
 	},		
 	listContainer:{
-		height: (Math.round(Dimensions.get('window').height) / 3) * 1.5,
+		minHeight: "40%",
+		maxHeight: "70%",
 		width:"80%",
 
 		marginVertical: 32,
@@ -143,7 +155,7 @@ const styles = StyleSheet.create({
 		justifyContent:"center",
 	},
 	renderedContainer:{
-		width:"100%",
+		//width:"100%",
 		flex:1,
 
 		flexDirection: "row",

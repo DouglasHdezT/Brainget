@@ -12,6 +12,7 @@ export default [
 			route: 'Goals',
 			params: {
 				title: () => Translation.getStringValue(Keys.goals_title_text),
+				options: [ Keys.income_op1, Keys.income_op2, Keys.income_op3, Keys.income_op4, Keys.income_op5, Keys.income_op6, Keys.income_op7 ]
 			}
 		}
 	},
