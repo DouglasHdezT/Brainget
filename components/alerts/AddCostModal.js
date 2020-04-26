@@ -21,6 +21,7 @@ class AddCostModal extends Component {
 			costName: '',
 			costValue: '',
 			isPercent: false,
+			isTaxable: false,
 			_id:''
 		}
 
@@ -49,11 +50,11 @@ class AddCostModal extends Component {
 				[{ text: Translation.getStringValue(Keys.ok_action_alert_text), }]
 			);
 		}else if(isUpdating){
-			this.props.updateCost(this.state._id, this.state.costName, this.state.costValue, this.state.isPercent);
+			this.props.updateCost(this.state._id, this.state.costName, this.state.costValue, this.state.isPercent, this.state.isTaxable);
 			this.setState({...this.initState});
 			this.props.closeModal();
 		} else{
-			this.props.addCost(this.state.costName, this.state.costValue, this.state.isPercent, this.props.TAG);
+			this.props.addCost(this.state.costName, this.state.costValue, this.state.isPercent, this.props.TAG, this.state.isTaxable);
 			this.setState({...this.initState});
 			this.props.closeModal();
 		}
@@ -64,6 +65,7 @@ class AddCostModal extends Component {
 			...this.state,
 			costName: this.props.oldCost.title,
 			costValue: this.props.oldCost.money.toFixed(2),
+			isTaxable: this.props.oldCost.taxable ? true : false,
 			_id: this.props.oldCost._id,
 		})
 	}
@@ -124,6 +126,7 @@ class AddCostModal extends Component {
 									incomeName={this.state.costName}
 									incomeValue={this.state.costValue}
 									isPercent = {this.state.isPercent}
+									isTaxable = { this.state.isTaxable }
 									options = { this.props.options }
 									changeHandler={this.changeHandler}
 								/>

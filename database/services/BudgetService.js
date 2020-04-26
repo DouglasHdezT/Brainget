@@ -219,12 +219,12 @@ export const addIncome = (budgetId, title, money) => {
 	});
 }
 
-export const addCost = (budgetId, title, value, isPercent, TAG) => {
+export const addCost = (budgetId, title, value, isPercent, TAG, taxable = false) => {
 	startLoading();
 
 	db.get(budgetId).then(budget => {
 		const money = isPercent ? parseFloat(( value * budget.totalIncome) / 100) : value;
-		const newCost = new Cost(title, money, TAG);
+		const newCost = new Cost(title, money, TAG, taxable);
 
 		budget.expenses = [...budget.expenses, newCost];
 
@@ -274,7 +274,7 @@ export const updateIncome = (budgetId, id, title, money) => {
 	})
 }
 
-export const updateCost = (budgetId, id, title, value, isPercent) => {
+export const updateCost = (budgetId, id, title = "", value = 0, isPercent = false, taxable = false) => {
 	startLoading();
 
 	db.get(budgetId).then(budget => {
@@ -287,6 +287,7 @@ export const updateCost = (budgetId, id, title, value, isPercent) => {
 				...budget.expenses[index],
 				title: title,
 				money: money,
+				taxable: taxable
 			}
 
 			const { totalIncome, totalCosts, currentBalance } = updateValues(budget);

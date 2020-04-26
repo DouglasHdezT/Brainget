@@ -12,4 +12,6 @@ export default {
 	left_gray: require('../../assets/img/left_arrow_gray.png'),
 	up_gray: require('../../assets/img/up_arrow_gray.png'),
 	down_gray: require('../../assets/img/down_arrow_gray.png'),
+	tax_selected: require('../../assets/img/tax_selected.png'),
+	tax_unselected: require('../../assets/img/tax_unselected.png'),
 }

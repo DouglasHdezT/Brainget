@@ -46,7 +46,6 @@ const styles = StyleSheet.create({
 
 		justifyContent: "center",
 		alignItems: "flex-start",
-		marginTop:8
 	},
 	title: {
 		flex: 1,
