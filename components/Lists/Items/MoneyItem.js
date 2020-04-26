@@ -6,6 +6,9 @@ import Icons from '../../../assets/constants/Icons';
 import Colors from '../../../assets/constants/Colors';
 
 const MoneyItem = props => {
+	const taxableIcon = (
+		<Image style = { styles.taxableIcon } source = { Icons.tax_unselected } />
+	);
 	return(
 		<View style = {styles.container}>
 			<View style = {styles.textContainer}>
@@ -13,7 +16,10 @@ const MoneyItem = props => {
 				<Text style = {styles.subtitle}>$ {props.money.toFixed(2)}</Text>
 				<Text style = {styles.subtitle}>{props.date}</Text>
 			</View>
-			<TouchableOpacity style = {styles.iconContainer} onPress = {props.update}>
+
+			{ props.isTaxable && taxableIcon } 
+
+			<TouchableOpacity style = {{...styles.iconContainer, marginLeft: props.isTaxable ? 0 : 16}} onPress = {props.update}>
 				<Image
 					source = {Icons.edit}
 					style = {styles.icon}	
@@ -38,16 +44,17 @@ const styles = StyleSheet.create({
 
 		flexDirection: 'row',
 		justifyContent:'space-between',
+		alignItems: "center"
 	},
 	textContainer:{
-		width:'50%',
+		flex:1,
 		alignItems:'stretch',
 		justifyContent: 'center'
 	},
 	iconContainer:{
 		width: '10%',
 		justifyContent:"center",
-		alignItems:'center'
+		alignItems:'center',
 	},
 	icon:{
 		width:'100%',
@@ -62,6 +69,13 @@ const styles = StyleSheet.create({
 		fontFamily: 'roboto',
 		color: Colors.ItemsSubtitles,
 		fontSize: 14,
+	},
+	taxableIcon: {
+		maxWidth: 24,
+		maxHeight: 24,
+		resizeMode: "center",
+
+		marginHorizontal: 16,
 	}
 })
 

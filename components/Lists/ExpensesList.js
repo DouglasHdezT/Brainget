@@ -11,6 +11,7 @@ const ExpensesList = props => {
 			update = {() => props.openAddModal(false, item._id)}
 			title = {item.title} 
 			money = {item.money} 
+			isTaxable = { item.taxable }
 			date = {item.createdAt}/>);
 
 	return (
