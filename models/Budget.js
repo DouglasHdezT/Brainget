@@ -20,5 +20,9 @@ export default class Budget {
 		this.totalIncome = 0;
 		this.totalCosts = 0;
 		this.currentBalance = 0;
+
+		this.question1 = 0;
+		this.question2 = 0;
+		this.question3 = 0;
 	}
 }

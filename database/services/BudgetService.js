@@ -195,6 +195,26 @@ export const createBudget = async (periods) => {
 	}
 }
 
+export const updateBudgetQuestions = async (id ,q1, q2, q3) => {
+	try {
+		startLoading();
+
+		const budget = await db.get(id);
+
+		budget.question1 = q1;
+		budget.question2 = q2;
+		budget.question3 = q3;
+
+		await db.put(budget);
+
+		stopLoading(budget)
+
+	}catch (err){
+		stopLoadingSimple()
+		errorWarning();
+	}
+}
+
 export const addIncome = (budgetId, title, money) => {
 	startLoading();
 	

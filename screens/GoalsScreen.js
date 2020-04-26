@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import { View, ImageBackground, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 
-import { addIncome, removeIncome, updateIncome } from '../database/services/BudgetService'
+import { addIncome, removeIncome, updateIncome, updateBudgetQuestions } from '../database/services/BudgetService'
 
 import BGImages from '../assets/constants/BackgroundImages'
 import Colors from '../assets/constants/Colors'
@@ -31,9 +31,9 @@ class GoalsScreen extends Component {
 
 		this.state = {
 			isFirstScreen: true,
-			question1:'',
-			question2:'',
-			question3:'',
+			question1:this.props.question1.toFixed(2) || 0,
+			question2:this.props.question2.toFixed(2) || 0,
+			question3:this.props.question3.toFixed(2) || 0,
 			addModal: false,
 			isNewIncome: true,
 			editableIncome: {},
@@ -41,8 +41,27 @@ class GoalsScreen extends Component {
 	}
 
 	changeHandler = (id, value) => {
+		console.log(value);
+		
 		this.setState({
 			[id]: value
+		})
+	}
+
+	submitForm = async () => {
+		const q1 = parseFloat(this.state.question1);
+		const q2 = parseFloat(this.state.question2);
+		const q3 = parseFloat(this.state.question3);
+		
+		
+		await updateBudgetQuestions(this.props.budgetId, 
+			q1, q2, q3);
+		
+		this.setState({
+			isFirstScreen: true,
+			question1: q1.toFixed(2),
+			question2: q2.toFixed(2),
+			question3: q3.toFixed(2),
 		})
 	}
 
@@ -78,7 +97,7 @@ class GoalsScreen extends Component {
 		const rightFootContent = (
 			this.state.isFirstScreen ? 
 				<NavContainer right onPress = {this.insideNavigate}/> : 
-				<TextButtonContainer text = { Translation.getStringValue(Keys.submit_action_text) }/>
+				<TextButtonContainer onPress = { this.submitForm } text = { Translation.getStringValue(Keys.submit_action_text) }/>
 		);
 
 		const mainContent = (
@@ -141,6 +160,9 @@ const mapStateToProps = state => ({
 	budgetId: state.budget._id,
 	incomes: state.budget.incomes,
 	totalIncome: state.budget.totalIncome,
+	question1: state.budget.question1,
+	question2: state.budget.question2,
+	question3: state.budget.question3,
 });
 
 export default connect(mapStateToProps, null)(GoalsScreen);
