@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { StyleSheet, TouchableWithoutFeedback, View, Keyboard } from 'react-native';
+import { StyleSheet, TouchableWithoutFeedback, ScrollView, Keyboard } from 'react-native';
 import LabeledMoneyInput from './inputs/LabeledMoneyInput';
 
 import Translation, { Keys } from '../../translation/TranslationHelper';
@@ -8,7 +8,8 @@ import Translation, { Keys } from '../../translation/TranslationHelper';
 const GoalsForm = props => {
 	return (
 		<TouchableWithoutFeedback onPress = { () => {Keyboard.dismiss()}}>
-			<View style = {{flex:1}}>
+			<ScrollView style = {{flex:1}}
+				contentContainerStyle = {{ flexGrow:1, justifyContent: "center" }}>
 				<LabeledMoneyInput 
 					id = 'question1'
 					changeHandler = {props.changeHandler}
@@ -24,7 +25,7 @@ const GoalsForm = props => {
 					changeHandler = {props.changeHandler}
 					value = {props.question3}
 					label = { Translation.getStringValue(Keys.goals_screen_section_2_q3) }/>
-			</View>
+			</ScrollView>
 		</TouchableWithoutFeedback>
 	);
 }
