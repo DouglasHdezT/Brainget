@@ -11,7 +11,8 @@ const MoneyItemsReportList = props => {
 			<React.Fragment key = { `${item._id}Div` }>
 				<SingleReportItem
 					title = {item.title} 
-					money = { item.money.toFixed(2) } 
+					money = { item.money.toFixed(2) }
+					isTaxable = { item.taxable } 
 					date= {item.createdAt}/>
 				{ index < (array.lenght - 1) && divider }
 			</React.Fragment>
