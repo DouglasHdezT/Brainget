@@ -67,6 +67,7 @@ export default class App extends Component {
 			//budgetService.showInfo();
 			//budgetService.showAll()
 			//budgetService.getYears();
+			//budgetService.getPreviousBudgetWithSameConfiguration();
 			//console.log( await (await budgetService.getYearsAndBudgetsOfLast()).budgetsOfLastYear )
 			await budgetService.configIndex();
 
@@ -134,16 +135,17 @@ export default class App extends Component {
 	}
 	
 	render(){
-		if (!this.state.dataLoaded) {
-			return (<AppLoading
-				startAsync={this.loadData}
-				onFinish={() => this.setDataLoaded(true)} />);
-		}
+		const mainContent = <MainNavigationStack />
+		const splashScreen = (
+			<AppLoading
+						startAsync={this.loadData}
+						onFinish={() => this.setDataLoaded(true)} />
+		);
 
 		return (
 			<Provider store = {store}>
 				<LoadingModal visible = { this.state.loading } />
-				<MainNavigationStack />
+				{ this.state.dataLoaded ? mainContent : splashScreen }
 			</Provider>	
 		);
 	}

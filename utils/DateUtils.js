@@ -11,6 +11,15 @@ export const getLastDayInMonth = (month, year) => {
 	return new Date(year, month + 1, 0).getDate();
 }
 
+export const getPreviousMonth = (month, year) => {
+	const date = new Date(year, month, 0);
+
+    return {
+		month: date.getMonth(),
+		year: date.getFullYear(),
+	}; 
+}
+
 export const dateInObject = () => {
 	const date = new Date();
 	const day = date.getDate();
@@ -32,6 +41,7 @@ export const getPeriodLimits = (periods) => {
 
 	let limitBot = 0
 	let limitTop = limitBot + jump;
+	let period = 1;
 
 	for ( let i = 0 ; i < periods ; i++ ) {
 		if(day > limitBot && day <= limitTop){
@@ -40,12 +50,14 @@ export const getPeriodLimits = (periods) => {
 		limitBot += jump
 		limitTop += jump
 		limitTop = limitTop <= lastDay ? limitTop : lastDay;
-
+		period ++;
 	} 
 
 	limitBot +=1;
 
 	return {
+		period: period,
+		periods: periods,
 		startDay: limitBot,
 		endDay: limitTop
 	}

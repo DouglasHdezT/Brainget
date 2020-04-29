@@ -6,7 +6,7 @@ import Translation, { Keys } from '../../../translation/TranslationHelper';
 
 const PeriodContainer = props => {
 	return(
-		<View>
+		<View style = { styles.container }>
 			<Text style = {styles.text}> { Translation.getStringValue(Keys.period_prefix_footer_text) } </Text>
 			<Text style = {styles.text}> { props.period }</Text>
 		</View>

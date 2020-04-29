@@ -1,7 +1,11 @@
 import PouchDB from '../config/builder';
 
 import { DB_NAME } from '../../assets/constants/KeyValues';
-import { dateInObject, intToMonth } from '../../utils/DateUtils'
+import DefaultBudgetData from '../../assets/constants/DefaultBudgetData'
+
+import Translation from '../../translation/TranslationHelper';
+
+import { dateInObject, intToMonth, getPreviousMonth } from '../../utils/DateUtils'
 import { updateValues } from '../../utils/BudgetUtils'
 
 import { errorWarning } from '../../components/alerts/Alerts'
@@ -14,6 +18,7 @@ import { setLoading } from '../../store/actions/ConfigActions';
 import Budget from '../../models/Budget';
 import Income from '../../models/Income';
 import Cost from '../../models/Cost';
+import ExpensesTags from '../../assets/constants/ExpensesTags';
 
 let db = new PouchDB(DB_NAME, { adapter: 'react-native-sqlite' });
 
@@ -26,7 +31,7 @@ export const showInfo = () => {
 export const configIndex = () => {
 	return db.createIndex({
 		index:{
-			fields: ["year", "month", "startDay", "endDay"]
+			fields: ["year", "month", "startDay", "endDay", "period", "periods"],
 		}
 	})
 }
@@ -183,16 +188,66 @@ export const showAll = () => {
 	})
 }
 
-export const createBudget = async (periods) => {
+export const createBudget = async (periodsConf) => {
 	try{
 		startLoading()
-		const newBudget = new Budget(periods);
+		const newBudget = new Budget(periodsConf);
+		
+		/* Recovering data logic */
+		const { year, month, period, periods } = newBudget;
+		const previousBudget = await getPreviousBudgetWithSameConfiguration(year, month, period, periods);
+
+		if (previousBudget.length > 0){
+			const newIncomes = previousBudget[0].incomes.map(item => new Income(item.title, item.money))
+			const filteredExpenses = previousBudget[0].expenses.filter(item => item.TAG == ExpensesTags.Fixed)
+			
+			const newExpenses = filteredExpenses.map(item => {
+					return new Cost(item.title, item.money, item.TAG, item.taxable)
+			})
+			
+			newBudget.incomes = newIncomes;
+			newBudget.expenses = newExpenses;
+		}else{
+			const newIncomes = DefaultBudgetData.incomesKeys.map(key => new Income(Translation.getStringValue(key), 0));
+			const newExpenses = DefaultBudgetData.expensesKeys.map(item => new Cost(Translation.getStringValue(item.key), 0, item.TAG, false));
+
+			newBudget.incomes = newIncomes;
+			newBudget.expenses = newExpenses;
+		}
+
+		const { totalIncome, totalCosts, currentBalance } = updateValues(newBudget);
+
+		newBudget.totalIncome = totalIncome;
+		newBudget.totalCosts = totalCosts;
+		newBudget.currentBalance = currentBalance;
+
 		await db.post({...newBudget});
 		stopLoadingSimple()
 	}catch(err){
 		stopLoadingSimple()
 		errorWarning()
 	}
+}
+
+export const getPreviousBudgetWithSameConfiguration = async (year, month, period, periods) => {
+	try{
+		const prevDate = getPreviousMonth(month, year); 
+
+		const results = await db.find({
+			selector: {
+				month: prevDate.month,
+				year: prevDate.year,
+				periods: periods,
+				period: period
+			},
+			fields: [ "expenses", "incomes", "startDay", "endDay", "month" ]
+		});
+		
+		return await results.docs;
+	}
+	catch (err){
+		console.log(err);
+	}	
 }
 
 export const updateBudgetQuestions = async (id ,q1, q2, q3) => {

@@ -7,7 +7,7 @@ const BorderedButton = props => {
 		<View style = {{...styles.container, backgroundColor: props.color}}>
 			<TouchableOpacity
 				onPress={props.onPress}>
-				<Text style = {styles.text}>{props.text}</Text>
+				<Text style = {{...styles.text, fontSize: props.small ? 16 : 20}}>{props.text}</Text>
 			</TouchableOpacity>
 		</View>
 	);
@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
 	container:{
 		flex:1,
 		minHeight: 50,
+		maxHeight: 75,
 
 		paddingHorizontal: 16,
 		paddingVertical: 8,

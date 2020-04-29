@@ -11,16 +11,16 @@ export const dropConfimation = action => {
 			{
 				text: Translation.getStringValue(Keys.accept_action_alert_text),
 				onPress: action,
-				style: 'cancel'
+				style: "default"
 			},
 			{
 				text: Translation.getStringValue(Keys.deny_action_alert_text),
 				onPress: () => {},
-				style: 'default'
+				style: "cancel"
 			}
 		],
 		{
-			cancelable: true
+			onDismiss: () => {  }
 		}
 	);
 }
@@ -28,8 +28,8 @@ export const dropConfimation = action => {
 export const periodsSettings = () =>{
 	return new Promise((resolve, reject) => {
 		Alert.alert(
-			Translation.getStringValue(Keys.confirmation_alert_title),
-			Translation.getStringValue(Keys.confirmation_alert_text),
+			Translation.getStringValue(Keys.configuration_alert_title),
+			Translation.getStringValue(Keys.configuration_alert_text),
 			[
 				{
 					text: Translation.getStringValue(Keys.configuration_biweekly_action_text),
@@ -43,7 +43,6 @@ export const periodsSettings = () =>{
 				}
 			],
 			{
-				cancelable: false,
 				onDismiss: () => { resolve("1") }
 			}
 		);
@@ -58,7 +57,7 @@ export const errorWarning = () => {
 			{
 				text: Translation.getStringValue(Keys.ok_action_alert_text),
 				onPress: () => { BackHandler.exitApp() },
-				style: 'destructive'
+				style: "default"
 			}
 		],
 		{
@@ -72,7 +71,11 @@ export const emptyFieldsAlert = () => {
 	Alert.alert(
 		Translation.getStringValue(Keys.empty_fields_alert_title),
 		Translation.getStringValue(Keys.empty_fields_alert_text),
-		[{ text: Translation.getStringValue(Keys.ok_action_alert_text), }]
+		[{ 
+			text: Translation.getStringValue(Keys.ok_action_alert_text), 
+			onPress: () => {},
+			style: "default"
+		}]
 	);
 }
 
@@ -80,6 +83,10 @@ export const misstypeFields = () => {
 	Alert.alert(
 		Translation.getStringValue(Keys.number_misstype_alert_title),
 		Translation.getStringValue(Keys.number_misstype_alert_text),
-		[{ text: Translation.getStringValue(Keys.ok_action_alert_text), }]
+		[{ 
+			text: Translation.getStringValue(Keys.ok_action_alert_text), 
+			onPress: () => {},
+			style: "default"
+		}]
 	);
 }

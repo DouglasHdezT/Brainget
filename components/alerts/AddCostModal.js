@@ -39,7 +39,7 @@ class AddCostModal extends Component {
 	addCost = (isUpdating = false) => {
 		if (!this.state.costName || !this.state.costValue) {
 			emptyFieldsAlert();
-		} else if (isNaN(this.state.incomeValue)){
+		} else if (isNaN(this.state.costValue)){
 			misstypeFields();
 		}else if(isUpdating){
 			this.props.updateCost(this.state._id, this.state.costName, this.state.costValue, this.state.isPercent, this.state.isTaxable);
