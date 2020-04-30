@@ -30,5 +30,7 @@ export default {
 	red700: '#D32F2F',
 	red800: '#C62828',
 	green700: '#689F38',
-	green800: '#2E7D32'
+	green800: '#2E7D32',
+	fontColorLight: "#fff",
+	fontColorDark: "#000",
 }

@@ -13,7 +13,7 @@ const LabeledInput = props => {
 					value = {props.value}
 					onChangeText = {text => props.changeHandler(props.id, text)}
 					style = {styles.textInput} 
-					keyboardType= 'numeric' />
+					keyboardType= 'number-pad' />
 			</View>
 		</View>
 	);

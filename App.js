@@ -82,6 +82,7 @@ export default class App extends Component {
 
 			store.dispatch(syncBudget(budgetActual[0]));
 			console.log("Budget cargado");
+			
 
 		} catch(err) {
 			console.log(err)
@@ -104,6 +105,8 @@ export default class App extends Component {
 					console.log("Creando Budget");
 					await budgetService.createBudget(periodsConfig);
 					budgetActual = await (await budgetService.getActual()).docs
+					store.dispatch(syncBudget(budgetActual[0]));
+				}else if (budgetActual[0]._id !== store.getState().budget._id) {
 					store.dispatch(syncBudget(budgetActual[0]));
 				}
 

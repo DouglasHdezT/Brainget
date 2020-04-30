@@ -7,6 +7,9 @@ import Colors from '../../assets/constants/Colors';
 import Icons from '../../assets/constants/Icons';
 
 const InfoModal = props => {
+	const maxHeight = props.tall ? "95%" : "60%";
+	const maxWidth = props.tall ? "97%" : "90%";
+
 	return(
 		<Modal
 			animationType="fade"
@@ -15,7 +18,7 @@ const InfoModal = props => {
 			onRequestClose = {props.closeModal}>
 
 			<View style = {styles.modalBackground}>
-				<View style = {styles.modalView}>
+				<View style = {{...styles.modalView, maxHeight: maxHeight, width: maxWidth}}>
 					<TopEndIconButton
 						src = {Icons.close}
 						onPress = {props.closeModal}
@@ -25,7 +28,7 @@ const InfoModal = props => {
 					
 					<ScrollView
 						style = { styles.textContainer }
-						contentContainerStyle = { {flexGrow: 1, justifyContent: "center", marginHorizontal: 12} }>
+						contentContainerStyle = { {flexGrow: 1, justifyContent: "center", marginHorizontal: 4} }>
 
 						<Text style = {styles.text}>{props.text}</Text>
 					
@@ -47,10 +50,9 @@ const styles = StyleSheet.create({
 	},
 	modalView: {
 		width: '90%',
-		minHeight: '50%',
 		maxHeight: '60%',
 
-		padding: 24,
+		padding: 16,
 
 		backgroundColor: '#fff',
 
@@ -78,6 +80,7 @@ const styles = StyleSheet.create({
 		color:Colors.ModalTextColor,
 
 		textAlign: 'justify',
+		marginBottom: 16
 	}
 });
 

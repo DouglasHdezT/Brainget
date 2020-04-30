@@ -4,4 +4,5 @@ export default {
 	resultsScreen : require('../img/results_bg.jpg'),
 	reportScreen: require('../img/report_bg.jpg'),
 	statsScreen: require('../img/stats_bg.jpg'),
+	servicesScreen: require('../img/services_bg.jpg'),
 }

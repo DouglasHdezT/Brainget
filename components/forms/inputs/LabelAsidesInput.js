@@ -16,7 +16,7 @@ const LabelAsidesInput = props => {
 					value={props.value}
 					style={styles.input}
 					placeholder = '00.00'
-					keyboardType='numeric'
+					keyboardType='number-pad'
 				/>
 			</View>
 		</View>

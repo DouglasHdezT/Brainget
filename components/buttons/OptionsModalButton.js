@@ -178,7 +178,9 @@ const styles = StyleSheet.create({
 	itemText:{
 		fontFamily: "roboto",
 		fontSize: 18,
-		color: Colors.ModalTextColor
+		color: Colors.ModalTextColor,
+		textAlign: "center",
+		textAlignVertical: "center",
 	},
 	rederedText:{
 		marginEnd:8,

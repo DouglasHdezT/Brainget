@@ -14,4 +14,7 @@ export default {
 	down_gray: require('../../assets/img/down_arrow_gray.png'),
 	tax_selected: require('../../assets/img/tax_selected.png'),
 	tax_unselected: require('../../assets/img/tax_unselected.png'),
+	share: require("../img/share.png"),
+	phone: require("../img/phone.png"),
+	mainPhoto: require("../img/main_photo.jpeg"),
 }

@@ -1,17 +1,10 @@
 import React from 'react';
 
 import { StyleSheet, Image, Text, TouchableOpacity } from 'react-native';
-import Icons from '../../../assets/constants/Icons';
 
-import Translation, { Keys } from '../../../translation/TranslationHelper'
-
-const NavContainer = props => {
-
-	const text = props.left ? Translation.getStringValue(Keys.previous_action_text) : Translation.getStringValue(Keys.next_action_text);
-	const icon = props.left ? Icons.left : Icons.right;
-
-	const textComponent = <Text style = {styles.text}>{text}</Text>;
-	const iconComponent = <Image source = {icon} style = {styles.icon}/>
+const TextIconButtonContainer = props => {
+	const textComponent = <Text style = {styles.text}>{props.text}</Text>;
+	const iconComponent = <Image source = {props.icon} style = {styles.icon}/>
 
 	return(
 		<TouchableOpacity onPress = {props.onPress} style = {styles.container}>
@@ -50,4 +43,4 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default NavContainer;
+export default TextIconButtonContainer;
