@@ -8,6 +8,8 @@ import { intToMonth } from '../utils/DateUtils';
 import budgetMenuConf from '../assets/constants/BudgetMenuData'
 import Colors from '../assets/constants/Colors'
 
+import Translation from '../translation/TranslationHelper';
+
 import MainMenu from '../components/menus/MainMenu';
 import FootLeftRight from '../components/footers/FootLeftRight';
 import MoneyContainer from '../components/footers/containers/MoneyContainer';
@@ -17,7 +19,7 @@ import PeriodContainer from '../components/footers/containers/PeriodContainer';
 const BudgetMenuScreen = props => {
 	const navigate = redirect => {
 		const {route, params} = redirect;
-		props.navigation.navigate(route, {...params, title: params.title()});
+		props.navigation.navigate(route, {...params, title: Translation.getStringValue(params.title)});
 	}
 
 	const leftFootContent = <MoneyContainer money = {props.currentBalance.toFixed(2)}/>;

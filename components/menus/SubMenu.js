@@ -7,15 +7,16 @@ import Colors from '../../assets/constants/Colors';
 import Icons from '../../assets/constants/Icons';
 
 export const SubMenu = props => {
+	const canShowInfo = (props.info && props.info.length !== 0);
 
 	const imageBackgroundCell = (
 		<ImageBackground
 			source = {props.src}
 			style = {{...styles.cell}}>
 
-			<TopEndIconButton	
+			{canShowInfo && <TopEndIconButton	
 				src = {Icons.info}
-				onPress = {props.showModal}/>
+				onPress = {props.showModal}/>}
 
 			<TouchableOpacity onPress = {props.onPress} style = {{flex:1}}>
 				<View style = {{flex:1.75}}/>
@@ -29,9 +30,9 @@ export const SubMenu = props => {
 
 	let iconCell = (
 		<View style = {{...styles.cell, backgroundColor: props.color}}>
-			<TopEndIconButton	
+			{canShowInfo && <TopEndIconButton	
 				src = {Icons.info}
-				onPress = {props.showModal}/>
+				onPress = {props.showModal}/>}
 
 			<TouchableOpacity onPress = {props.onPress} style = {{flex:1, alignItems:"center", justifyContent:'flex-end'}}>
 				<Image style = {styles.icon} source= {props.src}/>

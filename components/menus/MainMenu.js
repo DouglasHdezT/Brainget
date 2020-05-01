@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Modal } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import { SubMenu } from './SubMenu';
-import InfoModal from '../alerts/InfoModal'
+import InfoModal from '../alerts/InfoModal';
+
+import Translation from '../../translation/TranslationHelper';
 
 export default class MainMenu extends Component {
 	constructor(props) {
@@ -34,13 +36,16 @@ export default class MainMenu extends Component {
 	render() {
 		const submenus = this.props.menus.map((menu, index) => <SubMenu
 			key={index}
-			title={menu.title()}
+			title={Translation.getStringValue(menu.title)}
+			info={Translation.getStringValue(menu.info)}
 			src={menu.src}
 			color={menu.color}
 			isSourceBg = {menu.isSourceBg}
-			showModal = {()=>{this.showModal(menu.title(), menu.info())}}
+			showModal = {()=>{this.showModal(Translation.getStringValue(menu.title), Translation.getStringValue(menu.info))}}
 			onPress = {()=>this.props.navigate(menu.redirect)}
 		/>)
+
+		const slicedCount = Math.ceil(menus.length / 2);
 
 		return (
 			<View style={{flex:1, width:'100%'}}>
@@ -53,11 +58,11 @@ export default class MainMenu extends Component {
 
 				<View style={styles.main}>
 					<View style = {styles.column}>
-						{submenus.slice(0,3)}
+						{submenus.slice(0,slicedCount)}
 					</View>
 
 					<View style = {styles.column}>
-						{submenus.slice(3,6)}
+						{submenus.slice(slicedCount,menus.length)}
 					</View>
 				</View>
 			</View>

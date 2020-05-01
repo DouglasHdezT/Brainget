@@ -17,7 +17,7 @@ class MainMenuScreen extends Component {
 
 	navigate = redirect => {
 		const {route, params} = redirect;
-		this.props.navigation.navigate(route, {...params, title: params.title()});
+		this.props.navigation.navigate(route, {...params, title: Translation.getStringValue(params.title)});
 	}
 
 	render(){
