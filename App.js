@@ -82,7 +82,6 @@ export default class App extends Component {
 
 			store.dispatch(syncBudget(budgetActual[0]));
 			console.log("Budget cargado");
-			
 
 		} catch(err) {
 			console.log(err)
