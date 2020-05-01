@@ -1,11 +1,13 @@
-import Colors from './Colors'
-import Translation, { Keys } from '../../translation/TranslationHelper'
+import Colors from './Colors';
+import Icons from './Icons';
+
+import Translation, { Keys } from '../../translation/TranslationHelper';
 
 export default [
 	{
 		title: () => Translation.getStringValue(Keys.goals_title_text),
 		color: Colors.lightBlue500,
-		src: require('../img/metas_financieras.png'),
+		src: Icons.goalsIcon,
 		info: () => Translation.getStringValue(Keys.goals_info_text),
 		isSourceBg: false,
 		redirect: {
@@ -20,7 +22,7 @@ export default [
 	{
 		title: () => Translation.getStringValue(Keys.results_title_text),
 		color: Colors.lightBlue700,
-		src: require('../img/resultados.png'),
+		src: Icons.resultsIcon,
 		info: () => Translation.getStringValue(Keys.results_info_text),
 		isSourceBg: false,
 		redirect: {
@@ -34,7 +36,7 @@ export default [
 	{
 		title: () => Translation.getStringValue(Keys.services_title_text),
 		color: Colors.lightBlue900,
-		src: require('../img/main_photo.jpeg'),
+		src: Icons.mainPhoto,
 		info: () => Translation.getStringValue(Keys.services_info_text),
 		isSourceBg: true,
 		redirect: {
@@ -48,7 +50,7 @@ export default [
 	{
 		title: () => Translation.getStringValue(Keys.budget_title_text),
 		color: Colors.blue500,
-		src: require('../img/presupuesto.png'),
+		src: Icons.budgetIcon,
 		info: () => Translation.getStringValue(Keys.budget_info_text),
 		isSourceBg: false,
 		redirect: {
@@ -62,7 +64,7 @@ export default [
 	{
 		title: () => Translation.getStringValue(Keys.stats_title_text),
 		color: Colors.blue700,
-		src: require('../img/estadisticas.png'),
+		src: Icons.statsIcon,
 		info: () => Translation.getStringValue(Keys.stats_info_text),
 		isSourceBg: false,
 		redirect: {
@@ -76,7 +78,7 @@ export default [
 	{
 		title: () => Translation.getStringValue(Keys.about_title_text),
 		color: Colors.blue900,
-		src: require('../img/acerca_de.png'),
+		src: Icons.aboutIcon,
 		info: () => Translation.getStringValue(Keys.about_info_text),
 		isSourceBg: false,
 		redirect: {

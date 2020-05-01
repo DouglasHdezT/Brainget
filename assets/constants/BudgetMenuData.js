@@ -1,5 +1,6 @@
 import Colors from './Colors'
 import Expenses from './ExpensesTags';
+import Icons from './Icons';
 
 import Translation, { Keys } from '../../translation/TranslationHelper';
 
@@ -7,7 +8,7 @@ export default [
 	{
 		title: () => Translation.getStringValue(Keys.fixed_costs_title_text),
 		color: Colors.cyan500,
-		src: require('../img/gastos_fijos.png'),
+		src: Icons.fixedCosts,
 		info: () => Translation.getStringValue(Keys.fixed_costs_info_text),
 		isSourceBg: false,
 		redirect: {
@@ -24,7 +25,7 @@ export default [
 	{
 		title: () => Translation.getStringValue(Keys.optional_costs_title_text),
 		color: Colors.cyan700,
-		src: require('../img/gastos_opcionales.png'),
+		src: Icons.optionalCosts,
 		info: () => Translation.getStringValue(Keys.optional_costs_info_text),
 		isSourceBg: false,
 		redirect: {
@@ -41,7 +42,7 @@ export default [
 	{
 		title: () => Translation.getStringValue(Keys.health_costs_title_text),
 		color: Colors.cyan900,
-		src: require('../img/gastos_salud.png'),
+		src: Icons.healthCosts,
 		info: () => Translation.getStringValue(Keys.health_costs_info_text),
 		isSourceBg: false,
 		redirect: {
@@ -58,7 +59,7 @@ export default [
 	{
 		title: () => Translation.getStringValue(Keys.variable_costs_title_text),
 		color: Colors.teal500,
-		src: require('../img/gastos_variables.png'),
+		src: Icons.variableCosts,
 		info: () => Translation.getStringValue(Keys.variable_costs_info_text),
 		isSourceBg: false,
 		redirect: {
@@ -75,7 +76,7 @@ export default [
 	{
 		title: () => Translation.getStringValue(Keys.unexpected_costs_title_text),
 		color: Colors.teal700,
-		src: require('../img/imprevistos.png'),
+		src: Icons.unexpectedCosts,
 		info: () => Translation.getStringValue(Keys.unexpected_costs_info_text),
 		isSourceBg: false,
 		redirect: {
@@ -92,7 +93,7 @@ export default [
 	{
 		title: () => Translation.getStringValue(Keys.aid_costs_title_text),
 		color: Colors.teal900,
-		src: require('../img/ahorros_ofrendas.png'),
+		src: Icons.aidCosts,
 		info: () => Translation.getStringValue(Keys.aid_costs_info_text),
 		isSourceBg: false,
 		redirect: {
