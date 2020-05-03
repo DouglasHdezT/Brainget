@@ -9,6 +9,7 @@ import ResultsScreen from '../../screens/ResultsScreen';
 import StatsScreen from '../../screens/StatsScreen';
 import ServicesScreen from '../../screens/ServicesScreen';
 import AboutScreen from '../../screens/AboutScreen';
+import AboutOptionScreen from '../../screens/AboutOptionScreen';
 import BudgetReportScreen from '../../screens/BudgetReportScreen';
 
 import Colors from '../../assets/constants/Colors';
@@ -24,6 +25,7 @@ const NavigationStack = createStackNavigator(
 		Stats: StatsScreen,
 		Services: ServicesScreen,
 		About: AboutScreen,
+		AboutOption: AboutOptionScreen,
 		Report: BudgetReportScreen
 	}, 
 	{

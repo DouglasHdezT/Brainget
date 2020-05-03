@@ -28,4 +28,9 @@ export default {
 	healthCosts: require('../img/gastos_salud.png'),
 	unexpectedCosts: require('../img/imprevistos.png'),
 	aidCosts: require('../img/ahorros_ofrendas.png'),
+	license: require('../img/license.png'),
+	resources: require('../img/attribution.png'),
+	libraries: require('../img/technologies.png'),
+	developer: require('../img/developer.pngs'),
+	logoDev: require("../img/LogoDev.png")
 }
