@@ -339,4 +339,6 @@ export const Keys = {
   developer_repository: 'developer_repository',
   ref24_icon_text: "ref24_icon_text",
   ref25_icon_text: "ref25_icon_text",
+  ref26_icon_text: "ref26_icon_text",
+  empty_text: "empty_text",
 }

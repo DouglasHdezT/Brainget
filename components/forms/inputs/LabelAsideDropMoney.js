@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { StyleSheet, View, Text, TextInput } from 'react-native';
-import RNPicker from 'react-native-picker-select';
 import OptionsModalButton, {DOWN} from '../../buttons/OptionsModalButton';
 
 import Colors from '../../../assets/constants/Colors';

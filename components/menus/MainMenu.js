@@ -45,7 +45,7 @@ export default class MainMenu extends Component {
 			onPress = {()=>this.props.navigate(menu.redirect)}
 		/>)
 
-		const slicedCount = Math.ceil(menus.length / 2);
+		const slicedCount = Math.ceil(this.props.menus.length / 2);
 
 		return (
 			<View style={{flex:1, width:'100%'}}>
@@ -62,7 +62,7 @@ export default class MainMenu extends Component {
 					</View>
 
 					<View style = {styles.column}>
-						{submenus.slice(slicedCount,menus.length)}
+						{submenus.slice(slicedCount,this.props.menus.length)}
 					</View>
 				</View>
 			</View>

@@ -15,6 +15,7 @@ export const Types = {
 
 export default {
 	appName: Keys.app_title_text,
+	mainLogo: Icons.mainLogo,
 	appVersion: Keys.app_version,
 	sourceCode: Keys.source_code_link,
 	licenseShortText: Keys.license_about_short_text,
@@ -23,7 +24,7 @@ export default {
 			title: Keys.license_about_title,
 			color: Colors.pink600,
 			src: Icons.license,
-			info: "",
+			info: Keys.empty_text,
 			isSourceBG: false,
 			redirect:{
 				route: "AboutOption",
@@ -38,16 +39,16 @@ export default {
 			}
 		},
 		{
-			title: Keys.resources_about_title,
+			title: Keys.libraries_about_title,
 			color: Colors.purple600,
-			src: Icons.resources,
-			info: "",
+			src: Icons.libraries,
+			info: Keys.empty_text,
 			isSourceBG: false,
 			redirect:{
 				route: "AboutOption",
 				params:{
-					title: Keys.resources_about_title,
-					type: Types.RESOURCES,
+					title: Keys.libraries_about_title,
+					type: Types.LIBRARIES,
 					props: {
 						main: LibrariesData.main,
 						aux: LibrariesData.aux,
@@ -59,7 +60,7 @@ export default {
 			title: Keys.resources_about_title,
 			color: Colors.deepPurple600,
 			src: Icons.resources,
-			info: "",
+			info: Keys.empty_text,
 			isSourceBG: false,
 			redirect:{
 				route: "AboutOption",
@@ -77,7 +78,7 @@ export default {
 			title: Keys.developer_about_title,
 			color: Colors.indigo600,
 			src: Icons.developer,
-			info: "",
+			info: Keys.empty_text,
 			isSourceBG: false,
 			redirect:{
 				route: "AboutOption",
@@ -89,7 +90,7 @@ export default {
 						email: Keys.developer_email,
 						specs: Keys.developer_specs,
 						repository: Keys.developer_repository,
-						logo: Icons.logoDev
+						logo: "<DeusHdezT/>"
 					}
 				}
 			}

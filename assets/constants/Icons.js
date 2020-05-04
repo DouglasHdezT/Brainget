@@ -1,4 +1,5 @@
 export default {
+	mainLogo: require('../icon.png'), 
 	info: require('../img/info.png'),
 	close: require('../img/close.png'),
 	add: require('../img/add.png'),
@@ -31,6 +32,7 @@ export default {
 	license: require('../img/license.png'),
 	resources: require('../img/attribution.png'),
 	libraries: require('../img/technologies.png'),
-	developer: require('../img/developer.pngs'),
-	logoDev: require("../img/LogoDev.png")
+	developer: require('../img/developer.png'),
+	logoDev: require("../img/LogoDev.png"),
+	github: require('../img/github.png'),
 }

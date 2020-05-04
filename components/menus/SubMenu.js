@@ -7,7 +7,7 @@ import Colors from '../../assets/constants/Colors';
 import Icons from '../../assets/constants/Icons';
 
 export const SubMenu = props => {
-	const canShowInfo = (props.info && props.info.length !== 0);
+	const canShowInfo = (props.info !== undefined && props.info !== "") ? true : false;
 
 	const imageBackgroundCell = (
 		<ImageBackground

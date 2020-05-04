@@ -44,6 +44,7 @@ export default class App extends Component {
 					'roboto': require('./assets/fonts/Roboto-Light.ttf'),
 					'roboto-light': require('./assets/fonts/Roboto-Thin.ttf'),
 					'roboto-bold': require('./assets/fonts/Roboto-Regular.ttf'),
+					'roboto-italic': require('./assets/fonts/Roboto-LightItalic.ttf'),
 				});
 							
 			console.log("Fuentes Cargadas");

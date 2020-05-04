@@ -1,5 +1,6 @@
 export default {
 	"test": "hola",
+	"empty_text": "",
 	"app_title_text": "Brainget",
 	
 	/**
@@ -241,7 +242,7 @@ export default {
 	"source_code_link": "https://github.com/DouglasHdezT/Brainget",
 	"license_about_short_text": "El contenido realizado está licenciado bajo la Licencia MIT",
 	"license_about_title": "Licencia de uso",
-	"developer_about_title": "Desarrolador",
+	"developer_about_title": "Desarrollador",
 	"resources_about_title": "Recursos Utilizados",
 	"libraries_about_title": "Librerias Utilizadas",
 	
@@ -362,6 +363,7 @@ export default {
 	"ref23_icon_text": "Diseñado por Srip / Flaticon",
 	"ref24_icon_text": "Diseñado por Freepik / Flaticon",
 	"ref25_icon_text": "Diseñado por Kiranshastry / Flaticon",
+	"ref26_icon_text": "Diseñado por Pixel Perfect / Flaticon",
 
 
 	/**
