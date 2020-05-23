@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
 		justifyContent:"space-between",
 		alignItems: "center",
 		
-		marginTop:16,
+		marginTop:20,
 	},
 	icon: {
 		marginHorizontal:16,

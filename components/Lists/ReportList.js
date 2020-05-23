@@ -7,6 +7,8 @@ import ReportTitleItem from './Items/ReportTitleItem';
 import MoneyItemsReportList from './MoneyItemsReportList';
 import Accordion from 'react-native-collapsible/Accordion';
 
+import Translation from  '../../translation/TranslationHelper';
+
 const ReportList = props => {
 	const [activeFields, setActiveFields] = useState([]);
 	const { incomes = [], expenses = [] } = props.budget;
@@ -20,7 +22,7 @@ const ReportList = props => {
 
 		return (
 			<ReportTitleItem
-				title = {item.title}
+				title = {Translation.getStringValue(item.title)}
 				first = {isFirst}
 				last = {isLast}
 			/>

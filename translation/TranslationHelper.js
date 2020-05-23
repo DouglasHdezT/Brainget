@@ -340,5 +340,13 @@ export const Keys = {
   ref24_icon_text: "ref24_icon_text",
   ref25_icon_text: "ref25_icon_text",
   ref26_icon_text: "ref26_icon_text",
+  ref27_icon_text: "ref27_icon_text",
   empty_text: "empty_text",
+  title_report_title: 'title_report_title',
+  concept_report_title: 'concept_report_title',
+  taxable_report_title: 'taxable_report_title',
+  taxable_report_yes: 'taxable_report_yes',
+  taxable_report_no: 'taxable_report_no',
+  date_report_title: "date_report_title",
+  total_balance_report_title: "total_balance_report_title",
 }

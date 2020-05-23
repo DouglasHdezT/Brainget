@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { StyleSheet, ScrollView, FlatList, View, Image, Text } from 'react-native';
+import { StyleSheet, ScrollView, View, Image, Text } from 'react-native';
 
 import Translation, { Keys } from '../../translation/TranslationHelper';
 import Colors from '../../assets/constants/Colors';

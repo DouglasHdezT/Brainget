@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 
-import { StyleSheet, View, Text, ImageBackground } from 'react-native';
+import { StyleSheet, View, Text, ImageBackground, Alert } from 'react-native';
+import * as Print from 'expo-print';
+import { Linking } from 'expo';
 
 import { getBudgetById } from '../database/services/BudgetService'
 import { intToMonth } from '../utils/DateUtils'
+import HTMLReportBuilder from '../utils/HTMLReportBuilder';
 
 import BackgroundImages from '../assets/constants/BackgroundImages';
 import Colors from '../assets/constants/Colors';
+import Icons from '../assets/constants/Icons';
+
 import FootThreeTexts from '../components/footers/FootThreeTexts';
 import ReportList from '../components/Lists/ReportList';
+import IconButton from '../components/buttons/IconButton';
 
 import Translation, { Keys } from '../translation/TranslationHelper';
 
@@ -16,6 +22,15 @@ class BudgetReportScreen extends Component {
 	static navigationOptions = ({ navigation }) => {
 		return {
 			title: Translation.getStringValue(Keys.report_screen_title),
+			headerRight: () => {
+				return <View style = { { marginEnd: 16 } }>
+					<IconButton
+						iconSize = { 24 }
+						image = { Icons.download }
+						onPress = { navigation.getParam("printReport", ()=>{}) }
+					/>
+				</View>
+			}
 		};
 	};
 
@@ -28,6 +43,27 @@ class BudgetReportScreen extends Component {
 		}
 	}
 
+	printReport = async () => {
+		const { startDay=0, endDay=0, month=0, year=0, totalIncome=0, totalCosts=0, currentBalance=0, incomes = [], expenses = [] } = this.state.budget;
+		const date = `${startDay} - ${endDay} / ${intToMonth(month)} / ${year}`;
+
+		const html = new HTMLReportBuilder();
+		html.setReportDate(date);
+		html.setItems(incomes, 
+			expenses,
+			totalIncome, 
+			totalCosts, 
+			currentBalance);
+		
+		try {
+			await Print.printAsync({ html: html.build() });
+		}
+		catch(err){
+			console.log(err);
+			Alert.alert(Translation.getStringValue(Keys.error_alert_title));
+		}
+	}
+
 	fetchBudget = async () => {
 		const budget = await getBudgetById(this.budgetId);
 
@@ -37,11 +73,12 @@ class BudgetReportScreen extends Component {
 	}
 
 	componentDidMount(){
+		this.props.navigation.setParams({"printReport": this.printReport});
 		this.fetchBudget()
 	}
 
 	render(){
-		const { startDay=0, endDay=0, month=0, year=0, totalIncome=0, totalCosts=0, currentBalance=0 } = this.state.budget;
+		const { startDay=0, endDay=0, month=0, year=0, totalIncome=0, totalCosts=0, currentBalance=0} = this.state.budget;
 
 		return(
 			<View style = {{flex:1}}>

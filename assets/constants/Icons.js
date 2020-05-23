@@ -35,4 +35,5 @@ export default {
 	developer: require('../img/developer.png'),
 	logoDev: require("../img/LogoDev.png"),
 	github: require('../img/github.png'),
+	download: require('../img/download.png'),
 }

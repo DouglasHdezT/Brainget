@@ -90,7 +90,7 @@ export default {
 						email: Keys.developer_email,
 						specs: Keys.developer_specs,
 						repository: Keys.developer_repository,
-						logo: "<DeusHdezT/>"
+						logo: "<DeushdezT/>"
 					}
 				}
 			}

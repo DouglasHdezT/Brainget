@@ -32,14 +32,12 @@ const LabelDropInput = props => {
 
 const styles = StyleSheet.create({
 	container: {
-		flex: 1,
 
-		justifyContent: "center",
+		justifyContent: "flex-start",
 	},
 	title: {
 		paddingHorizontal: 16,
 		marginBottom: 4,
-		flex:1,
 
 		color: '#000',
 		fontFamily: 'roboto',

@@ -7,7 +7,7 @@ import Colors from '../assets/constants/Colors';
 import BackgroundImages from '../assets/constants/BackgroundImages';
 import Icons from '../assets/constants/Icons';
 
-import Translation, { Keys } from '../translation/TranslationHelper';
+import Translation from '../translation/TranslationHelper';
 
 import AboutData from '../assets/constants/AboutData';
 

@@ -37,6 +37,7 @@ export default {
 		{ source: require("../ref/icon_24.png"), author: Keys.ref24_icon_text },
 		{ source: require("../ref/icon_25.png"), author: Keys.ref25_icon_text },
 		{ source: require("../ref/icon_26.png"), author: Keys.ref26_icon_text },
+		{ source: require("../ref/icon_27.png"), author: Keys.ref27_icon_text },
 
 	],
 }

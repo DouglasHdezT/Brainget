@@ -364,6 +364,7 @@ export default {
 	"ref24_icon_text": "Diseñado por Freepik / Flaticon",
 	"ref25_icon_text": "Diseñado por Kiranshastry / Flaticon",
 	"ref26_icon_text": "Diseñado por Pixel Perfect / Flaticon",
+	"ref27_icon_text": "Diseñado por Kiranshastry / Flaticon",
 
 
 	/**
@@ -375,4 +376,15 @@ export default {
 	"developer_specs": "Desarrollador Web y Móvil",
 	"developer_email": "deushdezt@gmail.com",
 	"developer_repository": "https://github.com/douglashdezt",
+
+	/**
+	 * HTML Report strings
+	 */
+	"title_report_title": "Título",
+	"concept_report_title": "Concepto",
+	"taxable_report_title": "Declarable",
+	"taxable_report_yes": "Sí",
+	"taxable_report_no": "No",
+	"date_report_title": "Fecha",
+	"total_balance_report_title": "Balance Total"
 }
