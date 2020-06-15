@@ -12,10 +12,11 @@ import * as budgetService from './database/services/BudgetService';
 import Translation from './translation/TranslationHelper';
 import * as Localization from 'expo-localization';
 
-import { PERIODS_KEY, DB_NAME } from './assets/constants/KeyValues';
+import { PERIODS_KEY, DB_NAME, TERMS_KEY, FALSE_VALUE, TRUE_VALUE } from './assets/constants/KeyValues';
 import { periodsSettings } from './components/alerts/Alerts';
 
 import MainNavigationStack from './components/navigations/MainNavigationStack';
+import TermScreen from './screens/TermScreen';
 import LoadingModal from './components/alerts/LoadingModal';
 
 
@@ -26,6 +27,7 @@ export default class App extends Component {
 		this.state = {
 			dataLoaded: false,
 			loading: false,
+			termsAndConditions: FALSE_VALUE,
 		}
 
 		this.db = new PouchDB(DB_NAME, {adapter: 'react-native-sqlite'});
@@ -35,6 +37,12 @@ export default class App extends Component {
 		this.setState({
 			dataLoaded: value,
 		});
+	}
+
+	setTermsAccepted = () => {
+		this.setState({
+			termsAndConditions: TRUE_VALUE,
+		})
 	}
 
 	loadData = async () => {
@@ -56,20 +64,28 @@ export default class App extends Component {
 			//Configuración básica
 			let periodsConfig = await AsyncStorage.getItem(PERIODS_KEY);
 	
-			if (periodsConfig == null){
+			if (periodsConfig === null){
 				periodsConfig = await periodsSettings()
-				await AsyncStorage.setItem(PERIODS_KEY, periodsConfig)
+				await AsyncStorage.setItem(PERIODS_KEY, periodsConfig);
 			}
+
+			//Terminos y condiciones?
+
+			let termsAndConditions = await AsyncStorage.getItem(TERMS_KEY);
+			if(termsAndConditions === null){
+				await AsyncStorage.setItem(TERMS_KEY, FALSE_VALUE);
+				termsAndConditions = FALSE_VALUE;
+			}
+
+			this.setState({
+				termsAndConditions: termsAndConditions,
+			});
 			
 			console.log(`Configuraciones cargadas ${periodsConfig}`);
 
 			//Database checking
 			budgetService.openConnection();
-			//budgetService.showInfo();
-			//budgetService.showAll()
-			//budgetService.getYears();
-			//budgetService.getPreviousBudgetWithSameConfiguration();
-			//console.log( await (await budgetService.getYearsAndBudgetsOfLast()).budgetsOfLastYear )
+			
 			await budgetService.configIndex();
 
 			//Budget actual
@@ -138,7 +154,11 @@ export default class App extends Component {
 	}
 	
 	render(){
-		const mainContent = <MainNavigationStack />
+		const mainContent = (
+			this.state.termsAndConditions === FALSE_VALUE ? 
+			<TermScreen onPress = {this.setTermsAccepted}/> : <MainNavigationStack />
+		);
+
 		const splashScreen = (
 			<AppLoading
 						startAsync={this.loadData}
