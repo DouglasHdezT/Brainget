@@ -2,22 +2,24 @@ import React, {Component } from 'react';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 import { Provider } from 'react-redux';
-import { AsyncStorage, AppState } from 'react-native';
+import { AsyncStorage, AppState, View } from 'react-native';
 import PouchDB from './database/config/builder';
 
 import store from './store/Store';
 import { syncBudget } from './store/actions/BudgetActions';
+import { setLoading } from './store/actions/ConfigActions';
 import * as budgetService from './database/services/BudgetService';
 
 import Translation from './translation/TranslationHelper';
 import * as Localization from 'expo-localization';
 
 import { PERIODS_KEY, DB_NAME, TERMS_KEY, FALSE_VALUE, TRUE_VALUE } from './assets/constants/KeyValues';
-import { periodsSettings } from './components/alerts/Alerts';
+import { periodsSettings, errorWarning } from './components/alerts/Alerts';
 
 import MainNavigationStack from './components/navigations/MainNavigationStack';
 import TermScreen from './screens/TermScreen';
 import LoadingModal from './components/alerts/LoadingModal';
+import LoadingExecModal from './components/alerts/LoadingExecModal';
 
 
 export default class App extends Component {
@@ -26,6 +28,7 @@ export default class App extends Component {
 
 		this.state = {
 			dataLoaded: false,
+			configLoaded: false,
 			loading: false,
 			termsAndConditions: FALSE_VALUE,
 		}
@@ -39,14 +42,24 @@ export default class App extends Component {
 		});
 	}
 
-	setTermsAccepted = () => {
+	setConfigLoaded = (value) => {
+		this.setState({
+			configLoaded: value,
+		});
+	}
+
+	setTermsAccepted = async () => {
 		this.setState({
 			termsAndConditions: TRUE_VALUE,
 		})
+
+		AsyncStorage.setItem(TERMS_KEY, TRUE_VALUE);
 	}
 
-	loadData = async () => {
+	loadConfig = async () => {
 		try{
+			console.log("----- Configuración general -----");
+
 			//Cargado de fuentes
 			await Font.loadAsync({
 					'roboto': require('./assets/fonts/Roboto-Light.ttf'),
@@ -61,6 +74,25 @@ export default class App extends Component {
 			Translation.setLanguage((await Localization.getLocalizationAsync()).locale);
 			//console.log(Translation.getStringValue("test"));
 			
+			
+			//Terminos y condiciones?
+			
+			let termsAndConditions = await AsyncStorage.getItem(TERMS_KEY);
+			if(termsAndConditions === null){
+				await AsyncStorage.setItem(TERMS_KEY, FALSE_VALUE);
+				termsAndConditions = FALSE_VALUE;
+			}
+			
+			this.setState({
+				termsAndConditions: termsAndConditions,
+			});
+		} catch(err) {
+			console.log(err)
+		}
+	}
+
+	loadData = async () => {
+		try{
 			//Configuración básica
 			let periodsConfig = await AsyncStorage.getItem(PERIODS_KEY);
 	
@@ -69,18 +101,6 @@ export default class App extends Component {
 				await AsyncStorage.setItem(PERIODS_KEY, periodsConfig);
 			}
 
-			//Terminos y condiciones?
-
-			let termsAndConditions = await AsyncStorage.getItem(TERMS_KEY);
-			if(termsAndConditions === null){
-				await AsyncStorage.setItem(TERMS_KEY, FALSE_VALUE);
-				termsAndConditions = FALSE_VALUE;
-			}
-
-			this.setState({
-				termsAndConditions: termsAndConditions,
-			});
-			
 			console.log(`Configuraciones cargadas ${periodsConfig}`);
 
 			//Database checking
@@ -99,9 +119,9 @@ export default class App extends Component {
 
 			store.dispatch(syncBudget(budgetActual[0]));
 			console.log("Budget cargado");
-
-		} catch(err) {
-			console.log(err)
+		}catch(err){
+			console.log(err);
+			errorWarning();
 		}
 	}
 
@@ -154,21 +174,42 @@ export default class App extends Component {
 	}
 	
 	render(){
-		const mainContent = (
-			this.state.termsAndConditions === FALSE_VALUE ? 
-			<TermScreen onPress = {this.setTermsAccepted}/> : <MainNavigationStack />
-		);
+		let content = <View></View>;
+
+		const mainContent = <MainNavigationStack />;
+
+		const terms = <TermScreen onPress = {this.setTermsAccepted}/>;
 
 		const splashScreen = (
 			<AppLoading
-						startAsync={this.loadData}
-						onFinish={() => this.setDataLoaded(true)} />
+				startAsync={this.loadConfig}
+				onFinish={() => this.setConfigLoaded(true)} />
 		);
+
+		const splashScreenData = (
+			<LoadingExecModal
+				startAsync={this.loadData}
+				onFinish={() => this.setDataLoaded(true)} />
+		);
+
+		if(!this.state.dataLoaded){
+			if(this.state.termsAndConditions === FALSE_VALUE){
+				if(!this.state.configLoaded){
+					content = splashScreen;
+				}else{
+					content = terms;
+				}
+			}else{
+				content = splashScreenData;
+			}
+		}else{
+			content = mainContent;
+		}
 
 		return (
 			<Provider store = {store}>
 				<LoadingModal visible = { this.state.loading } />
-				{ this.state.dataLoaded ? mainContent : splashScreen }
+				{ content }
 			</Provider>	
 		);
 	}

@@ -188,9 +188,12 @@ export const showAll = () => {
 	})
 }
 
-export const createBudget = async (periodsConf) => {
+export const createBudget = async (periodsConf, ignoreLoading = false) => {
 	try{
-		startLoading()
+		if(!ignoreLoading){
+			startLoading()
+		}
+		
 		const newBudget = new Budget(periodsConf);
 		
 		/* Recovering data logic */
@@ -222,7 +225,10 @@ export const createBudget = async (periodsConf) => {
 		newBudget.currentBalance = currentBalance;
 
 		await db.post({...newBudget});
-		stopLoadingSimple()
+		
+		if(!ignoreLoading)
+			stopLoadingSimple();
+		
 	}catch(err){
 		stopLoadingSimple()
 		errorWarning()
