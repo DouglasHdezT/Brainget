@@ -93,6 +93,8 @@ export default class App extends Component {
 
 	loadData = async () => {
 		try{
+			console.log("----- Configuración Datos -----");
+
 			//Configuración básica
 			let periodsConfig = await AsyncStorage.getItem(PERIODS_KEY);
 	
