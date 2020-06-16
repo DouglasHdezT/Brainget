@@ -9,6 +9,7 @@ import Icons from '../assets/constants/Icons';
 import { Types } from './../assets/constants/AboutData';
 
 import Translation, { Keys } from '../translation/TranslationHelper';
+import terms from '../translation/strings/termsAndConditions';
 
 import ResourcesContent from '../components/aboutContents/ResourcesContent';
 import LibrariesContent from '../components/aboutContents/LibrariesContent';
@@ -71,7 +72,7 @@ class AboutOptionScreen extends Component {
 				mainContent = (
 					<LicenceContent 
 						title = { Translation.getStringValue(props.title) }
-						license = { Translation.getStringValue(props.text) }
+						license = { terms.text }
 					/>
 				);
 				break;

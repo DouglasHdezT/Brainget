@@ -1,6 +1,9 @@
 import React from 'react';
 
 import { StyleSheet, ScrollView, Text } from 'react-native';
+
+import StyledText from 'react-native-styled-text';
+
 import Colors from '../../assets/constants/Colors';
 
 const LicenceContent = props => {
@@ -10,7 +13,7 @@ const LicenceContent = props => {
 			style = {{flex:1}}>
 
 			<Text style = { styles.title }> { props.title } </Text>
-			<Text style = { styles.contentText }> { props.license } </Text>
+			<StyledText style = { styles.contentText } children = {props.license}/> 
 
 		</ScrollView>
 	);

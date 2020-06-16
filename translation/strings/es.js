@@ -32,7 +32,7 @@ export default {
 	"unexpected_costs_info_text": "¿Se estropeo la estufa de tu casa?. Seguramente cuando menos lo esperamos algún electrodoméstico, el auto e inclusive algo necesario de nuestra casa se descompone, y sin esperarlo, nos vemos en la obligación de hacer este tipo de reparaciones, las cuales pueden afectar nuestro presupuesto ya planeado; por lo que es necesario tener un plan B que nos ayuda a sufragar estas situaciones imprevistas.",
 	"health_costs_title_text": "Gastos en Salud",
 	"health_costs_info_text": "\"¿Tengo que ir al doctor?.\" Todos estos gastos usualmente tienen que ver con las visitas que hacemos al doctor, las prescripciones médicas, co-pagos por nuestros exámenes médicos, e inclusive suplementos que consumimos",
-	"aid_costs_title_text": "Ahorros | Ofrendas",
+	"aid_costs_title_text": "Ahorros y Ofrendas",
 	"aid_costs_info_text": "¿Sabes cuanto es lo recomendable para tu ahorro mensual?, ¿Realizas contribuciones a alguna organización? Pues bien, en cuanto a la primera pregunta debes saber que hay un porcentaje que debemos fijarnos como meta para nuestro ahorro, el cual suele ser en torno al 10% de nuestro ingreso mensual, pero si no puedes iniciar con esa cantidad, puedes hacerlo con un monto que se encuentre al alcance de tu presupuesto. En cuanto a la siguiente pregunta es que si realizamos contribuciones como donativos tenemos que dejarlos reflejados en esta sección.",
 
 	/**
@@ -212,7 +212,7 @@ export default {
 	 * My Services strings
 	 */
 	"name_services_text": "Juan Carlos Guardado",
-	"degree_services_text": "Representante Financiero",
+	"degree_services_text": "Educador Financiero",
 	"phone_services_text": "+1 (702) 326 - 4499",
 	"contact_services_action": "Contáctame",
 	"share_services_action": "Compartir",
@@ -249,8 +249,8 @@ export default {
 	/**
 	 * License string
 	 */
-	"license_title": "Licencia MIT",
-	"license_text": "Copyright (c) 2020 Douglas Hernández\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.",
+	"license_title": "Términos y condiciones",
+	"license_text": "Copyright 2020 Douglas Hernández\n\nPor la presente se concede permiso, libre de cargos, a cualquier persona que obtenga una copia de este software y de los archivos de documentación asociados (el \"Software\"), a utilizar el Software sin restricción, incluyendo sin limitación los derechos a usar, copiar, modificar, fusionar, publicar, distribuir, sublicenciar, y/o vender copias del Software, y a permitir a las personas a las que se les proporcione el Software a hacer lo mismo, sujeto a las siguientes condiciones:\n\nEl aviso de copyright anterior y este aviso de permiso se incluirán en todas las copias o partes sustanciales del Software.\n\nEL SOFTWARE SE PROPORCIONA \"COMO ESTÁ\", SIN GARANTÍA DE NINGÚN TIPO, EXPRESA O IMPLÍCITA, INCLUYENDO PERO NO LIMITADO A GARANTÍAS DE COMERCIALIZACIÓN, IDONEIDAD PARA UN PROPÓSITO PARTICULAR E INCUMPLIMIENTO. EN NINGÚN CASO LOS AUTORES O PROPIETARIOS DE LOS DERECHOS DE AUTOR SERÁN RESPONSABLES DE NINGUNA RECLAMACIÓN, DAÑOS U OTRAS RESPONSABILIDADES, YA SEA EN UNA ACCIÓN DE CONTRATO, AGRAVIO O CUALQUIER OTRO MOTIVO, DERIVADAS DE, FUERA DE O EN CONEXIÓN CON EL SOFTWARE O SU USO U OTRO TIPO DE ACCIONES EN EL SOFTWARE.\n\n",
 	
 	/**
 	 * Technologies used string

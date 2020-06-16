@@ -16,7 +16,7 @@ const BorderedButton = props => {
 const styles = StyleSheet.create({
 	container:{
 		flex:1,
-		minHeight: 50,
+		minHeight: 30,
 		maxHeight: 75,
 
 		paddingHorizontal: 16,
