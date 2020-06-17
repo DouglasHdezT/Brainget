@@ -21,28 +21,25 @@ class LoadingModal extends Component {
 
 	render(){
 		return (
-			<Modal
-				animationType = "fade"
-				transparent = { true }
-				visible = { this.props.visible } >
-
-				<View style = { styles.modalBg }>
-					<BarIndicator
-						count = { 5 }
-						size = { 60 }
-						color = { Colors.lightBlue500 }
-						animating = { this.props.visible }
-					/>
-				</View>
-
-			</Modal>
+			<View style = { styles.modalBg }>
+				<BarIndicator
+					count = { 5 }
+					size = { 60 }
+					color = { Colors.lightBlue500 }
+					animating = { this.props.visible }
+				/>
+			</View>
 		);
 	}
 }
 
 const styles = StyleSheet.create({
 	modalBg: {
-		flex: 1,
+		width: "100%",
+		height: "100%",
+		position: "absolute",
+		top: 0,
+		left: 0,
 		alignContent: "center",
 		justifyContent: "center",
 		backgroundColor: Colors.shadowBg

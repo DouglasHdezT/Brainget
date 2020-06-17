@@ -16,8 +16,8 @@ export default {
 	/**
 	 * Main menu strings
 	 */
-	"goals_title_text": "My Finantial Goals",
-	"goals_info_text": "LThis section is a tool where you can analyze how you want to manage your money,  in order to achieve on your financial goals; but mainly, how much money do you want to save during one time frame. On that way this system is designed to help you  save up to 35%. Although I must warn you that this method works successfully for some ones than the others. But all depends on your will, your perseverance and your attitude related with the money.",
+	"goals_title_text": "My Financial Goals",
+	"goals_info_text": "This section is a tool where you can analyze how you want to manage your money,  in order to achieve on your financial goals; but mainly, how much money do you want to save during one time frame. On that way this system is designed to help you  save up to 35%. Although I must warn you that this method works successfully for some ones than the others. But all depends on your will, your perseverance and your attitude related with the money.",
 	"budget_title_text": "My Budget",
 	"budget_info_text": "In this section you can have the control over the money you spend in a time frame and how you have distributed it. In that way, you can distribute the money you have expense during the week or month with the idea that you can realize which one are those expenses that are not necessary in your life, with the intention you can avoid them and you be able to save more money every month and invest that amount saved in one financial services that can help you to make more amore money.",
 	"results_title_text": "Results",
@@ -250,7 +250,7 @@ export default {
 	"app_version_text": "Current Version",
 	"source_about_text": "Source Code",
 	"source_code_link": "https://github.com/DouglasHdezT/Brainget",
-	"license_about_short_text": "The content inside was licensed by the MIT License",
+	"license_about_short_text": "All rights reserved to Juan Carlos Guardado ©",
 	"license_about_title": "License",
 	"developer_about_title": "Developer",
 	"resources_about_title": "Resources Used",

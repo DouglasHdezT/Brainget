@@ -120,9 +120,9 @@ const styles = StyleSheet.create({
 	buttonText:{
 		textAlignVertical:"center",
 
-		fontFamily: "roboto",
+		fontFamily: "roboto-bold",
 		fontSize: 14,
-		color: "#000"
+		color: Colors.blue700
 	},
 	icon: {
 		width: "10%",

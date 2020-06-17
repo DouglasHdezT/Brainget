@@ -83,7 +83,6 @@ const styles = StyleSheet.create({
 	footerText: {
 		textAlign: "center",
 		fontSize: 16,
-		fontStyle: "italic",
 		fontFamily: "roboto",
 		color: Colors.fontColorLight,
 	}

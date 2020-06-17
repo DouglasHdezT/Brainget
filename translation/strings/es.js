@@ -250,7 +250,7 @@ export default {
 	"app_version_text": "Versión actual",
 	"source_about_text": "Código fuente",
 	"source_code_link": "https://github.com/DouglasHdezT/Brainget",
-	"license_about_short_text": "El contenido realizado está licenciado bajo la Licencia MIT",
+	"license_about_short_text": "Derechos reservados Juan Carlos Guardado ©",
 	"license_about_title": "Licencia de uso",
 	"developer_about_title": "Desarrollador",
 	"resources_about_title": "Recursos Utilizados",

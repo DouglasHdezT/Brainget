@@ -219,8 +219,8 @@ export default class App extends Component {
 
 		return (
 			<Provider store = {store}>
-				<LoadingModal visible = { this.state.loading } />
 				{ content }
+				{this.state.loading && <LoadingModal visible = { this.state.loading } />}
 			</Provider>	
 		);
 	}
