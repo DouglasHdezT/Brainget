@@ -34,7 +34,7 @@ const CostForm = props => {
 				/>
 				<IconButton
 					style = { styles.icon }
-					iconSize = { 32 }
+					iconSize = { 64 }
 					image = { props.isTaxable ? Icons.tax_selected : Icons.tax_unselected }
 					onPress = { () => { props.changeHandler("isTaxable", !props.isTaxable) } }
 				/>

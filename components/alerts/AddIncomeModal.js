@@ -111,11 +111,6 @@ class AddIncomeModal extends Component {
 				<TouchableWithoutFeedback onPress = {() => {Keyboard.dismiss()}}>
 					<View style={styles.modalBackground} >
 						<View style={styles.modalView}>
-							<TopEndIconButton
-								src={Icons.close}
-								onPress={this.props.closeModal}
-							/>
-	
 							<Text style={styles.title}>{ Translation.getStringValue(Keys.income_modal_title_text) }</Text>
 	
 							<View style={{ flex: 3 }}>
@@ -130,6 +125,11 @@ class AddIncomeModal extends Component {
 							<View style={{ flex: 1, flexDirection: 'row', justifyContent: "center", alignItems:'center' }}>
 								{this.props.isNewIncome ? addButton : updateDeleteButtons}
 							</View>
+
+							<TopEndIconButton
+								src={Icons.close}
+								onPress={this.props.closeModal}
+							/>
 						</View>
 					</View>
 				</TouchableWithoutFeedback>

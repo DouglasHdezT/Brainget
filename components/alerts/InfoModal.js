@@ -29,11 +29,6 @@ const InfoModal = props => {
 
 			<View style = {styles.modalBackground}>
 				<View style = {{...styles.modalView, maxHeight: maxHeight, width: maxWidth}}>
-					<TopEndIconButton
-						src = {Icons.close}
-						onPress = {props.closeModal}
-						/>
-
 					<Text style = {styles.title}>{props.title}</Text>
 					
 					<ScrollView
@@ -43,6 +38,11 @@ const InfoModal = props => {
 						<Text style = {styles.text}>{props.text}</Text>
 					
 					</ScrollView>
+
+					<TopEndIconButton
+						src = {Icons.close}
+						onPress = {props.closeModal}
+						/>
 				</View>
 			</View>
 

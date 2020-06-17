@@ -24,16 +24,16 @@ export const SubMenu = props => {
 			source = {props.src}
 			style = {{...styles.cell}}>
 
-			{canShowInfo && <TopEndIconButton	
-				src = {Icons.info}
-				onPress = {props.showModal}/>}
-
 			<TouchableOpacity onPress = {props.onPress} style = {{flex:1}}>
 				<View style = {{flex:1.75}}/>
 				<View style = {{...styles.titleContainer, backgroundColor: Colors.shadowBg, borderTopStartRadius:15, borderBottomEndRadius:15}}>
 					<Text style = {styles.title }>{props.title}</Text>
 				</View>
 			</TouchableOpacity>
+
+			{canShowInfo && <TopEndIconButton	
+				src = {Icons.info}
+				onPress = {props.showModal}/>}
 
 		</ImageBackground>
 	);

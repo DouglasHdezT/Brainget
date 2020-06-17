@@ -26,11 +26,13 @@ const TopEndIconButton = props => {
 
 const styles = StyleSheet.create({
 	iconContainer:{
-        height: 40,
-		width:40,
+        height: 50,
+		width:50,
+
+		margin: 10,
 		
-		alignItems:'center',
-		justifyContent: 'center',
+		alignItems:'flex-end',
+		justifyContent: 'flex-start',
 
         position: 'absolute',
         right: 0,

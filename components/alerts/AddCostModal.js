@@ -116,11 +116,6 @@ class AddCostModal extends Component {
 				<TouchableWithoutFeedback onPress = {() => {Keyboard.dismiss()}}>
 					<View style={styles.modalBackground} >
 						<View style={styles.modalView}>
-							<TopEndIconButton
-								src={Icons.close}
-								onPress={this.props.closeModal}
-							/>
-	
 							<Text style={styles.title}> { Translation.getStringValue(Keys.cost_modal_title_text) } </Text>
 	
 							<View style={{ flex: 3, marginVertical: 8 }}>
@@ -137,6 +132,11 @@ class AddCostModal extends Component {
 							<View style={{ flex: 2, flexDirection: 'row', justifyContent: "center", alignItems:'center' }}>
 								{this.props.isNewCost ? addButton : updateDeleteButtons}
 							</View>
+							
+							<TopEndIconButton
+								src={Icons.close}
+								onPress={this.props.closeModal}
+							/>
 						</View>
 					</View>
 				</TouchableWithoutFeedback>
