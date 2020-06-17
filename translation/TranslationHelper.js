@@ -359,4 +359,5 @@ export const Keys = {
   taxable_report_no: 'taxable_report_no',
   date_report_title: "date_report_title",
   total_balance_report_title: "total_balance_report_title",
+  social_media_message: "social_media_message",
 }

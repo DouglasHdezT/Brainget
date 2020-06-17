@@ -18,6 +18,20 @@ export default {
 		title: Keys.op1_services_title,
 		text: Keys.op1_services_text,
 	},
+	socialMedia: [
+		{
+			name: "Youtube",
+			socialMedia: "Juan Carlos Guardado",
+		},
+		{
+			name: "Facebook",
+			socialMedia: "Juan Guardado"
+		},
+		{
+			name: "Twitter",
+			socialMedia: "@jcguardadogomez"
+		},
+	],
 	services: [
 		{
 			title: Keys.op2_services_title,

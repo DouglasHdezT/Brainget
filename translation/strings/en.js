@@ -17,15 +17,15 @@ export default {
 	 * Main menu strings
 	 */
 	"goals_title_text": "My Finantial Goals",
-	"goals_info_text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.",
+	"goals_info_text": "LThis section is a tool where you can analyze how you want to manage your money,  in order to achieve on your financial goals; but mainly, how much money do you want to save during one time frame. On that way this system is designed to help you  save up to 35%. Although I must warn you that this method works successfully for some ones than the others. But all depends on your will, your perseverance and your attitude related with the money.",
 	"budget_title_text": "My Budget",
-	"budget_info_text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.",
+	"budget_info_text": "In this section you can have the control over the money you spend in a time frame and how you have distributed it. In that way, you can distribute the money you have expense during the week or month with the idea that you can realize which one are those expenses that are not necessary in your life, with the intention you can avoid them and you be able to save more money every month and invest that amount saved in one financial services that can help you to make more amore money.",
 	"results_title_text": "Results",
-	"results_info_text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.",
+	"results_info_text": "How much money do I have earned?, How much money do I have spent ?, How much money do I have saved ?. Here you can find, how much money has entered into your account, how much you have spent during every single month, and mainly, how much money you have saved. So this is the \"Budgetometer\" that indicates how you have been responsible in your own money managing.",
 	"stats_title_text": "Statistics",
-	"stats_info_text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.",
+	"stats_info_text": "This is a field that has been designed to help you make comparison in the way which you have managed your money in relation with other months of the year. Is very important that you learn why one statistic show you upward statistic in any particular month in relation with other month.",
 	"services_title_text": "My Finantial Services",
-	"services_info_text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.",
+	"services_info_text": "It is a pleasure to help you in the construction of your financial goals, that the reason which I give you an idea about the services where I can help you in the way to your financial success. Please feel free to contact with this financial coach and I can tell you we will get there together. My telephone number is +1(702) 326-4499.",
 	"about_title_text": "About...",
 	"about_info_text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.",
 	
@@ -37,9 +37,9 @@ export default {
 	"variable_costs_title_text": "Variable Expenses",
 	"variable_costs_info_text": "We know, for example, that every month we have to put gasoline in our car, but for this case we know already that the gas expenses depend over the use that we have made with our car, like time used, placed we have visited over certain period of time, etc. For that reason, is very important to address this field in the variable expenses and in that way the others expenses similar to this ones.",
 	"optional_costs_title_text": "Optional Expenses",
-	"optional_costs_info_text": "Are you planning to take a vacation? They are expenses that, as their word indicates, are expenses that we can carry out or not, and all depends about the decision we make around them. In this particular expenses here I applied the principle for our finances what I call the golden rule that stated: \“You should spend on what is really necessary for the activities in our lives\”.",
+	"optional_costs_info_text": "Are you planning to take a vacation? They are expenses that, as their word indicates, are expenses that we can carry out or not, and all depends about the decision we make around them. In this particular expenses here I applied the principle for our finances what I call the golden rule that stated: \"You should spend on what is really necessary for the activities in our lives\".",
 	"unexpected_costs_title_text": "Unforseen Expenses",
-	"unexpected_costs_info_text": "Has your washer machine damaged? Suddenly when you least expect, or want it to, any appliance, our car and even something necessary in our house are breaking down, and unfearfully this thing has to be repair as soon as possible, which can affect our planned budget already; so it is necessary to have a plan \“B\” that helps us to cover these unexpected accidents.",
+	"unexpected_costs_info_text": "Has your washer machine damaged? Suddenly when you least expect, or want it to, any appliance, our car and even something necessary in our house are breaking down, and unfearfully this thing has to be repair as soon as possible, which can affect our planned budget already; so it is necessary to have a plan \"B\" that helps us to cover these unexpected accidents.",
 	"health_costs_title_text": "Health Expenses",
 	"health_costs_info_text": "\"Do I have go to the doctor?\" All these expenses usually have to do with the visits we make to the doctor, the medical prescriptions, co-payments for our medical exams, and even supplements that we consume related with your health.",
 	"aid_costs_title_text": "Savings and Donations",
@@ -395,6 +395,6 @@ export default {
 	"taxable_report_yes": "Yes",
 	"taxable_report_no": "No",
 	"date_report_title": "Date",
-	"total_balance_report_title": "Balance Total"
-
+	"total_balance_report_title": "Balance Total",
+	"social_media_message": "My social networks"
 }

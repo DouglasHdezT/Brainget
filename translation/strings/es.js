@@ -17,15 +17,15 @@ export default {
 	 * Main menu strings
 	 */
 	"goals_title_text": "Mis Metas Financieras",
-	"goals_info_text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.",
+	"goals_info_text": "Este apartado es una herramienta para que reflexiones en torno al dinero, sobre la forma en que tu deseas administrar tu dinero a fin de que puedas alcanzar tus metas financieras; pero principalmente cuánto dinero quieres ahorrar, pues este sistema está diseñado para que puedas ahorrar hasta un 35%. Aunque he de advertir que este método funciona con más éxito para unos que para otros. Todo depende de tu voluntad, perseverancia y actitud que tu estés dispuesto a en relación al dinero.",
 	"budget_title_text": "Mi Presupuesto",
-	"budget_info_text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.",
+	"budget_info_text": "En este apartado podrás tener un control sobre el dinero que gastas en un periodo de tiempo y como lo has distribuido. Por eso, en las diferentes categorías que aquí aparecen sirven como indicadores con los que puedes descubrir cuales han sido aquellos gastos que no son necesarios en tu vida y la idea es que puedas descubrirlos y ahorrar todo ese gasto para que puedas invertirlo en servicios que sean de beneficio para tu dinero.",
 	"results_title_text": "Resultados",
-	"results_info_text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.",
+	"results_info_text": "¿Cuánto dinero he ganado?, Cuanto dinero he gastado?, ¿Cuánto dinero he ahorrado?. Aquí puedes encontrar cuanto dinero ingresó a tu cuenta, cuanto gastaste durante cada uno de los meses y sobre todo, cuanto dinero has ahorrado, por lo que este es el \"Budgetometro\" que te indica como has estado en la tarea del manejo de tu propio dinero.",
 	"stats_title_text": "Estadísticas",
-	"stats_info_text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.",
+	"stats_info_text": "Este es un campo que ha sido diseñado para que puedas tener un medio de comparación en la forma como has administrado tu dinero en relación a los otros meses del año. Afin de que analices porque hubo algún repunto en algún mes en particular.",
 	"services_title_text": "Mis Servicios Financieros",
-	"services_info_text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.",
+	"services_info_text": "Es un placer poder ayudarte en la construcción de tus metas financieras, por lo que aquí te brindo una idea a cerca de los servicios por medio de los cuales puedo acompañarte este camino hacia el éxito y la libertad financiera.",
 	"about_title_text": "Acerca de...",
 	"about_info_text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.",
 	
@@ -396,5 +396,6 @@ export default {
 	"taxable_report_yes": "Sí",
 	"taxable_report_no": "No",
 	"date_report_title": "Fecha",
-	"total_balance_report_title": "Balance Total"
+	"total_balance_report_title": "Balance Total",
+	"social_media_message": "Mis redes sociales"
 }

@@ -50,11 +50,15 @@ class ServicesScreen extends Component {
 	shareContent = async () => {
 		try {
 			const services = ServicesData.services.reduce((result, item, i) => result + `${i+1}. ${Translation.getStringValue(item.title)}\n`, "");
+			const socialMedias = ServicesData.socialMedia.reduce((result, item) => result + `${item.name}: ${item.socialMedia}\n`);
 			const message = `
 ${Translation.getStringValue(ServicesData.name)}
 ----
 ${Translation.getStringValue(ServicesData.degree)}
 ${Translation.getStringValue(Keys.contact_services_action)}: ${Translation.getStringValue(ServicesData.phone)}
+----
+${Translation.getStringValue(Keys.social_media_message)}
+${socialMedias}
 ----
 ${Translation.getStringValue(Keys.services_title_text)}
 
