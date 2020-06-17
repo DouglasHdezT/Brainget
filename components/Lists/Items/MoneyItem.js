@@ -23,7 +23,7 @@ const MoneyItem = props => {
 		<View style = {styles.container}>
 			<View style = {styles.textContainer}>
 				<Text style = {styles.title}>{props.title}</Text>
-				<Text style = {styles.subtitle}>$ {props.money.toFixed(2)}</Text>
+				<Text style = {{...styles.subtitle, color: props.money > 0 ? Colors.red700 : Colors.ItemsSubtitles}}>$ {props.money.toFixed(2)}</Text>
 				<Text style = {styles.subtitle}>{props.date}</Text>
 			</View>
 

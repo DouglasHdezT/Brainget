@@ -27,7 +27,7 @@ export default {
 	"services_title_text": "My Finantial Services",
 	"services_info_text": "It is a pleasure to help you in the construction of your financial goals, that the reason which I give you an idea about the services where I can help you in the way to your financial success. Please feel free to contact with this financial coach and I can tell you we will get there together. My telephone number is +1(702) 326-4499.",
 	"about_title_text": "About...",
-	"about_info_text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.",
+	"about_info_text": "Basic information about the application. Aspects such as version, development, source code, terms and conditions, and attributions to third parties are included.",
 	
 	/**
 	 * Budget menu strings
@@ -251,7 +251,7 @@ export default {
 	"source_about_text": "Source Code",
 	"source_code_link": "https://github.com/DouglasHdezT/Brainget",
 	"license_about_short_text": "All rights reserved to Juan Carlos Guardado ©",
-	"license_about_title": "License",
+	"license_about_title": "Terms and Conditions",
 	"developer_about_title": "Developer",
 	"resources_about_title": "Resources Used",
 	"libraries_about_title": "Libraries Used",

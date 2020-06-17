@@ -27,7 +27,7 @@ export default {
 	"services_title_text": "Mis Servicios Financieros",
 	"services_info_text": "Es un placer poder ayudarte en la construcción de tus metas financieras, por lo que aquí te brindo una idea a cerca de los servicios por medio de los cuales puedo acompañarte este camino hacia el éxito y la libertad financiera.",
 	"about_title_text": "Acerca de...",
-	"about_info_text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor laboriosam quia dignissimos. Rem eum libero voluptates excepturi! Ab animi voluptate fugit quasi veniam ipsam? Reiciendis alias et ad quisquam fugiat.",
+	"about_info_text": "Información básica acerca de la aplicación. Se incluyen aspectos como la versión, el desarrollo, código fuente, términos y condiciones, y atribuciones a terceros.",
 	
 	/**
 	 * Budget menu strings
@@ -251,7 +251,7 @@ export default {
 	"source_about_text": "Código fuente",
 	"source_code_link": "https://github.com/DouglasHdezT/Brainget",
 	"license_about_short_text": "Derechos reservados Juan Carlos Guardado ©",
-	"license_about_title": "Licencia de uso",
+	"license_about_title": "Términos y condiciones",
 	"developer_about_title": "Desarrollador",
 	"resources_about_title": "Recursos Utilizados",
 	"libraries_about_title": "Librerias Utilizadas",
