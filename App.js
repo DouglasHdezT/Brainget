@@ -16,13 +16,14 @@ import { AsyncStorage, AppState, View } from 'react-native';
 import PouchDB from './database/config/builder';
 
 import store from './store/Store';
+import { setLanguage } from './store/actions/ConfigActions';
 import { syncBudget } from './store/actions/BudgetActions';
 import * as budgetService from './database/services/BudgetService';
 
 import Translation from './translation/TranslationHelper';
 import * as Localization from 'expo-localization';
 
-import { PERIODS_KEY, DB_NAME, TERMS_KEY, FALSE_VALUE, TRUE_VALUE } from './assets/constants/KeyValues';
+import { PERIODS_KEY, DB_NAME, TERMS_KEY, FALSE_VALUE, TRUE_VALUE, LANG_KEY, ES_VALUE } from './assets/constants/KeyValues';
 import { periodsSettings, errorWarning } from './components/alerts/Alerts';
 
 import MainNavigationStack from './components/navigations/MainNavigationStack';
@@ -40,6 +41,7 @@ export default class App extends Component {
 			configLoaded: false,
 			loading: false,
 			termsAndConditions: FALSE_VALUE,
+			lang: ES_VALUE,
 		}
 
 		this.db = new PouchDB(DB_NAME, {adapter: 'react-native-sqlite'});
@@ -80,7 +82,12 @@ export default class App extends Component {
 			console.log("Fuentes Cargadas");
 
 			//Cargando lenguaje
-			Translation.setLanguage((await Localization.getLocalizationAsync()).locale);
+			let lang = await AsyncStorage.getItem(LANG_KEY);
+			if (lang === null){
+				lang = ES_VALUE;
+			}
+			store.dispatch(setLanguage(lang))
+			Translation.setLanguage(lang);
 			//console.log(Translation.getStringValue("test"));
 			
 			
@@ -165,12 +172,21 @@ export default class App extends Component {
 	componentDidMount(){
 		this.subscription = store.subscribe(() => {
 			const newLoading = store.getState().config.isLoading;
+			const newLang = store.getState().config.lang;
 			
 			if(newLoading !== this.state.loading){
 				//console.log("Llegue");
 				
 				this.setState({
 					loading: newLoading,
+				})
+			}
+
+			if(newLang !== this.state.lang){
+				Translation.setLanguage(newLang);
+
+				this.setState({
+					lang: newLang
 				})
 			}
 		});

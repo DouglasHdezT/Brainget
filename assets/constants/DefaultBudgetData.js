@@ -82,7 +82,206 @@ export default {
 			key: Keys.fixed_op17,
 			TAG: TAG.Fixed
 		},
-		
+		{
+			key: Keys.variable_op1,
+			TAG: TAG.Variable
+		},
+		{
+			key: Keys.variable_op2,
+			TAG: TAG.Variable
+		},
+		{
+			key: Keys.variable_op3,
+			TAG: TAG.Variable
+		},
+		{
+			key: Keys.variable_op4,
+			TAG: TAG.Variable
+		},
+		{
+			key: Keys.variable_op5,
+			TAG: TAG.Variable
+		},
+		{
+			key: Keys.variable_op6,
+			TAG: TAG.Variable
+		},
+		{
+			key: Keys.variable_op7,
+			TAG: TAG.Variable
+		},
+		{
+			key: Keys.variable_op8,
+			TAG: TAG.Variable
+		},
+		{
+			key: Keys.variable_op9,
+			TAG: TAG.Variable
+		},
+		{
+			key: Keys.variable_op10,
+			TAG: TAG.Variable
+		},
+		{
+			key: Keys.variable_op11,
+			TAG: TAG.Variable
+		},
+		{
+			key: Keys.variable_op12,
+			TAG: TAG.Variable
+		},
+		{
+			key: Keys.variable_op13,
+			TAG: TAG.Variable
+		},
+		{
+			key: Keys.variable_op14,
+			TAG: TAG.Variable
+		},
+		{
+			key: Keys.variable_op15,
+			TAG: TAG.Variable
+		},
+		{
+			key: Keys.variable_op16,
+			TAG: TAG.Variable
+		},
+		{
+			key: Keys.variable_op17,
+			TAG: TAG.Variable
+		},
+		{
+			key: Keys.variable_op18,
+			TAG: TAG.Variable
+		},
+		{
+			key: Keys.variable_op19,
+			TAG: TAG.Variable
+		},
+		{
+			key: Keys.variable_op20,
+			TAG: TAG.Variable
+		},
+		{
+			key: Keys.variable_op21,
+			TAG: TAG.Variable
+		},
+		{
+			key: Keys.unexpected_op1,
+			TAG: TAG.Unexpected
+		},
+		{
+			key: Keys.unexpected_op2,
+			TAG: TAG.Unexpected
+		},
+		{
+			key: Keys.unexpected_op3,
+			TAG: TAG.Unexpected
+		},
+		{
+			key: Keys.unexpected_op4,
+			TAG: TAG.Unexpected
+		},
+		{
+			key: Keys.unexpected_op5,
+			TAG: TAG.Unexpected
+		},
+		{
+			key: Keys.optional_op1,
+			TAG: TAG.Optional
+		},
+		{
+			key: Keys.optional_op2,
+			TAG: TAG.Optional
+		},
+		{
+			key: Keys.optional_op3,
+			TAG: TAG.Optional
+		},
+		{
+			key: Keys.optional_op4,
+			TAG: TAG.Optional
+		},
+		{
+			key: Keys.optional_op5,
+			TAG: TAG.Optional
+		},
+		{
+			key: Keys.optional_op6,
+			TAG: TAG.Optional
+		},
+		{
+			key: Keys.optional_op7,
+			TAG: TAG.Optional
+		},
+		{
+			key: Keys.optional_op8,
+			TAG: TAG.Optional
+		},
+		{
+			key: Keys.optional_op9,
+			TAG: TAG.Optional
+		},
+		{
+			key: Keys.optional_op10,
+			TAG: TAG.Optional
+		},
+		{
+			key: Keys.optional_op11,
+			TAG: TAG.Optional
+		},
+		{
+			key: Keys.optional_op12,
+			TAG: TAG.Optional
+		},
+		{
+			key: Keys.optional_op13,
+			TAG: TAG.Optional
+		},
+		{
+			key: Keys.optional_op14,
+			TAG: TAG.Optional
+		},
+		{
+			key: Keys.optional_op15,
+			TAG: TAG.Optional
+		},
+		{
+			key: Keys.health_op1,
+			TAG: TAG.Health
+		},
+		{
+			key: Keys.health_op2,
+			TAG: TAG.Health
+		},
+		{
+			key: Keys.health_op3,
+			TAG: TAG.Health
+		},
+		{
+			key: Keys.health_op4,
+			TAG: TAG.Health
+		},
+		{
+			key: Keys.health_op5,
+			TAG: TAG.Health
+		},
+		{
+			key: Keys.aid_op1,
+			TAG: TAG.Aid
+		},
+		{
+			key: Keys.aid_op2,
+			TAG: TAG.Aid
+		},
+		{
+			key: Keys.aid_op3,
+			TAG: TAG.Aid
+		},
+		{
+			key: Keys.aid_op4,
+			TAG: TAG.Aid
+		},
 	 ],
 
 }

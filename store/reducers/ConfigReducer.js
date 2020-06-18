@@ -8,10 +8,13 @@
 	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-import { SET_LOADING } from  '../actions/ConfigActions'
+import { SET_LOADING, SET_LANGUAGE } from  '../actions/ConfigActions';
+import { ES_VALUE, LANG_KEY } from '../../assets/constants/KeyValues';
+import { AsyncStorage } from 'react-native';
 
 const  initState = {
 	isLoading: false,
+	lang: ES_VALUE
 }
 
 const configReducer = (state = initState, { type, payload }) => {
@@ -20,6 +23,12 @@ const configReducer = (state = initState, { type, payload }) => {
 			return{
 				...state,
 				isLoading: payload.isLoading
+			}
+		case SET_LANGUAGE:
+			AsyncStorage.setItem(LANG_KEY, payload.lang);
+			return{
+				...state,
+				lang: payload.lang
 			}
 		default: 
 			return state;

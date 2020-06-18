@@ -46,4 +46,6 @@ export default {
 	logoDev: require("../img/LogoDev.png"),
 	github: require('../img/github.png'),
 	download: require('../img/download.png'),
+	spain: require("../img/spain.png"),
+	usa: require("../img/united-states.png"),
 }

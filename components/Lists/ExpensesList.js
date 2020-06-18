@@ -22,7 +22,7 @@ const ExpensesList = props => {
 			title = {item.title} 
 			money = {item.money} 
 			isTaxable = { item.taxable }
-			date = {item.createdAt}/>);
+			date = {new Date(item.createdAt).toLocaleDateString()}/>);
 
 	return (
 		<View style = {styles.view}>

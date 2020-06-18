@@ -17,13 +17,16 @@ import Colors from '../../../assets/constants/Colors';
 
 const MoneyItem = props => {
 	const taxableIcon = (
-		<Image style = { styles.taxableIcon } source = { Icons.tax_unselected } />
+		<Image style = { styles.taxableIcon } source = { Icons.tax_selected } />
 	);
+
+	const moneyColor = props.isTaxable === undefined ? Colors.green800 : Colors.red800;
+
 	return(
 		<View style = {styles.container}>
 			<View style = {styles.textContainer}>
 				<Text style = {styles.title}>{props.title}</Text>
-				<Text style = {{...styles.subtitle, color: props.money > 0 ? Colors.red700 : Colors.ItemsSubtitles}}>$ {props.money.toFixed(2)}</Text>
+				<Text style = {{...styles.subtitle, color: props.money > 0 ? moneyColor : Colors.ItemsSubtitles}}>$ {props.money.toFixed(2)}</Text>
 				<Text style = {styles.subtitle}>{props.date}</Text>
 			</View>
 

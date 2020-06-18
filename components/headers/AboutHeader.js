@@ -43,7 +43,7 @@ const AboutHeader = props => {
 
 const styles = StyleSheet.create({
 	mainContainer:{
-		marginBottom: 16,
+		marginBottom: 8,
 	},
 	mainLogo: {
 		width: Dimensions.get("window").width / 4,
@@ -85,6 +85,7 @@ const styles = StyleSheet.create({
 		fontSize: 16,
 		fontFamily: "roboto",
 		color: Colors.fontColorLight,
+		marginBottom: 8,
 	}
 });
 

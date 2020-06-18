@@ -9,12 +9,22 @@
 */
 
 export const SET_LOADING = "SET_LOADING";
+export const SET_LANGUAGE = "SET_LANGUAGE";
 
 export const setLoading = (isLoading) => {
 	return {
 		type: SET_LOADING,
 		payload: {
 			isLoading
+		}
+	}
+}
+
+export const setLanguage = (lang) => {
+	return {
+		type: SET_LANGUAGE,
+		payload: {
+			lang
 		}
 	}
 }

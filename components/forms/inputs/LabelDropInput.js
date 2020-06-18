@@ -26,7 +26,7 @@ const LabelDropInput = props => {
 					onChangeText={text => props.changeHandler(props.id, text)}
 					value={props.value}
 					style={styles.input}
-					placeholder="p.e. Alquiler casa"
+					placeholder={`p.e. ${props.options ? props.options[0] : ""}`}
 				/>
 				<OptionsModalButton
 					dark

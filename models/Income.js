@@ -9,9 +9,9 @@
 */
 
 export default class Income {
-	constructor (title, money) {
-		this._id = `ID${new Date().getTime()}${Math.random()*100}`;
-		this.createdAt = new Date().toLocaleDateString();
+	constructor (title, money, index = 1) {
+		this._id = `ID${index}${new Date().getTime()}.${(Math.random()*700).toFixed(3)}I`;
+		this.createdAt = new Date().getTime();
 
 		this.money = parseFloat(money);
 		this.title = title;

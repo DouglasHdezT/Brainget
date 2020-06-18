@@ -43,7 +43,7 @@ class TranslationHelper {
 					break;
 			}
 		}
-		console.log(this.language);
+		console.log(`${this.language} T`);
 	}
 
 	getStringValue = (key) => {
@@ -351,6 +351,8 @@ export const Keys = {
   ref25_icon_text: "ref25_icon_text",
   ref26_icon_text: "ref26_icon_text",
   ref27_icon_text: "ref27_icon_text",
+  ref28_icon_text: "ref28_icon_text",
+  ref29_icon_text: "ref29_icon_text",
   empty_text: "empty_text",
   title_report_title: 'title_report_title',
   concept_report_title: 'concept_report_title',
@@ -360,4 +362,5 @@ export const Keys = {
   date_report_title: "date_report_title",
   total_balance_report_title: "total_balance_report_title",
   social_media_message: "social_media_message",
+  current_language: "current_language",
 }

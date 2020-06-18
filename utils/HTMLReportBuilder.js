@@ -118,7 +118,7 @@ export default class HTMLReportBuilder {
 					<tr>
 						<td> ${value.title} </td>
 						<td> $ ${value.money.toFixed(2)} </td>
-						<td> ${value.createdAt} </td>
+						<td> ${new Date(value.createdAt).toLocaleDateString()} </td>
 						${item.type === COST_TYPE ? `<td> ${value.taxable ? Translation.getStringValue(Keys.taxable_report_yes) : Translation.getStringValue(Keys.taxable_report_no)} </td>` : ""}
 					</tr>
 				`;

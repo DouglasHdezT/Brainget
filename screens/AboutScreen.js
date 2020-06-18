@@ -10,14 +10,18 @@
 
 import React, { Component } from 'react';
 
-import { StyleSheet, View, ImageBackground } from 'react-native';
+import { StyleSheet, View, ImageBackground, TouchableOpacity, Image, Text } from 'react-native';
 import { Linking } from 'expo';
 
 import Colors from '../assets/constants/Colors';
 import BackgroundImages from '../assets/constants/BackgroundImages';
 import Icons from '../assets/constants/Icons';
 
-import Translation from '../translation/TranslationHelper';
+import { connect } from 'react-redux';
+import { setLanguage } from '../store/actions/ConfigActions';
+import { ES_VALUE, EN_VALUE } from '../assets/constants/KeyValues';
+
+import Translation, { Keys } from '../translation/TranslationHelper';
 
 import AboutData from '../assets/constants/AboutData';
 
@@ -59,7 +63,7 @@ class AboutScreen extends Component {
 					<View style = { styles.mainContainer }>
 
 						<AboutHeader
-							flex = { 1 }
+							flex = { 1.5 }
 							logo = { AboutData.mainLogo }
 							appName = { Translation.getStringValue(AboutData.appName) }
 							version = { Translation.getStringValue(AboutData.appVersion) }
@@ -67,6 +71,24 @@ class AboutScreen extends Component {
 							license = { Translation.getStringValue(AboutData.licenseShortText) }/>
 
 						<Menu menus = { AboutData.optionsMenu } navigate = { this.navigate }/>
+
+						<TouchableOpacity style = {styles.languageContainer}
+							onPress = {() => {
+								if(this.props.lang === ES_VALUE){
+									this.props.setLanguage(EN_VALUE);
+								} else {
+									this.props.setLanguage(ES_VALUE);
+								}
+								this.props.navigation.setParams({title: Translation.getStringValue(Keys.about_title_text)})
+							}}>
+							
+							<Image style = {styles.languageIcon} 
+								source = {this.props.lang === ES_VALUE ? Icons.spain : Icons.usa} />
+							
+							<Text style = {styles.languageText}> 
+								{ Translation.getStringValue(Keys.current_language) } 
+							</Text>
+						</TouchableOpacity>
 					</View>
 				</ImageBackground>
 			</View>
@@ -86,7 +108,35 @@ const styles = StyleSheet.create({
 
 		padding: 16,
 		backgroundColor: Colors.shadowBg,
+	},
+	languageContainer: {
+		flex: 0.2,
+		backgroundColor: Colors.blue700,
+		padding: 8,
+
+		flexDirection: "row",
+		justifyContent: "center",
+		alignItems: "center"
+	},
+	languageIcon: {
+		width: 32,
+		height: 32,
+		resizeMode: "contain",
+		marginEnd: 16
+	},
+	languageText: {
+		fontFamily: "roboto",
+		color: "white",
+		fontSize: 15,
 	}
 });
 
-export default AboutScreen;
+const mapStateToProps = state => ({
+	lang: state.config.lang
+});
+
+const mapDispatchToProps = {
+	setLanguage
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AboutScreen);

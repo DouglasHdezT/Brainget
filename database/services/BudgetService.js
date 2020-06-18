@@ -212,17 +212,19 @@ export const createBudget = async (periodsConf, ignoreLoading = false) => {
 
 		if (previousBudget.length > 0){
 			const newIncomes = previousBudget[0].incomes.map(item => new Income(item.title, item.money))
-			const filteredExpenses = previousBudget[0].expenses.filter(item => item.TAG == ExpensesTags.Fixed)
 			
-			const newExpenses = filteredExpenses.map(item => {
-					return new Cost(item.title, item.money, item.TAG, item.taxable)
-			})
+			const filteredExpenses = previousBudget[0].expenses.filter(item => item.TAG === ExpensesTags.Fixed)
+				.map((item, index) => new Cost(item.title, item.money, item.TAG, item.taxable, index));
+
+			const newExpensesBase = DefaultBudgetData.expensesKeys.filter(item => item.TAG !== ExpensesTags.Fixed)
+				.map((item, index) => new Cost(Translation.getStringValue(item.key), 0, item.TAG, false, index));
 			
 			newBudget.incomes = newIncomes;
-			newBudget.expenses = newExpenses;
+			newBudget.expenses = [...filteredExpenses, ...newExpensesBase];
 		}else{
 			const newIncomes = DefaultBudgetData.incomesKeys.map(key => new Income(Translation.getStringValue(key), 0));
-			const newExpenses = DefaultBudgetData.expensesKeys.map(item => new Cost(Translation.getStringValue(item.key), 0, item.TAG, false));
+			const newExpenses = DefaultBudgetData.expensesKeys
+				.map((item, index) => new Cost(Translation.getStringValue(item.key), 0, item.TAG, false, index));
 
 			newBudget.incomes = newIncomes;
 			newBudget.expenses = newExpenses;

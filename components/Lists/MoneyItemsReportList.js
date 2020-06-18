@@ -23,7 +23,7 @@ const MoneyItemsReportList = props => {
 					title = {item.title} 
 					money = { item.money.toFixed(2) }
 					isTaxable = { item.taxable } 
-					date= {item.createdAt}/>
+					date= {new Date(item.createdAt).toLocaleDateString()}/>
 				{ index < (array.lenght - 1) && divider }
 			</React.Fragment>
 		); 

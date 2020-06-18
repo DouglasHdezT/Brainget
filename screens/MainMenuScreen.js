@@ -11,18 +11,24 @@
 import React, {Component} from 'react';
 
 import {View, StyleSheet} from 'react-native';
+
 import MainMenu from '../components/menus/MainMenu';
 
 import mainMenuConf from '../assets/constants/MainMenuData'
 import Translation, {Keys} from '../translation/TranslationHelper';
 
+import { NavigationEvents } from 'react-navigation';
+
 class MainMenuScreen extends Component {
-	static navigationOptions = {
-		title: Translation.getStringValue(Keys.app_title_text)
-	}
+	static navigationOptions = ({ navigation }) => ({
+		title: Translation.getStringValue(Keys.app_title_text),
+	})
 
 	constructor(props){
 		super(props);
+		this.state = {
+			dummy: false,
+		}
 	}
 
 	navigate = redirect => {
@@ -33,6 +39,9 @@ class MainMenuScreen extends Component {
 	render(){
 		return(
 			<View style={styles.container}>
+				<NavigationEvents
+					onWillFocus = { ()=>{this.setState({dummy: !this.state.dummy})} }
+				/>
 				<MainMenu menus = {mainMenuConf} navigate = {this.navigate}/>
 			</View>
 		);

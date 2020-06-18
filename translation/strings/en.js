@@ -375,6 +375,8 @@ export default {
 	"ref25_icon_text": "Designed by Kiranshastry / Flaticon",
 	"ref26_icon_text": "Designed by Pixel Perfect / Flaticon",
 	"ref27_icon_text": "Designed by Kiranshastry / Flaticon",
+	"ref28_icon_text": "Designed by Freepik / Flaticon",
+	"ref29_icon_text": "Designed by Freepik / Flaticon",
 
 	/**
 	 * Developer strings
@@ -396,5 +398,6 @@ export default {
 	"taxable_report_no": "No",
 	"date_report_title": "Date",
 	"total_balance_report_title": "Balance Total",
-	"social_media_message": "My social networks"
+	"social_media_message": "My social networks",
+	"current_language": "Current Language: English"
 }
