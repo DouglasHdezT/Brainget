@@ -16,19 +16,29 @@ import LabelAsideDropMoney from './inputs/LabelAsideDropMoney';
 import IconButton from '../buttons/IconButton';
 import Icons from '../../assets/constants/Icons';
 
+import Translation from '../../translation/TranslationHelper';
+
 const CostForm = props => {
 	return (
 		<View style={{ flex: 1 }}>
 			<LabelDropInput
 				id='costName'
-				value={props.incomeName}
-				options = { props.options }
-				changeHandler={props.changeHandler}
+				value={props.costKey ? Translation.getStringValue(props.costKey) : props.costName}
+				options = { props.options.map(item => item.text) }
+				changeHandler={(id, text, index = -1) => {
+					if(index > 0){
+						props.changeHandler("costKey", props.options[index].key);
+					}else{
+						props.changeHandler("costKey", undefined);
+					}
+
+					props.changeHandler(id, text);
+				}}
 			/>
 			<View style = { styles.horizontalContainer }>
 				<LabelAsideDropMoney
 					id='costValue'
-					value={props.incomeValue}
+					value={props.costValue}
 					isPercent={props.isPercent}
 					changeHandler={props.changeHandler}
 				/>

@@ -9,12 +9,13 @@
 */
 
 export default class Cost {
-	constructor (title, money, TAG, taxable, index = 1) {
+	constructor (title, money, TAG, taxable, titleKey = undefined, index = 1) {
 		this._id = `ID${index}${new Date().getTime()}${(Math.random()*700).toFixed(3)}C`;
 		this.createdAt = new Date().getTime();
 
 		this.money = parseFloat(money);
 		this.title = title;
+		this.titleKey = titleKey;
 		this.TAG = TAG;
 		this.taxable = taxable;
 	}

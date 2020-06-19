@@ -102,7 +102,8 @@ class GoalsScreen extends Component {
 	}
 	
 	render(){
-		const options = this.props.navigation.getParam("options", []).map(key => Translation.getStringValue(key));
+		const optionsRaw = this.props.navigation.getParam("options", []);
+		const options = optionsRaw.map(key => ({text: Translation.getStringValue(key), key: key}))
 		
 		const leftFootContent = (
 			this.state.isFirstScreen ? 
@@ -131,9 +132,9 @@ class GoalsScreen extends Component {
 			<View style = {{flex: 1}}>
 				<AddIncomeModal
 					visible = {this.state.addModal}
-					addIncome = { (title, money) => { addIncome(this.props.budgetId, title, money) } }
+					addIncome = { (title, money, titleKey) => { addIncome(this.props.budgetId, title, money, titleKey) } }
 					removeIncome = { (id) => { removeIncome(this.props.budgetId, id) } }
-					updateIncome = { (id, title, money) => updateIncome(this.props.budgetId, id, title, money) }
+					updateIncome = { (id, title, money, titleKey) => updateIncome(this.props.budgetId, id, title, money, titleKey) }
 					closeModal = {this.toggleAddModal}
 					isNewIncome = {this.state.isNewIncome}
 					oldIncome = {this.state.editableIncome}

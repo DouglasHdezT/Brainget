@@ -33,7 +33,7 @@ const LabelDropInput = props => {
 					small
 					direction = { DOWN }
 					items = { props.options ? props.options : [] }
-					onChange = { (text) => props.changeHandler(props.id, text)  }
+					onChange = { (text, index) => props.changeHandler(props.id, text, index)  }
 				/>				
 			</View>
 		</View>

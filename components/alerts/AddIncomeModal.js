@@ -30,6 +30,7 @@ class AddIncomeModal extends Component {
 		this.initState = {
 			incomeName: '',
 			incomeValue: '',
+			incomeKey: undefined,
 			_id:''
 		}
 
@@ -50,11 +51,11 @@ class AddIncomeModal extends Component {
 		} else if (isNaN(this.state.incomeValue)){
 			misstypeFields();
 		}else if(isUpdating){
-			this.props.updateIncome(this.state._id, this.state.incomeName, this.state.incomeValue);
+			this.props.updateIncome(this.state._id, this.state.incomeName, this.state.incomeValue, this.state.incomeKey);
 			this.setState({...this.initState});
 			this.props.closeModal();
 		} else{
-			this.props.addIncome(this.state.incomeName, this.state.incomeValue);
+			this.props.addIncome(this.state.incomeName, this.state.incomeValue, this.state.incomeKey);
 			this.setState({...this.initState});
 			this.props.closeModal();
 		}
@@ -63,6 +64,7 @@ class AddIncomeModal extends Component {
 	verifyFields = () => {
 		this.props.isNewIncome ? this.setState({...this.initState}) : this.setState ({
 			incomeName: this.props.oldIncome.title,
+			incomeKey: this.props.oldIncome.titleKey,
 			incomeValue: this.props.oldIncome.money.toFixed(2),
 			_id: this.props.oldIncome._id,
 		})
@@ -117,6 +119,7 @@ class AddIncomeModal extends Component {
 								<IncomeForm
 									incomeName={this.state.incomeName}
 									incomeValue={this.state.incomeValue}
+									incomeKey={this.state.incomeKey}
 									options = {this.props.options}
 									changeHandler={this.changeHandler}
 								/>

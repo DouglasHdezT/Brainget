@@ -32,6 +32,7 @@ class AddCostModal extends Component {
 			costValue: '',
 			isPercent: false,
 			isTaxable: false,
+			costKey: undefined,
 			_id:''
 		}
 
@@ -52,11 +53,11 @@ class AddCostModal extends Component {
 		} else if (isNaN(this.state.costValue)){
 			misstypeFields();
 		}else if(isUpdating){
-			this.props.updateCost(this.state._id, this.state.costName, this.state.costValue, this.state.isPercent, this.state.isTaxable);
+			this.props.updateCost(this.state._id, this.state.costName, this.state.costValue, this.state.isPercent, this.state.isTaxable, this.state.costKey);
 			this.setState({...this.initState});
 			this.props.closeModal();
 		} else{
-			this.props.addCost(this.state.costName, this.state.costValue, this.state.isPercent, this.props.TAG, this.state.isTaxable);
+			this.props.addCost(this.state.costName, this.state.costValue, this.state.isPercent, this.props.TAG, this.state.isTaxable, this.state.costKey);
 			this.setState({...this.initState});
 			this.props.closeModal();
 		}
@@ -67,6 +68,7 @@ class AddCostModal extends Component {
 			...this.state,
 			costName: this.props.oldCost.title,
 			costValue: this.props.oldCost.money.toFixed(2),
+			costKey: this.props.oldCost.titleKey,
 			isTaxable: this.props.oldCost.taxable ? true : false,
 			_id: this.props.oldCost._id,
 		})
@@ -120,8 +122,9 @@ class AddCostModal extends Component {
 	
 							<View style={{ flex: 3, marginVertical: 8 }}>
 								<CostForm
-									incomeName={this.state.costName}
-									incomeValue={this.state.costValue}
+									costName={this.state.costName}
+									costValue={this.state.costValue}
+									costKey = {this.state.costKey}
 									isPercent = {this.state.isPercent}
 									isTaxable = { this.state.isTaxable }
 									options = { this.props.options }

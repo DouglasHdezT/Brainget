@@ -14,14 +14,24 @@ import { StyleSheet, View } from 'react-native';
 import LabelDropInput from './inputs/LabelDropInput';
 import LabelAsidesInput from './inputs/LabelAsidesInput';
 
+import Translation from '../../translation/TranslationHelper';
+
 const IncomeForm = props => {
 	return (
 		<View style={{ flex: 1 }}>
 			<LabelDropInput
 				id='incomeName'
-				value={props.incomeName}
-				changeHandler={props.changeHandler}
-				options = { props.options }
+				value={props.incomeKey ? Translation.getStringValue(props.incomeKey) : props.incomeName}
+				changeHandler={(id, text, index = -1) => {
+					if(index > 0){
+						props.changeHandler("incomeKey", props.options[index].key);
+					}else{
+						props.changeHandler("incomeKey", undefined);
+					}
+
+					props.changeHandler(id, text);
+				}}
+				options = { props.options.map(item => item.text) }
 			/>
 			<LabelAsidesInput
 				id='incomeValue'

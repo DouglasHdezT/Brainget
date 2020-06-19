@@ -25,18 +25,18 @@ const AboutHeader = props => {
 			<Image source = { props.logo } style = { styles.mainLogo }/>
 
 			<Text style = { styles.title } > { props.appName } </Text>
-			
-			<View style = { styles.infoContainer }>
-				<Text style = { styles.titleInfoText }> { `${Translation.getStringValue(Keys.app_version_text)}:` } </Text>
-				<Text style = { styles.infoText }> { props.version } </Text>
-			</View>
+			<Text style = { styles.footerText }> { props.license } </Text>
 			
 			<View style = { styles.infoContainer }>
 				<Text style = { styles.titleInfoText }> { `${Translation.getStringValue(Keys.source_about_text)}:` } </Text>
 				<Text style = { styles.infoText }> { props.sourceCode } </Text>
 			</View>
 			
-			<Text style = { styles.footerText }> { props.license } </Text>
+			<View style = { styles.infoContainer }>
+				<Text style = { styles.titleInfoText }> { `${Translation.getStringValue(Keys.app_version_text)}:` } </Text>
+				<Text style = { styles.infoText }> { props.version } </Text>
+			</View>
+			
 		</ScrollView>
 	);
 }

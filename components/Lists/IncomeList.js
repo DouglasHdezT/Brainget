@@ -22,7 +22,7 @@ const IncomeList = props => {
 	const createItem = (item) => (
 		<MoneyItem 
 			update = {() => props.openAddModal(false, item._id)}
-			title = {item.title} 
+			title = {item.titleKey ? Translation.getStringValue(item.titleKey) : item.title} 
 			money = {item.money} 
 			date = {new Date(item.createdAt).toLocaleDateString()}/>);
 

@@ -14,13 +14,15 @@ import { StyleSheet, View } from 'react-native';
 import SingleReportItem from './Items/SingleReportItem';
 import DividerHorizontal from '../design/DividerHorizontal';
 
+import Traslation from '../../translation/TranslationHelper';
+
 const MoneyItemsReportList = props => {
 	const itemList = props.items.map((item, index, array) => {
 		const divider = <DividerHorizontal  />
 		return (
 			<React.Fragment key = { `${item._id}Div` }>
 				<SingleReportItem
-					title = {item.title} 
+					title = {item.titleKey ? Traslation.getStringValue(item.titleKey) : item.title} 
 					money = { item.money.toFixed(2) }
 					isTaxable = { item.taxable } 
 					date= {new Date(item.createdAt).toLocaleDateString()}/>

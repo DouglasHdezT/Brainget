@@ -116,7 +116,7 @@ export default class HTMLReportBuilder {
 			let newResult = item.itemList.reduce((vals,value) => {
 				return vals + `
 					<tr>
-						<td> ${value.title} </td>
+						<td> ${value.titleKey ? Translation.getStringValue(value.titleKey) : value.title} </td>
 						<td> $ ${value.money.toFixed(2)} </td>
 						<td> ${new Date(value.createdAt).toLocaleDateString()} </td>
 						${item.type === COST_TYPE ? `<td> ${value.taxable ? Translation.getStringValue(Keys.taxable_report_yes) : Translation.getStringValue(Keys.taxable_report_no)} </td>` : ""}

@@ -29,6 +29,8 @@ class TranslationHelper {
 		i18n.locale = this.language;
 		i18n.defaultLocale = "en";
 		i18n.fallbacks = true;
+
+		i18n.missingTranslation = () => "";
 	}
 
 	setLanguage = (language) => {

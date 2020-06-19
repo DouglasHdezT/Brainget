@@ -211,20 +211,20 @@ export const createBudget = async (periodsConf, ignoreLoading = false) => {
 		const previousBudget = await getPreviousBudgetWithSameConfiguration(year, month, period, periods);
 
 		if (previousBudget.length > 0){
-			const newIncomes = previousBudget[0].incomes.map(item => new Income(item.title, item.money))
+			const newIncomes = previousBudget[0].incomes.map((item, index) => new Income(item.title, item.money, item.titleKey ,index));
 			
 			const filteredExpenses = previousBudget[0].expenses.filter(item => item.TAG === ExpensesTags.Fixed)
-				.map((item, index) => new Cost(item.title, item.money, item.TAG, item.taxable, index));
+				.map((item, index) => new Cost(item.title, item.money, item.TAG, item.taxable, item.titleKey, index));
 
 			const newExpensesBase = DefaultBudgetData.expensesKeys.filter(item => item.TAG !== ExpensesTags.Fixed)
-				.map((item, index) => new Cost(Translation.getStringValue(item.key), 0, item.TAG, false, index));
+				.map((item, index) => new Cost(Translation.getStringValue(item.key), 0, item.TAG, false, item.key, index));
 			
 			newBudget.incomes = newIncomes;
 			newBudget.expenses = [...filteredExpenses, ...newExpensesBase];
 		}else{
-			const newIncomes = DefaultBudgetData.incomesKeys.map(key => new Income(Translation.getStringValue(key), 0));
+			const newIncomes = DefaultBudgetData.incomesKeys.map(key => new Income(Translation.getStringValue(key), 0, key));
 			const newExpenses = DefaultBudgetData.expensesKeys
-				.map((item, index) => new Cost(Translation.getStringValue(item.key), 0, item.TAG, false, index));
+				.map((item, index) => new Cost(Translation.getStringValue(item.key), 0, item.TAG, false, item.key, index));
 
 			newBudget.incomes = newIncomes;
 			newBudget.expenses = newExpenses;
@@ -288,10 +288,10 @@ export const updateBudgetQuestions = async (id ,q1, q2, q3) => {
 	}
 }
 
-export const addIncome = (budgetId, title, money) => {
+export const addIncome = (budgetId, title, money, titleKey = undefined) => {
 	startLoading();
 	
-	const newIncome = new Income(title, money);
+	const newIncome = new Income(title, money, titleKey);
 	
 	db.get(budgetId).then(budget => {
 		budget.incomes = [...budget.incomes, newIncome];
@@ -312,12 +312,12 @@ export const addIncome = (budgetId, title, money) => {
 	});
 }
 
-export const addCost = (budgetId, title, value, isPercent, TAG, taxable = false) => {
+export const addCost = (budgetId, title, value, isPercent, TAG, taxable = false, titleKey = undefined) => {
 	startLoading();
 
 	db.get(budgetId).then(budget => {
 		const money = isPercent ? parseFloat(( value * budget.totalIncome) / 100) : value;
-		const newCost = new Cost(title, money, TAG, taxable);
+		const newCost = new Cost(title, money, TAG, taxable, titleKey);
 
 		budget.expenses = [...budget.expenses, newCost];
 
@@ -337,7 +337,7 @@ export const addCost = (budgetId, title, value, isPercent, TAG, taxable = false)
 	})
 }
 
-export const updateIncome = (budgetId, id, title, money) => {
+export const updateIncome = (budgetId, id, title, money, titleKey = undefined) => {
 	startLoading();
 
 	db.get(budgetId).then(budget => {
@@ -348,6 +348,7 @@ export const updateIncome = (budgetId, id, title, money) => {
 				...budget.incomes[index],
 				title: title,
 				money: parseFloat(money),
+				titleKey: titleKey
 			}
 
 			const { totalIncome, totalCosts, currentBalance } = updateValues(budget);
@@ -367,7 +368,7 @@ export const updateIncome = (budgetId, id, title, money) => {
 	})
 }
 
-export const updateCost = (budgetId, id, title = "", value = 0, isPercent = false, taxable = false) => {
+export const updateCost = (budgetId, id, title = "", value = 0, isPercent = false, taxable = false, titleKey = undefined) => {
 	startLoading();
 
 	db.get(budgetId).then(budget => {
@@ -380,7 +381,8 @@ export const updateCost = (budgetId, id, title = "", value = 0, isPercent = fals
 				...budget.expenses[index],
 				title: title,
 				money: money,
-				taxable: taxable
+				taxable: taxable,
+				titleKey: titleKey
 			}
 
 			const { totalIncome, totalCosts, currentBalance } = updateValues(budget);

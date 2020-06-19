@@ -57,7 +57,7 @@ class CostsScreen extends Component {
 	render(){
 		const TAG = this.props.navigation.getParam('TAG');
 		const itemsFiltered = this.props.expenses.filter(cost => cost.TAG === TAG);
-		const options = this.props.navigation.getParam("options", []).map(key => Translation.getStringValue(key));
+		const options = this.props.navigation.getParam("options", []).map(key => ({text: Translation.getStringValue(key), key}));
 
 		const leftFootContent = <MoneyContainer money = {this.props.currentBalance.toFixed(2)}/>;
 		const rightFootContent = <PeriodContainer period = { `${this.props.startDay} - ${this.props.endDay} ${intToMonth(this.props.month)}` }/>;
@@ -66,9 +66,9 @@ class CostsScreen extends Component {
 			<View style = {{flex:1}}>
 				<AddCostModal
 					closeModal = {()=>this.setState({addModal: !this.state.addModal})}
-					addCost = { (title, value, isPercent, TAG, taxable) => addCost(this.props.budgetId, title, value, isPercent, TAG, taxable) }
+					addCost = { (title, value, isPercent, TAG, taxable, titleKey) => addCost(this.props.budgetId, title, value, isPercent, TAG, taxable, titleKey) }
 					removeCost = { (id) => removeCost(this.props.budgetId, id) }
-					updateCost = { (id, title, value, isPercent, taxable) => updateCost(this.props.budgetId, id, title, value, isPercent, taxable) }
+					updateCost = { (id, title, value, isPercent, taxable, titleKey) => updateCost(this.props.budgetId, id, title, value, isPercent, taxable, titleKey) }
 					isNewCost = {this.state.isNewCost}
 					oldCost = {this.state.editableCost}
 					options = { options }
