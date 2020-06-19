@@ -56,11 +56,12 @@ class BudgetReportScreen extends Component {
 	printReport = async () => {
 		const { startDay=0, endDay=0, month=0, year=0, totalIncome=0, totalCosts=0, currentBalance=0, incomes = [], expenses = [] } = this.state.budget;
 		const date = `${startDay} - ${endDay} / ${intToMonth(month)} / ${year}`;
+		const expensesFiltered = expenses.filter(item => item.money !== 0);
 
 		const html = new HTMLReportBuilder();
 		html.setReportDate(date);
 		html.setItems(incomes, 
-			expenses,
+			expensesFiltered,
 			totalIncome, 
 			totalCosts, 
 			currentBalance);
