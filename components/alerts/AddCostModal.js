@@ -29,10 +29,12 @@ class AddCostModal extends Component {
 
 		this.initState = {
 			costName: '',
-			costValue: '',
+			costValue: '00.00',
+			costValueOld: '',
 			isPercent: false,
 			isTaxable: false,
 			costKey: undefined,
+			isAdding: true,
 			_id:''
 		}
 
@@ -42,9 +44,19 @@ class AddCostModal extends Component {
 	}
 
 	changeHandler = (id, value) => {
-		this.setState({
-			[id]: value
-		})
+		let newState = {}
+		if(id === "isAdding" && value === false){
+			newState = {
+				[id]: value,	
+				costValue: this.state.costValueOld,
+			}
+		}else{
+			newState = {
+				[id]: value
+			}
+		}
+		
+		this.setState(newState)
 	}
 
 	addCost = (isUpdating = false) => {
@@ -53,11 +65,28 @@ class AddCostModal extends Component {
 		} else if (isNaN(this.state.costValue)){
 			misstypeFields();
 		}else if(isUpdating){
-			this.props.updateCost(this.state._id, this.state.costName, this.state.costValue, this.state.isPercent, this.state.isTaxable, this.state.costKey);
+			this.props.updateCost(
+				this.state._id, 
+				this.state.costName, 
+				this.state.costValue, 
+				this.state.isPercent, 
+				this.state.isTaxable,
+				this.state.isAdding, 
+				this.state.costKey
+			);
+			
 			this.setState({...this.initState});
 			this.props.closeModal();
 		} else{
-			this.props.addCost(this.state.costName, this.state.costValue, this.state.isPercent, this.props.TAG, this.state.isTaxable, this.state.costKey);
+			this.props.addCost(
+				this.state.costName, 
+				this.state.costValue, 
+				this.state.isPercent, 
+				this.props.TAG, 
+				this.state.isTaxable, 
+				this.state.costKey
+			);
+			
 			this.setState({...this.initState});
 			this.props.closeModal();
 		}
@@ -67,10 +96,13 @@ class AddCostModal extends Component {
 		this.props.isNewCost ? this.setState({...this.initState}) : this.setState ({
 			...this.state,
 			costName: this.props.oldCost.title,
-			costValue: this.props.oldCost.money.toFixed(2),
+			costValueOld: this.props.oldCost.money.toFixed(2),
+			costValue: '00.00',
 			costKey: this.props.oldCost.titleKey,
 			isTaxable: this.props.oldCost.taxable ? true : false,
 			_id: this.props.oldCost._id,
+			isAdding: true,
+			isPercent: false,
 		})
 	}
 
@@ -122,6 +154,8 @@ class AddCostModal extends Component {
 	
 							<View style={{ flex: 3, marginVertical: 8 }}>
 								<CostForm
+									isNew = {this.props.isNewCost}
+									isAdding = {this.state.isAdding}
 									costName={this.state.costName}
 									costValue={this.state.costValue}
 									costKey = {this.state.costKey}

@@ -30,7 +30,6 @@ const LabelDropInput = props => {
 				/>
 				<OptionsModalButton
 					dark
-					small
 					direction = { DOWN }
 					items = { props.options ? props.options : [] }
 					onChange = { (text, index) => props.changeHandler(props.id, text, index)  }

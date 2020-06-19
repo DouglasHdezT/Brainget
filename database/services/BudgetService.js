@@ -368,7 +368,7 @@ export const updateIncome = (budgetId, id, title, money, titleKey = undefined) =
 	})
 }
 
-export const updateCost = (budgetId, id, title = "", value = 0, isPercent = false, taxable = false, titleKey = undefined) => {
+export const updateCost = (budgetId, id, title = "", value = 0, isPercent = false, taxable = false, isAdding = false, titleKey = undefined) => {
 	startLoading();
 
 	db.get(budgetId).then(budget => {
@@ -380,7 +380,7 @@ export const updateCost = (budgetId, id, title = "", value = 0, isPercent = fals
 			budget.expenses[index] = {
 				...budget.expenses[index],
 				title: title,
-				money: money,
+				money: isAdding ? budget.expenses[index].money + money : money,
 				taxable: taxable,
 				titleKey: titleKey
 			}

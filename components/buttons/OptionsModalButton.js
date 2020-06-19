@@ -77,6 +77,7 @@ class OptionsModalButton extends Component {
 		const icon = this.setIcon();
 		const textColor = this.props.dark ? "#000" : "#fff";
 		const fontSize = this.props.small ? 16 : 20;
+		const iconSize = this.props.small ? { width: 10, height: 10 } : { width: 16, height: 16 }
 
 		return (
 			<>
@@ -117,12 +118,15 @@ class OptionsModalButton extends Component {
 					}}
 					style = { styles.renderedContainer }>
 					
+					{ this.props.leftIcon && <Image style = {{...styles.rederedIcon, ...iconSize}} source = { icon } /> }
+
 					{ 
 						this.props.withoutText ||
 						<Text style = {{...styles.rederedText, color: textColor, fontSize: fontSize}}> { this.props.value } </Text>
 					}
 
-					<Image style = {styles.rederedIcon} source = { icon } />
+					{ this.props.leftIcon || <Image style = {{...styles.rederedIcon, ...iconSize}} source = { icon } /> }
+					
 				</TouchableOpacity>
 			</>
 		);
@@ -195,6 +199,7 @@ const styles = StyleSheet.create({
 	rederedText:{
 		marginEnd:8,
 		marginStart: 4,
+		marginVertical:0,
 
 		fontFamily: "roboto",
 		textAlign: "center",

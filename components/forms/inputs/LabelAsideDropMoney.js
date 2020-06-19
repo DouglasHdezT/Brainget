@@ -16,16 +16,29 @@ import OptionsModalButton, {DOWN} from '../../buttons/OptionsModalButton';
 import Colors from '../../../assets/constants/Colors';
 
 import Translation, { Keys } from '../../../translation/TranslationHelper';
+import DividerVertical from '../../design/DividerVertical';
 
 const LabelAsidesInput = props => {
 
 	const PERCENTAGE = Translation.getStringValue(Keys.percentage_modal_field_text);
-const CASH = Translation.getStringValue(Keys.cash_modal_field_text);
+	const CASH = Translation.getStringValue(Keys.cash_modal_field_text);
+	const ADD = Translation.getStringValue(Keys.add_modal_field_text);
+	const REPLACE = Translation.getStringValue(Keys.replace_modal_field_text);
 	
 	return (
 		<View style={styles.container}>
 			<Text style={styles.title}> { Translation.getStringValue(Keys.amount_modal_field_text) } </Text>
 			<View style={styles.inputContainer}>
+				{props.isNew || <OptionsModalButton
+					items = { [ADD, REPLACE] }
+					onChange = { (value, index) => { props.changeHandler('isAdding', index === 0 ? true : false) } }
+					value = { props.isAdding ? "+" : "=" }
+					direction = { DOWN } 
+					small
+					dark
+					leftIcon
+				/>}
+
 
 				<TextInput
 					onChangeText={text => props.changeHandler(props.id, text)}
@@ -35,6 +48,8 @@ const CASH = Translation.getStringValue(Keys.cash_modal_field_text);
 					keyboardType='numeric'
 				/>
 
+				<DividerVertical/>
+
 				<OptionsModalButton
 					items = { [CASH, PERCENTAGE] }
 					onChange = { (value, index) => { props.changeHandler('isPercent', index === 1 ? true : false) } }
@@ -42,7 +57,7 @@ const CASH = Translation.getStringValue(Keys.cash_modal_field_text);
 					direction = { DOWN } 
 					small
 					dark
-					/>
+				/>
 			</View>
 			
 		</View>
@@ -74,6 +89,7 @@ const styles = StyleSheet.create({
 
 		marginHorizontal: 2,
 		padding: 8,
+		paddingStart: 16,
 		justifyContent: "flex-start",
 
 		borderStyle: "solid",

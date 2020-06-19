@@ -66,9 +66,15 @@ class CostsScreen extends Component {
 			<View style = {{flex:1}}>
 				<AddCostModal
 					closeModal = {()=>this.setState({addModal: !this.state.addModal})}
-					addCost = { (title, value, isPercent, TAG, taxable, titleKey) => addCost(this.props.budgetId, title, value, isPercent, TAG, taxable, titleKey) }
+					addCost = { 
+						(title, value, isPercent, TAG, taxable, titleKey) => {
+							addCost(this.props.budgetId, title, value, isPercent, TAG, taxable, titleKey)
+						}}
 					removeCost = { (id) => removeCost(this.props.budgetId, id) }
-					updateCost = { (id, title, value, isPercent, taxable, titleKey) => updateCost(this.props.budgetId, id, title, value, isPercent, taxable, titleKey) }
+					updateCost = { 
+						(id, title, value, isPercent, taxable, isAdding, titleKey) => {
+							updateCost(this.props.budgetId, id, title, value, isPercent, taxable, isAdding, titleKey)
+						} }
 					isNewCost = {this.state.isNewCost}
 					oldCost = {this.state.editableCost}
 					options = { options }

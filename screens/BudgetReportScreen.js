@@ -46,7 +46,7 @@ class BudgetReportScreen extends Component {
 
 	constructor(props){
 		super(props);
-		this.budgetId = this.props.navigation.getParam('budgetId', "BudgetReportScreen")
+		this.budgetId = this.props.navigation.getParam('budgetId', "BudgetReportScreen");
 
 		this.state = {
 			budget: {}

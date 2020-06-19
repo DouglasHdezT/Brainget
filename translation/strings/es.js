@@ -197,7 +197,9 @@ export default {
 	"amount_modal_field_text": "Cantidad",
 	"percentage_modal_field_text": "Porcentaje (%)",
 	"cash_modal_field_text": "Efectivo ($)",
-	"choose_modal_title_text": "Elije",
+	"add_modal_field_text": "Sumar (+)",
+	"replace_modal_field_text": "Reemplazar (=)",
+	"choose_modal_title_text": "Opciones",
 
 	/**
 	 * Alert strings
@@ -205,8 +207,8 @@ export default {
 	"empty_fields_alert_title": "No dejes campos vacíos",
 	"empty_fields_alert_text": "Todos deben poseer un valor",
 	"ok_action_alert_text": "Está bien",
-	"number_misstype_alert_title": "La cantidad debe de ser un número",
-	"number_misstype_alert_text": "",
+	"number_misstype_alert_title": "Tipo de dato erroneo",
+	"number_misstype_alert_text": "La cantidad debe de ser un número",
 	"accept_action_alert_text": "Aceptar",
 	"deny_action_alert_text": "Denegar",
 	"confirmation_alert_title": "¿Estás seguro?",
@@ -357,9 +359,9 @@ export default {
 	"ref7_icon_text": "Diseñado por Those Icon / Flaticon",
 	"ref8_icon_text": "Diseñado por Good Ware / Flaticon",
 	"ref9_icon_text": "Diseñado por Freepik / Flaticon",
-	"ref10_icon_text": "Diseñado por Freepik / Flaticon",
+	"ref10_icon_text": "Diseñado por Photo3idea_studio / Flaticon",
 	"ref11_icon_text": "Diseñado por Wanicon / Flaticon",
-	"ref12_icon_text": "Diseñado por SmashIcons / Flaticon",
+	"ref12_icon_text": "Diseñado por Freepik / Flaticon",
 	"ref13_icon_text": "Diseñado por Pause08 / Flaticon",
 	"ref14_icon_text": "Diseñado por Pixel Perfect / Flaticon",
 	"ref15_icon_text": "Diseñado por Freepik / Flaticon",
@@ -386,7 +388,7 @@ export default {
 	"developer_email_text": "Correo",
 	"developer_name": "Douglas Hernández",
 	"developer_specs": "Desarrollador Web y Móvil",
-	"developer_email": "deushdezt@gmail.com",
+	"developer_email": "douglashdezt@gmail.com",
 	"developer_repository": "https://github.com/douglashdezt",
 
 	/**

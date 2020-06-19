@@ -38,8 +38,10 @@ const CostForm = props => {
 			<View style = { styles.horizontalContainer }>
 				<LabelAsideDropMoney
 					id='costValue'
+					isNew = { props.isNew }
 					value={props.costValue}
 					isPercent={props.isPercent}
+					isAdding = {props.isAdding}
 					changeHandler={props.changeHandler}
 				/>
 				<IconButton

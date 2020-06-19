@@ -92,7 +92,7 @@ export const emptyFieldsAlert = () => {
 export const misstypeFields = () => {
 	Alert.alert(
 		Translation.getStringValue(Keys.number_misstype_alert_title),
-		undefined,
+		Translation.getStringValue(Keys.number_misstype_alert_text),
 		[{ 
 			text: Translation.getStringValue(Keys.ok_action_alert_text), 
 			onPress: () => {},

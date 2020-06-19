@@ -365,4 +365,6 @@ export const Keys = {
   total_balance_report_title: "total_balance_report_title",
   social_media_message: "social_media_message",
   current_language: "current_language",
+  replace_modal_field_text: "replace_modal_field_text",
+  add_modal_field_text: "add_modal_field_text"
 }
