@@ -10,12 +10,11 @@
 
 import React, { useState } from 'react';
 
-import { StyleSheet, View, Button, ScrollView, Text } from 'react-native';
+import { StyleSheet, View, Button, ScrollView, Text, TouchableOpacity } from 'react-native';
 import StyledText from 'react-native-styled-text';
 
-import BorderedButton from '../components/buttons/BorderedButton';
-
 import Colors from '../assets/constants/Colors';
+import Dimens from '../assets/constants/Dimens';
 
 import terms from '../translation/strings/termsAndConditions';
 import Translation, { Keys } from '../translation/TranslationHelper';
@@ -27,18 +26,26 @@ const TermScreen = ({onPress}) => {
 		<View style = { styles.container }>
 			<Text style = {styles.title}>{ Translation.getStringValue(Keys.license_title) }</Text>
 			
-			<ScrollView style = {{ flex: 1, marginBottom: 8, paddingVertical: 16, paddingHorizontal: 24}} 
-				onScroll = { e => {
-					let paddingToBottom = 10;
-					paddingToBottom += e.nativeEvent.layoutMeasurement.height;
-					if(e.nativeEvent.contentOffset.y >= e.nativeEvent.contentSize.height - paddingToBottom) {
-						setDisable(false)
-					}
-				} }>
-					<StyledText style = {styles.termsText} children = { terms.text } />
+			<ScrollView style = {{ flex: 1, marginBottom: 8, paddingVertical: 16, paddingHorizontal: 24}}>
+				<StyledText style = {styles.termsText} children = { terms.text } />
 			</ScrollView>
-			
-			<Button disabled = {btnDisabled} title = "He leído y acepto los T&C" onPress = { onPress } />
+
+			<TouchableOpacity onPress = { onPress } style = {{
+				padding: 12,
+				justifyContent: "center",
+				alignItems: "center",
+				backgroundColor: Colors.blue500
+			}}>
+
+				<Text style = {{
+					fontFamily: "roboto",
+					fontSize: Dimens.h - 4,
+					color: "#fff"
+				}}> 
+					{ Translation.getStringValue(Keys.accept_text) }
+				</Text>
+
+			</TouchableOpacity>
 		</View>
 	);
 }
@@ -51,13 +58,13 @@ const styles = StyleSheet.create({
 	termsText: {
 		textAlign: "justify",
 		fontFamily: "roboto",
-		fontSize: 16
+		fontSize: Dimens.p
 	},
 	title: {
 		textAlign: "center",
 		fontFamily: "roboto",
 		color: "white",
-		fontSize:24,
+		fontSize:Dimens.h,
 
 		backgroundColor: Colors.blue900,
 

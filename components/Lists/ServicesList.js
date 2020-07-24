@@ -13,6 +13,7 @@ import React, { useState } from 'react';
 import { StyleSheet, FlatList,  View, Text, Image, TouchableOpacity } from 'react-native';
 import Icons from '../../assets/constants/Icons';
 import Colors from '../../assets/constants/Colors';
+import Dimens from '../../assets/constants/Dimens';
 import InfoModal from '../alerts/InfoModal';
 
 const ServicesList = props => {
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
 	itemText: {
 		flex: 2,
 		marginEnd: 8,
-		fontSize: 16,
+		fontSize: Dimens.p,
 		fontFamily: "roboto",
 		color: Colors.fontColorLight,
 

@@ -14,6 +14,7 @@ import { StyleSheet, ScrollView, View, Image, Text } from 'react-native';
 
 import Translation, { Keys } from '../../translation/TranslationHelper';
 import Colors from '../../assets/constants/Colors';
+import Dimens from '../../assets/constants/Dimens';
 
 const LibrariesContent = props => {
 	const mainData = props.main.map((item, index) => renderItem(item, index));
@@ -49,7 +50,7 @@ const renderItem = (item, index) => {
 
 const styles = StyleSheet.create({
 	title: {
-		fontSize: 24,
+		fontSize: Dimens.h,
 		fontFamily: "roboto-bold",
 		color: Colors.fontColorLight,
 
@@ -65,12 +66,12 @@ const styles = StyleSheet.create({
 		marginBottom:8,
 	},
 	itemTitle: {
-		fontSize: 20,
+		fontSize: Dimens.h,
 		fontFamily: "roboto",
 		color: Colors.fontColorLight,
 	},
 	itemText: {
-		fontSize: 16,
+		fontSize: Dimens.p,
 		fontFamily: "roboto",
 		fontStyle: "italic",
 		color: Colors.fontColorLight,

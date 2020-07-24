@@ -16,6 +16,7 @@ import CloseButton from './TopEndIconButton';
 
 import Icons from '../../assets/constants/Icons';
 import Colors from '../../assets/constants/Colors';
+import Dimens from '../../assets/constants/Dimens';
 
 import Traslation, { Keys } from '../../translation/TranslationHelper';
 
@@ -76,7 +77,7 @@ class OptionsModalButton extends Component {
 	render(){
 		const icon = this.setIcon();
 		const textColor = this.props.dark ? "#000" : "#fff";
-		const fontSize = this.props.small ? 16 : 20;
+		const fontSize = this.props.small ? Dimens.p : Dimens.h;
 		const iconSize = this.props.small ? { width: 10, height: 10 } : { width: 16, height: 16 }
 
 		return (

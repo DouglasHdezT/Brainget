@@ -15,6 +15,7 @@ import { StyleSheet, ScrollView, Text } from 'react-native';
 import StyledText from 'react-native-styled-text';
 
 import Colors from '../../assets/constants/Colors';
+import Dimens from '../../assets/constants/Dimens';
 
 const LicenceContent = props => {
 	return (
@@ -31,7 +32,7 @@ const LicenceContent = props => {
 
 const styles = StyleSheet.create({
 	title:{
-		fontSize: 24,
+		fontSize: Dimens.h,
 		fontFamily: "roboto-bold",
 		color: Colors.fontColorLight,
 
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
 		marginBottom: 16
 	},
 	contentText: {
-		fontSize: 16,
+		fontSize: Dimens.p,
 		fontFamily: "roboto",
 		color: Colors.fontColorLight,
 

@@ -12,6 +12,7 @@ import React from 'react';
 
 import { StyleSheet, View, Text, TextInput } from 'react-native';
 import  Colors  from '../../../assets/constants/Colors';
+import  Dimens  from '../../../assets/constants/Dimens';
 
 const LabeledInput = props => {
 	return(
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
 	},
 	text:{
 		fontFamily: 'roboto',
-		fontSize: 24,
+		fontSize: Dimens.h,
 		color: "#fff",
 
 
@@ -64,7 +65,7 @@ const styles = StyleSheet.create({
 		
 		marginVertical:12,
 
-		fontSize: 16,
+		fontSize: Dimens.p,
 		fontFamily:'roboto',
 		color: Colors.inputText
 	}

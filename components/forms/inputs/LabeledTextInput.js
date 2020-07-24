@@ -10,40 +10,65 @@
 
 import React from 'react';
 
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, TextInput } from 'react-native';
+import  Colors  from '../../../assets/constants/Colors';
+import  Dimens  from '../../../assets/constants/Dimens';
 
-import Translation, { Keys } from '../../../translation/TranslationHelper';
-import Dimens from '../../../assets/constants/Dimens';
-
-const PeriodContainer = props => {
+const LabeledInput = props => {
 	return(
-		<View style = { styles.container }>
-			<Text style = {styles.text}> { Translation.getStringValue(Keys.period_prefix_footer_text) } </Text>
-			<Text style = {styles.text}> { props.period }</Text>
+		<View style = {styles.container}>
+			<Text style = {styles.text}> {props.label} </Text>
+			<View style = {styles.textInputContainer}>
+				<Text style = {{...styles.text, color:'#000', marginBottom:0}}>{">"}</Text>
+				<TextInput 
+					value = {props.value}
+					onChangeText = {text => props.changeHandler(props.id, text)}
+					style = {styles.textInput} 
+					keyboardType= 'default' />
+			</View>
 		</View>
 	);
 }
 
 const styles = StyleSheet.create({
 	container:{
-		width:'100%',
+		width: '100%',
 		flex:1,
 
-		flexDirection: 'row',
-		flexWrap: "wrap",
-		justifyContent: 'center',
-		alignItems: 'center',
-		alignContent: "center"
+		justifyContent:'center',
+		alignItems:'stretch',
+		marginVertical: 8,
 	},
 	text:{
-		textAlign: 'center',
-		textAlignVertical:'center',
+		fontFamily: 'roboto',
+		fontSize: Dimens.h,
+		color: "#fff",
+
+
+		marginBottom: 8,
+	},
+	textInputContainer:{
+		marginLeft:24,
+		paddingLeft:16,
+
+		flexDirection:'row',
+		justifyContent:"space-between",
+		alignItems:"center",
+
+		backgroundColor:'#fff',
+		borderBottomEndRadius:15,
+		borderTopStartRadius:15,
+	},
+	textInput:{
+		flex:1,
+		paddingLeft:16,
+		
+		marginVertical:12,
 
 		fontSize: Dimens.p,
-		fontFamily: 'roboto',
-
-		color: '#fff',
-	},
+		fontFamily:'roboto',
+		color: Colors.inputText
+	}
 });
 
-export default PeriodContainer;
+export default LabeledInput;

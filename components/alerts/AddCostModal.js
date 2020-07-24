@@ -10,17 +10,18 @@
 
 import React, { Component } from 'react';
 
-import { Modal, View, Text, StyleSheet, TouchableWithoutFeedback, Keyboard, Dimensions, Alert } from 'react-native';
+import { Modal, View, Text, StyleSheet, TouchableWithoutFeedback, Keyboard, Dimensions } from 'react-native';
 
 import Icons from '../../assets/constants/Icons';
 import Colors from '../../assets/constants/Colors';
+import Dimens from '../../assets/constants/Dimens';
 
 import BorderedButton from '../buttons/BorderedButton';
 import CostForm from '../forms/CostForm';
 import TopEndIconButton from '../buttons/TopEndIconButton';
 import { dropConfimation, emptyFieldsAlert, misstypeFields } from './Alerts';
 
-import Translation, {Keys} from '../../translation/TranslationHelper';
+import Translation, { Keys } from '../../translation/TranslationHelper';
 
 class AddCostModal extends Component {
 
@@ -29,7 +30,7 @@ class AddCostModal extends Component {
 
 		this.initState = {
 			costName: '',
-			costValue: '00.00',
+			costValue: '',
 			costValueOld: '',
 			isPercent: false,
 			isTaxable: false,
@@ -44,19 +45,27 @@ class AddCostModal extends Component {
 	}
 
 	changeHandler = (id, value) => {
-		let newState = {}
-		if(id === "isAdding" && value === false){
-			newState = {
-				[id]: value,	
-				costValue: this.state.costValueOld,
+		let newState = {};
+		
+		if (id === "isAdding") { 
+			let newCostValue = '';
+
+			if (value === false) {
+				newCostValue = this.state.costValueOld;
 			}
-		}else{
+
 			newState = {
-				[id]: value
+				...newState,
+				costValue: newCostValue,
 			}
 		}
-		
-		this.setState(newState)
+
+		newState = {
+			...newState,
+			[id]: value,
+		}
+
+		this.setState(newState);
 	}
 
 	addCost = (isUpdating = false) => {
@@ -97,7 +106,7 @@ class AddCostModal extends Component {
 			...this.state,
 			costName: this.props.oldCost.title,
 			costValueOld: this.props.oldCost.money.toFixed(2),
-			costValue: '00.00',
+			costValue: '',
 			costKey: this.props.oldCost.titleKey,
 			isTaxable: this.props.oldCost.taxable ? true : false,
 			_id: this.props.oldCost._id,
@@ -138,7 +147,6 @@ class AddCostModal extends Component {
 					/>
 			</>
 		);
-
 		return (
 			<Modal
 				animationType="fade"
@@ -205,7 +213,7 @@ const styles = StyleSheet.create({
 	},
 	title: {
 		fontFamily: 'roboto-bold',
-		fontSize: 24,
+		fontSize: Dimens.h,
 		color: Colors.ModalTitleColor,
 
 		textAlign: 'center',

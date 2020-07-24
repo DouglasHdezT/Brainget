@@ -11,6 +11,7 @@
 import React from 'react';
 
 import { StyleSheet, TouchableOpacity, Text } from 'react-native';
+import Dimens from '../../../assets/constants/Dimens';
 
 const TextButtonContainer = props => {
 	return (
@@ -31,8 +32,10 @@ const styles = StyleSheet.create({
 		alignItems:'center'
 	},
 	text:{
-		fontSize: 20,
+		fontSize: Dimens.h-4,
 		fontFamily: 'roboto',
+		textAlign: "center",
+		textAlignVertical: "center",
 
 		color:'#fff',
 	},

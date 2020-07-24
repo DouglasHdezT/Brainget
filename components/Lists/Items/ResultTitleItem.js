@@ -14,6 +14,7 @@ import { StyleSheet, View, Text, Image } from 'react-native';
 
 import Colors from '../../../assets/constants/Colors';
 import Icons from '../../../assets/constants/Icons';
+import Dimens from '../../../assets/constants/Dimens';
 
 const ResultTitleItem = props => {
 	const { title, totalBalance } = props;
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
 		textAlign: "left",
 
 		fontFamily: 'roboto-bold',
-		fontSize: 20,
+		fontSize: Dimens.h - 4,
 		color: "#fff",
 	},
 	money:{
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
 		textAlign: "right",
 
 		fontFamily: 'roboto',
-		fontSize: 20,
+		fontSize: Dimens.h - 4,
 		color: "#fff",
 	},
 	icon:{

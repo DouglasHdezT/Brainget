@@ -60,7 +60,7 @@ export default [
 			params: {
 				title: Keys.health_costs_title_text,
 				TAG: Expenses.Health,
-				options: [ Keys.health_op1, Keys.health_op2, Keys.health_op3, Keys.health_op4, Keys.health_op5 ],
+				options: [ Keys.health_op1, Keys.health_op2, Keys.health_op4, Keys.health_op5 ],
 				canRepeatElems: true
 			}
 		}

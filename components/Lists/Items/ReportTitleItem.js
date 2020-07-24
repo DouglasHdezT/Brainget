@@ -14,6 +14,7 @@ import { StyleSheet, View, Text, Image } from 'react-native';
 
 import Icons from '../../../assets/constants/Icons';
 import Colors from '../../../assets/constants/Colors';
+import Dimens from '../../../assets/constants/Dimens';
 
 const ReportTitleItem = props => {
 	const { title } = props;
@@ -64,7 +65,7 @@ const styles = StyleSheet.create({
 		textAlign: "left",
 
 		fontFamily: 'roboto-bold',
-		fontSize: 20,
+		fontSize: Dimens.h-4,
 		color: Colors.gray600,
 	},
 	icon:{

@@ -12,6 +12,7 @@ import React from 'react';
 
 import { StyleSheet, View, TextInput, Text } from 'react-native';
 import Colors from '../../../assets/constants/Colors';
+import Dimens from '../../../assets/constants/Dimens';
 
 import Translation, { Keys } from '../../../translation/TranslationHelper';
 import OptionsModalButton, { DOWN } from '../../buttons/OptionsModalButton';
@@ -41,7 +42,6 @@ const LabelDropInput = props => {
 
 const styles = StyleSheet.create({
 	container: {
-
 		justifyContent: "flex-start",
 	},
 	title: {
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
 
 		color: '#000',
 		fontFamily: 'roboto',
-		fontSize: 16,
+		fontSize: Dimens.p,
 	},
 	inputContainer: {
 		padding: 8,
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 8,
 
 		fontFamily: 'roboto',
-		fontSize: 16,
+		fontSize: Dimens.p,
 
 		color: Colors.inputText,
 	}

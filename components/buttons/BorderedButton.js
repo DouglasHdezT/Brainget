@@ -11,13 +11,14 @@
 import React from 'react';
 
 import {View, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import Dimens from '../../assets/constants/Dimens';
 
 const BorderedButton = props => {
 	return (
 		<View style = {{...styles.container, backgroundColor: props.color}}>
 			<TouchableOpacity
 				onPress={props.onPress}>
-				<Text style = {{...styles.text, fontSize: props.small ? 16 : 20}}>{props.text}</Text>
+				<Text style = {{...styles.text, fontSize: props.small ? Dimens.p : Dimens.h}}>{props.text}</Text>
 			</TouchableOpacity>
 		</View>
 	);
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
 	text:{
 		color: '#fff',
 		fontFamily: 'roboto',
-		fontSize: 20,
+		fontSize: Dimens.h,
 
 		textAlign: "center",
 	}

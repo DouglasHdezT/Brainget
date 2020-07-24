@@ -11,6 +11,7 @@
 import React, { Component } from 'react';
 
 import { StyleSheet, View, ImageBackground, Alert, Share } from 'react-native';
+import { Linking } from 'expo';
 
 import BackgroundImages from '../assets/constants/BackgroundImages';
 import Colors from '../assets/constants/Colors';
@@ -20,6 +21,7 @@ import { Types } from './../assets/constants/AboutData';
 
 import Translation, { Keys } from '../translation/TranslationHelper';
 import terms from '../translation/strings/termsAndConditions';
+import AboutData from '../assets/constants/AboutData';
 
 import ResourcesContent from '../components/aboutContents/ResourcesContent';
 import LibrariesContent from '../components/aboutContents/LibrariesContent';
@@ -37,7 +39,13 @@ class AboutOptionScreen extends Component {
 
 				if(navigation.getParam("type") === Types.DEVELOPER ) {
 					content = (
-						<View style = { { marginEnd: 16 } }>
+						<View style = { { marginEnd: 16, flexDirection: "row" } }>
+							<IconButton
+								style = {{marginEnd: 16}}
+								iconSize = { 24 }
+								image = { Icons.github }
+								onPress = { () => { Linking.openURL(Translation.getStringValue(AboutData.sourceCode)) } }
+							/>
 							<IconButton
 								iconSize = { 24 }
 								image = { Icons.share }

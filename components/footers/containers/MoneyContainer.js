@@ -13,6 +13,7 @@ import React from 'react';
 import { StyleSheet, View, Image, Text } from 'react-native';
 
 import Icons from '../../../assets/constants/Icons';
+import Dimens from '../../../assets/constants/Dimens';
 
 const MoneyContainer = props => {
 	return(
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
 		textAlign: 'center',
 		textAlignVertical:'center',
 
-		fontSize: 20,
+		fontSize: Dimens.h - 4,
 		fontFamily: 'roboto',
 
 		color:'#fff',
@@ -44,7 +45,8 @@ const styles = StyleSheet.create({
 		flex: 3
 	}, 
 	icon:{
-		flex:1,
+		height: "100%",
+		flex: 1,
 		resizeMode:'contain',
 	}
 });

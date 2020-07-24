@@ -14,6 +14,7 @@ import {StyleSheet, View, Text, Image, ImageBackground, TouchableOpacity} from '
 import TopEndIconButton from '../buttons/TopEndIconButton';
 
 import Colors from '../../assets/constants/Colors';
+import Dimens from '../../assets/constants/Dimens';
 import Icons from '../../assets/constants/Icons';
 
 export const SubMenu = props => {
@@ -26,8 +27,8 @@ export const SubMenu = props => {
 
 			<TouchableOpacity onPress = {props.onPress} style = {{flex:1}}>
 				<View style = {{flex:1.75}}/>
-				<View style = {{...styles.titleContainer, backgroundColor: Colors.shadowBg, borderTopStartRadius:15, borderBottomEndRadius:15}}>
-					<Text style = {styles.title }>{props.title}</Text>
+				<View style = {{...styles.titleContainer, paddingVertical: 2, backgroundColor: Colors.shadowBg, borderTopStartRadius:15, borderBottomEndRadius:15}}>
+					<Text style = {{...styles.title, fontFamily: "roboto-bold"} }>{props.title}</Text>
 				</View>
 			</TouchableOpacity>
 
@@ -77,7 +78,7 @@ const styles = StyleSheet.create({
 	},
     title:{
         color: 'white',
-        fontSize: 16,
+        fontSize: Dimens.p,
 		fontFamily:'roboto',
 
 		textAlign:"center", 

@@ -11,37 +11,28 @@
 import React, { Component } from 'react';
 
 import { StyleSheet, View, ImageBackground, TouchableOpacity, Image, Text } from 'react-native';
-import { Linking } from 'expo';
 
 import Colors from '../assets/constants/Colors';
 import BackgroundImages from '../assets/constants/BackgroundImages';
 import Icons from '../assets/constants/Icons';
+import Dimens from '../assets/constants/Dimens';
 
 import { connect } from 'react-redux';
 import { setLanguage } from '../store/actions/ConfigActions';
 import { ES_VALUE, EN_VALUE } from '../assets/constants/KeyValues';
 
+import AboutData from '../assets/constants/AboutData';
+
 import Translation, { Keys } from '../translation/TranslationHelper';
 
-import AboutData from '../assets/constants/AboutData';
 
 import AboutHeader from '../components/headers/AboutHeader';
 import Menu from '../components/menus/MainMenu';
-import IconButton from '../components/buttons/IconButton';
 
 class AboutScreen extends Component {
 	static navigationOptions = ({ navigation }) => {
 		return {
-			title: navigation.getParam('title', 'About Screen'),
-			headerRight: () => (
-				<View style = { { marginEnd: 16 } }>
-					<IconButton
-						iconSize = { 24 }
-						image = { Icons.github }
-						onPress = { () => { Linking.openURL(Translation.getStringValue(AboutData.sourceCode)) } }
-					/>
-				</View>
-			)
+			title: navigation.getParam('title', 'About Screen')
 		};
 	};
 
@@ -68,7 +59,8 @@ class AboutScreen extends Component {
 							appName = { Translation.getStringValue(AboutData.appName) }
 							version = { Translation.getStringValue(AboutData.appVersion) }
 							sourceCode = { Translation.getStringValue(AboutData.sourceCode) }
-							license = { Translation.getStringValue(AboutData.licenseShortText) }/>
+							license={Translation.getStringValue(AboutData.licenseShortText)}
+							ppURL = { Translation.getStringValue(AboutData.ppURL) }/>
 
 						<Menu menus = { AboutData.optionsMenu } navigate = { this.navigate }/>
 
@@ -119,15 +111,15 @@ const styles = StyleSheet.create({
 		alignItems: "center"
 	},
 	languageIcon: {
-		width: 32,
-		height: 32,
+		width: Dimens.h +8 ,
+		height: Dimens.h +8,
 		resizeMode: "contain",
 		marginEnd: 16
 	},
 	languageText: {
 		fontFamily: "roboto",
 		color: "white",
-		fontSize: 15,
+		fontSize: Dimens.p,
 	}
 });
 

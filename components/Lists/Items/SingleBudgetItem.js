@@ -14,6 +14,7 @@ import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 
 import Icons from '../../../assets/constants/Icons';
 import Colors from '../../../assets/constants/Colors';
+import Dimens from '../../../assets/constants/Dimens';
 
 import Translation, { Keys } from '../../../translation/TranslationHelper';
 
@@ -79,7 +80,7 @@ const styles = StyleSheet.create({
 		justifyContent: "space-between",
 	},
 	contentContainer:{
-		padding: 16,
+		padding: Dimens.p,
 
 		flexDirection:"row",
 		alignItems: "center",
@@ -107,21 +108,21 @@ const styles = StyleSheet.create({
 		textAlignVertical:"center",
 
 		fontFamily: "roboto",
-		fontSize: 18,
+		fontSize: Dimens.p + 2,
 		color: "#000"
 	},
 	content:{
 		textAlignVertical:"center",
 
 		fontFamily: "roboto",
-		fontSize: 14,
+		fontSize: Dimens.p - 2,
 		color: Colors.gray800
 	},
 	buttonText:{
 		textAlignVertical:"center",
 
 		fontFamily: "roboto-bold",
-		fontSize: 14,
+		fontSize: Dimens.p - 2,
 		color: Colors.blue700
 	},
 	icon: {

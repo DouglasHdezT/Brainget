@@ -24,10 +24,11 @@ export default {
 	"results_info_text": "¿Cuánto dinero he ganado?, Cuanto dinero he gastado?, ¿Cuánto dinero he ahorrado?. Aquí puedes encontrar cuanto dinero ingresó a tu cuenta, cuanto gastaste durante cada uno de los meses y sobre todo, cuanto dinero has ahorrado, por lo que este es el \"Budgetometro\" que te indica como has estado en la tarea del manejo de tu propio dinero.",
 	"stats_title_text": "Estadísticas",
 	"stats_info_text": "Este es un campo que ha sido diseñado para que puedas tener un medio de comparación en la forma como has administrado tu dinero en relación a los otros meses del año. Afin de que analices porque hubo algún repunto en algún mes en particular.",
-	"services_title_text": "Mis Servicios Financieros",
+	"services_title_text": "Juan Guardado\nServicios",
 	"services_info_text": "Es un placer poder ayudarte en la construcción de tus metas financieras, por lo que aquí te brindo una idea a cerca de los servicios por medio de los cuales puedo acompañarte este camino hacia el éxito y la libertad financiera.",
 	"about_title_text": "Acerca de...",
 	"about_info_text": "Información básica acerca de la aplicación. Se incluyen aspectos como la versión, el desarrollo, código fuente, términos y condiciones, y atribuciones a terceros.",
+	"services_screen_title_text": "Mis Servicios Financieros",
 	
 	/**
 	 * Budget menu strings
@@ -153,8 +154,8 @@ export default {
 	 */
 	"goals_screen_section_1_title": "¿Cuánto dinero obtendrás?",
 	"goals_screen_section_2_q1": "¿Cuánto dinero gastarás?",
-	"goals_screen_section_2_q2": "¿Cuánto deberás gastar?",
-	"goals_screen_section_2_q3": "¿Cuánto quieres ahorrar?",
+	"goals_screen_section_2_q2": "¿Cuánto quieres ahorrar?",
+	"goals_screen_section_2_q3": "¿Cuál es tu meta financiera?",
 
 	/**
 	 * Costs screen strings
@@ -166,7 +167,7 @@ export default {
 	 */
 	"budget_result_title": "Presupuesto",
 	"incomes_result_text": "Ingresos",
-	"costs_result_text": "Costos",
+	"costs_result_text": "Gastos",
 	"balance_result_text": "Balance",
 	"checkout_result_action_text": "Ver Balance",
 	"from_prefix_text": "Del",
@@ -178,7 +179,7 @@ export default {
 	/**
 	 * Buttons and footers strings
 	 */
-	"submit_action_text" : "Finalizar",
+	"submit_action_text" : "Iniciar mi presupuesto",
 	"previous_action_text": "Anterior",
 	"next_action_text": "Siguiente",
 	"period_prefix_footer_text": "Periodo",
@@ -402,5 +403,8 @@ export default {
 	"date_report_title": "Fecha",
 	"total_balance_report_title": "Balance Total",
 	"social_media_message": "Mis redes sociales",
-	"current_language": "Lenguaje actual: Español"
+	"current_language": "Lenguaje actual: Español",
+	"accept_text": "He leído y acepto los T&C",
+	"privacy_policy_title": "Políticas de privacidad",
+	"privacy_policy_url": "https://juanguardado2010.github.io/braingetpp/",
 }

@@ -56,7 +56,7 @@ const NavigationStack = createStackNavigator(
 			},
 			headerTintColor: '#fff',
 			headerTitleStyle: {
-				fontFamily:'roboto'
+				fontFamily: 'roboto',
 			},
 		  },
 	  });

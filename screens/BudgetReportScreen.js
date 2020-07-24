@@ -21,6 +21,7 @@ import HTMLReportBuilder from '../utils/HTMLReportBuilder';
 import BackgroundImages from '../assets/constants/BackgroundImages';
 import Colors from '../assets/constants/Colors';
 import Icons from '../assets/constants/Icons';
+import Dimens from '../assets/constants/Dimens';
 
 import FootThreeTexts from '../components/footers/FootThreeTexts';
 import ReportList from '../components/Lists/ReportList';
@@ -57,10 +58,11 @@ class BudgetReportScreen extends Component {
 		const { startDay=0, endDay=0, month=0, year=0, totalIncome=0, totalCosts=0, currentBalance=0, incomes = [], expenses = [] } = this.state.budget;
 		const date = `${startDay} - ${endDay} / ${intToMonth(month)} / ${year}`;
 		const expensesFiltered = expenses.filter(item => item.money !== 0);
+		const incomesFiltered = incomes.filter(item => item.money !== 0);
 
 		const html = new HTMLReportBuilder();
 		html.setReportDate(date);
-		html.setItems(incomes, 
+		html.setItems(incomesFiltered, 
 			expensesFiltered,
 			totalIncome, 
 			totalCosts, 
@@ -140,7 +142,7 @@ const styles = StyleSheet.create({
 	},
 	title:{
 		fontFamily: "roboto-bold",
-		fontSize: 24,
+		fontSize: Dimens.h,
 		color:"#fff",
 
 		textAlign:"center",
@@ -148,7 +150,7 @@ const styles = StyleSheet.create({
 	},
 	subtitle:{
 		fontFamily: "roboto",
-		fontSize: 20,
+		fontSize: Dimens.h - 4,
 		color:"#fff",
 
 		textAlign:"center",

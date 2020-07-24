@@ -15,6 +15,7 @@ import MoneyItem from './Items/MoneyItem';
 import AddNewItem from './Items/AddNewItem';
 
 import Translation, { Keys } from '../../translation/TranslationHelper'
+import Dimens from '../../assets/constants/Dimens';
 
 
 const IncomeList = props => {
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
 	},
 	title:{
 		fontFamily: 'roboto',
-		fontSize: 32,
+		fontSize: Dimens.h + 8,
 		color:'#fff',
 
 		textAlign:'center',

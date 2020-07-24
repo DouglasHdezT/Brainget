@@ -11,9 +11,10 @@
 import React from 'react';
 
 import { StyleSheet, TouchableOpacity, Image, } from 'react-native';
+import Dimens from '../../assets/constants/Dimens';
 
 const IconButton = props => {
-	const iconSize = props.iconSize ? props.iconSize : 16; 
+	const iconSize = props.iconSize ? props.iconSize : Dimens.p; 
 
 	return (
 		<TouchableOpacity

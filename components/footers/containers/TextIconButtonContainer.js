@@ -11,6 +11,7 @@
 import React from 'react';
 
 import { StyleSheet, Image, Text, TouchableOpacity } from 'react-native';
+import Dimens from '../../../assets/constants/Dimens';
 
 const TextIconButtonContainer = props => {
 	const textComponent = <Text style = {styles.text}>{props.text}</Text>;
@@ -39,13 +40,14 @@ const styles = StyleSheet.create({
 		alignItems:'center'
 	},
 	icon:{
-		flex:1,
+		flex: 1,
+		height: "100%",
 		resizeMode: 'contain',
 	},
 	text:{
 		flex:5,
 		fontFamily:'roboto',
-		fontSize: 20,
+		fontSize: Dimens.h - 4,
 		color:'#fff',
 
 		textAlignVertical:"center",

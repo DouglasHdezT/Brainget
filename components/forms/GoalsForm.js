@@ -12,6 +12,7 @@ import React from 'react';
 
 import { StyleSheet, TouchableWithoutFeedback, ScrollView, Keyboard } from 'react-native';
 import LabeledMoneyInput from './inputs/LabeledMoneyInput';
+import LabeledTextInput from './inputs/LabeledTextInput';
 
 import Translation, { Keys } from '../../translation/TranslationHelper';
 
@@ -30,7 +31,7 @@ const GoalsForm = props => {
 					changeHandler = {props.changeHandler}
 					value = {props.question2}
 					label = { Translation.getStringValue(Keys.goals_screen_section_2_q2) }/>
-				<LabeledMoneyInput 
+				<LabeledTextInput 
 					id = 'question3'
 					changeHandler = {props.changeHandler}
 					value = {props.question3}

@@ -366,5 +366,9 @@ export const Keys = {
   social_media_message: "social_media_message",
   current_language: "current_language",
   replace_modal_field_text: "replace_modal_field_text",
-  add_modal_field_text: "add_modal_field_text"
+  add_modal_field_text: "add_modal_field_text",
+  services_screen_title_text: "services_screen_title_text",
+	accept_text: "accept_text",
+	privacy_policy_title: "privacy_policy_title",
+	privacy_policy_url: "privacy_policy_url"
 }

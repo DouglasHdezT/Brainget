@@ -14,6 +14,7 @@ import { Modal, View, Text, StyleSheet, TouchableWithoutFeedback, Keyboard, Dime
 
 import Icons from '../../assets/constants/Icons';
 import Colors from '../../assets/constants/Colors';
+import Dimens from '../../assets/constants/Dimens';
 
 import BorderedButton from '../buttons/BorderedButton';
 import IncomeForm from '../forms/IncomeForm';
@@ -30,7 +31,9 @@ class AddIncomeModal extends Component {
 		this.initState = {
 			incomeName: '',
 			incomeValue: '',
+			incomeValueOld: '',
 			incomeKey: undefined,
+			isAdding: false,
 			_id:''
 		}
 
@@ -40,9 +43,27 @@ class AddIncomeModal extends Component {
 	}
 
 	changeHandler = (id, value) => {
-		this.setState({
-			[id]: value
-		})
+		let newState = {};
+		
+		if (id === "isAdding") { 
+			let newIncomeValue = '';
+
+			if (value === false) {
+				newIncomeValue = this.state.incomeValueOld;
+			}
+
+			newState = {
+				...newState,
+				incomeValue: newIncomeValue,
+			}
+		}
+
+		newState = {
+			...newState,
+			[id]: value,
+		}
+
+		this.setState(newState);
 	}
 
 	addIncomeVerified = (isUpdating = false) => {
@@ -51,7 +72,13 @@ class AddIncomeModal extends Component {
 		} else if (isNaN(this.state.incomeValue)){
 			misstypeFields();
 		}else if(isUpdating){
-			this.props.updateIncome(this.state._id, this.state.incomeName, this.state.incomeValue, this.state.incomeKey);
+			this.props.updateIncome(
+				this.state._id,
+				this.state.incomeName,
+				this.state.incomeValue,
+				this.state.isAdding,
+				this.state.incomeKey
+			);
 			this.setState({...this.initState});
 			this.props.closeModal();
 		} else{
@@ -65,7 +92,9 @@ class AddIncomeModal extends Component {
 		this.props.isNewIncome ? this.setState({...this.initState}) : this.setState ({
 			incomeName: this.props.oldIncome.title,
 			incomeKey: this.props.oldIncome.titleKey,
-			incomeValue: this.props.oldIncome.money.toFixed(2),
+			incomeValueOld: this.props.oldIncome.money.toFixed(2),
+			incomeValue: '',
+			isAdding: true,
 			_id: this.props.oldIncome._id,
 		})
 	}
@@ -117,6 +146,8 @@ class AddIncomeModal extends Component {
 	
 							<View style={{ flex: 3 }}>
 								<IncomeForm
+									isNew={this.props.isNewIncome}
+									isAdding={this.state.isAdding}
 									incomeName={this.state.incomeName}
 									incomeValue={this.state.incomeValue}
 									incomeKey={this.state.incomeKey}
@@ -164,7 +195,7 @@ const styles = StyleSheet.create({
 	},
 	title: {
 		fontFamily: 'roboto-bold',
-		fontSize: 24,
+		fontSize: Dimens.h,
 		color: Colors.ModalTitleColor,
 
 		textAlign: 'center',

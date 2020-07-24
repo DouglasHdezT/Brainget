@@ -11,6 +11,7 @@
 import React from 'react';
 
 import { TouchableOpacity, Image, StyleSheet } from 'react-native';
+import Dimens from '../../assets/constants/Dimens';
 
 const TopEndIconButton = props => {
 	return(
@@ -39,8 +40,8 @@ const styles = StyleSheet.create({
         top: 0
 	},
 	icon:{
-		height:24,
-		width:24
+		height:Dimens.h,
+		width:Dimens.h
 	},
 });
 

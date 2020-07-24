@@ -12,6 +12,7 @@ import React from 'react';
 
 import { StyleSheet, View, Image, Text, Dimensions } from 'react-native';
 import Colors from '../../assets/constants/Colors';
+import Dimens from '../../assets/constants/Dimens';
 
 const ServicesHeader = props => {
 	const flex = props.flex ? props.flex : 1;
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 
 		fontFamily: 'roboto-bold',
-		fontSize: 20,
+		fontSize: Dimens.h,
 		color: Colors.fontColorLight,
 		textAlign: "center",
 		textAlignVertical: "center",
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 
 		fontFamily: 'roboto',
-		fontSize: 16,
+		fontSize: Dimens.p,
 		color: Colors.fontColorLight,
 		textAlign: "center",
 		textAlignVertical: "center",

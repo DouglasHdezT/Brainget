@@ -29,7 +29,7 @@ import TextIconButtonContainer from '../components/footers/containers/TextIconBu
 class ServicesScreen extends Component {
 	static navigationOptions = ({ navigation }) => {
 		return {
-			title: navigation.getParam('title', 'Services Screen'),
+			title: Translation.getStringValue(Keys.services_screen_title_text),
 		};
 	};
 

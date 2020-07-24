@@ -12,6 +12,7 @@ import React from 'react';
 
 import { StyleSheet, View, Text, Dimensions } from 'react-native';
 import Colors from '../../assets/constants/Colors';
+import Dimens from '../../assets/constants/Dimens';
 
 import Translation, {Keys} from '../../translation/TranslationHelper';
 
@@ -53,14 +54,14 @@ const styles = StyleSheet.create({
 	title:{
 		fontFamily:"roboto-bold",
 		color: Colors.fontColorLight,
-		fontSize: 20,
+		fontSize: Dimens.h,
 
 		textAlign: "center",
 	},
 	subtitle: {
 		fontFamily:"roboto",
 		color: Colors.fontColorLight,
-		fontSize: 16,
+		fontSize: Dimens.p,
 
 		textAlign: "center",
 		marginBottom: 16,
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
 
 		fontFamily:"roboto-italic",
 		color: Colors.fontColorLight,
-		fontSize: 16,
+		fontSize: Dimens.p,
 		textAlign: "center"
 
 	},
@@ -77,7 +78,7 @@ const styles = StyleSheet.create({
 
 		fontFamily:"roboto",
 		color: Colors.fontColorLight,
-		fontSize: 16,
+		fontSize: Dimens.p,
 
 		textAlign: "center"
 	}

@@ -284,6 +284,8 @@ export const updateBudgetQuestions = async (id ,q1, q2, q3) => {
 
 	}catch (err){
 		stopLoadingSimple()
+		console.log(err);
+		
 		errorWarning();
 	}
 }
@@ -337,7 +339,7 @@ export const addCost = (budgetId, title, value, isPercent, TAG, taxable = false,
 	})
 }
 
-export const updateIncome = (budgetId, id, title, money, titleKey = undefined) => {
+export const updateIncome = (budgetId, id, title, money, isAdding = false, titleKey = undefined) => {
 	startLoading();
 
 	db.get(budgetId).then(budget => {
@@ -347,7 +349,7 @@ export const updateIncome = (budgetId, id, title, money, titleKey = undefined) =
 			budget.incomes[index] = {
 				...budget.incomes[index],
 				title: title,
-				money: parseFloat(money),
+				money: isAdding ? budget.incomes[index].money + parseFloat(money) : parseFloat(money),
 				titleKey: titleKey
 			}
 

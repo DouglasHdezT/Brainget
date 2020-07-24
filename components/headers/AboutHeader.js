@@ -10,8 +10,12 @@
 
 import React from 'react';
 
-import { StyleSheet, View, Image, Text, Dimensions, ScrollView } from 'react-native';
+import { StyleSheet, View, Image, Text, Dimensions, ScrollView, TouchableOpacity } from 'react-native';
+import { Linking } from 'expo';
 import Colors from '../../assets/constants/Colors';
+import Dimens from '../../assets/constants/Dimens';
+
+import DividerHorizontal from '../design/DividerHorizontal';
 
 import Translation, { Keys } from '../../translation/TranslationHelper';
 
@@ -26,15 +30,18 @@ const AboutHeader = props => {
 
 			<Text style = { styles.title } > { props.appName } </Text>
 			<Text style = { styles.footerText }> { props.license } </Text>
-			
-			<View style = { styles.infoContainer }>
-				<Text style = { styles.titleInfoText }> { `${Translation.getStringValue(Keys.source_about_text)}:` } </Text>
-				<Text style = { styles.infoText }> { props.sourceCode } </Text>
-			</View>
-			
+			<DividerHorizontal/>
 			<View style = { styles.infoContainer }>
 				<Text style = { styles.titleInfoText }> { `${Translation.getStringValue(Keys.app_version_text)}:` } </Text>
 				<Text style = { styles.infoText }> { props.version } </Text>
+			</View>
+			<View style = { styles.infoContainer }>
+				<Text style = { styles.titleInfoText }> { `${Translation.getStringValue(Keys.privacy_policy_title)}:` } </Text>
+				<TouchableOpacity
+					style={{flex:1}}
+					onPress={() => { Linking.openURL(props.ppURL) } }>
+					<Text style = { styles.infoText }> { props.ppURL } </Text>
+				</TouchableOpacity>
 			</View>
 			
 		</ScrollView>
@@ -48,12 +55,12 @@ const styles = StyleSheet.create({
 	mainLogo: {
 		width: Dimensions.get("window").width / 4,
 		height: Dimensions.get("window").width / 4,
-		resizeMode: "center"
+		resizeMode: "center",
 	},
 	title: {
 		textAlign: "center",
 		
-		fontSize: 24,
+		fontSize: Dimens.h,
 		fontFamily: "roboto-bold",
 		color: Colors.fontColorLight,
 		marginBottom:8,
@@ -63,26 +70,26 @@ const styles = StyleSheet.create({
 
 		flexDirection: "row",
 		justifyContent: "center",
-		marginBottom: 8
+		marginVertical: 8
 	},
 	titleInfoText: {
 		flex: 1,
 		marginEnd: 4,
-		fontSize: 16,
+		fontSize: Dimens.p,
 		fontFamily: "roboto-bold",
 		color: Colors.fontColorLight,
 		textAlign: "right"
 	},
 	infoText: {
 		flex: 1,
-		fontSize: 14,
+		fontSize: Dimens.p - 2,
 		fontFamily: "roboto",
 		color: Colors.fontColorLight,
 		textAlignVertical: "center"
 	},
 	footerText: {
 		textAlign: "center",
-		fontSize: 16,
+		fontSize: Dimens.p,
 		fontFamily: "roboto",
 		color: Colors.fontColorLight,
 		marginBottom: 8,

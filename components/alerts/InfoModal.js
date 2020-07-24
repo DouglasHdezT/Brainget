@@ -10,10 +10,11 @@
 
 import React from 'react';
 
-import { Modal, View, Text, ScrollView, StyleSheet } from 'react-native';
+import { Modal, View, Text, ScrollView, StyleSheet, Dimensions } from 'react-native';
 import TopEndIconButton from '../buttons/TopEndIconButton';
 
 import Colors from '../../assets/constants/Colors';
+import Dimens from '../../assets/constants/Dimens';
 import Icons from '../../assets/constants/Icons';
 
 const InfoModal = props => {
@@ -74,7 +75,7 @@ const styles = StyleSheet.create({
 	title:{
 		padding: 16,
 		fontFamily: 'roboto-bold',
-		fontSize: 24,
+		fontSize: Dimens.h,
 		color:Colors.ModalTitleColor,
 		
 		textAlign:'center',
@@ -83,10 +84,11 @@ const styles = StyleSheet.create({
 	},
 	textContainer:{
 		marginTop: 8,
+		marginHorizontal: Dimens.p
 	},
 	text:{
 		fontFamily: 'roboto',
-		fontSize: 16,
+		fontSize: Dimens.p,
 		color:Colors.ModalTextColor,
 
 		textAlign: 'justify',

@@ -18,7 +18,7 @@ import Translation from '../../translation/TranslationHelper';
 
 const IncomeForm = props => {
 	return (
-		<View style={{ flex: 1 }}>
+		<View style={{ flex: 1, justifyContent: "center" }}>
 			<LabelDropInput
 				id='incomeName'
 				value={props.incomeKey ? Translation.getStringValue(props.incomeKey) : props.incomeName}
@@ -35,6 +35,8 @@ const IncomeForm = props => {
 			/>
 			<LabelAsidesInput
 				id='incomeValue'
+				isNew={props.isNew}
+				isAdding={props.isAdding}
 				value={props.incomeValue}
 				changeHandler={props.changeHandler}
 			/>

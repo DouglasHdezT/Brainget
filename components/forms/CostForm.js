@@ -20,7 +20,7 @@ import Translation from '../../translation/TranslationHelper';
 
 const CostForm = props => {
 	return (
-		<View style={{ flex: 1 }}>
+		<View style={{ flex: 1, justifyContent: "center" }}>
 			<LabelDropInput
 				id='costName'
 				value={props.costKey ? Translation.getStringValue(props.costKey) : props.costName}
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
 	horizontalContainer: {
 		flexDirection: "row",
 
-		justifyContent:"space-between",
+		justifyContent: "space-between",
 		alignItems: "center",
 		
 		marginTop:20,
@@ -67,6 +67,8 @@ const styles = StyleSheet.create({
 	icon: {
 		marginHorizontal:16,
 		flex: 0.3,
+		width: 64,
+		height: 64,
 	}
 });
 

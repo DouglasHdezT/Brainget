@@ -72,7 +72,7 @@ const mapLists = (incomes, expenses) => {
 		if(item.type === COST_TYPE){
 			itemList = expenses.filter(cost => (cost.TAG === item.TAG && cost.money !== 0))
 		}else{
-			itemList = incomes;
+			itemList = incomes.filter(income => income.money !== 0);
 		}
 
 		if (itemList.length > 0){

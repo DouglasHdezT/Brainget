@@ -44,7 +44,7 @@ class GoalsScreen extends Component {
 			isFirstScreen: true,
 			question1:this.props.question1.toFixed(2) || 0,
 			question2:this.props.question2.toFixed(2) || 0,
-			question3:this.props.question3.toFixed(2) || 0,
+			question3:this.props.question3 || "",
 			addModal: false,
 			isNewIncome: true,
 			editableIncome: {},
@@ -61,22 +61,22 @@ class GoalsScreen extends Component {
 
 		if( !this.state.question1 || !this.state.question2 || !this.state.question3){
 			emptyFieldsAlert();
-		}else if (isNaN(this.state.question1) || isNaN(this.state.question2) || isNaN(this.state.question3)){
+		}else if (isNaN(this.state.question1) || isNaN(this.state.question2)){
 			misstypeFields()
 		}else {
 			const q1 = parseFloat(this.state.question1);
 			const q2 = parseFloat(this.state.question2);
-			const q3 = parseFloat(this.state.question3);
-			
+			const q3 = this.state.question3;
 			
 			await updateBudgetQuestions(this.props.budgetId, 
 				q1, q2, q3);
 			
+			this.props.navigation.navigate("BudgetMenu")
+			
 			this.setState({
-				isFirstScreen: true,
 				question1: q1.toFixed(2),
 				question2: q2.toFixed(2),
-				question3: q3.toFixed(2),
+				question3: q3,
 			})
 		}
 	}
@@ -134,7 +134,7 @@ class GoalsScreen extends Component {
 					visible = {this.state.addModal}
 					addIncome = { (title, money, titleKey) => { addIncome(this.props.budgetId, title, money, titleKey) } }
 					removeIncome = { (id) => { removeIncome(this.props.budgetId, id) } }
-					updateIncome = { (id, title, money, titleKey) => updateIncome(this.props.budgetId, id, title, money, titleKey) }
+					updateIncome = { (id, title, money, isAdding,titleKey) => updateIncome(this.props.budgetId, id, title, money, isAdding, titleKey) }
 					closeModal = {this.toggleAddModal}
 					isNewIncome = {this.state.isNewIncome}
 					oldIncome = {this.state.editableIncome}

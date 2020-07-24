@@ -11,6 +11,7 @@
 import React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
+import Dimens from '../../assets/constants/Dimens';
 
 const FootThreeTexts = props => {
 	const textColor = props.dark ? "#000" : "#fff";
@@ -42,7 +43,7 @@ const styles = StyleSheet.create({
 		textAlignVertical: "center",
 
 		fontFamily: "roboto-bold",
-		fontSize: 16,
+		fontSize: Dimens.p,
 	}
 });
 

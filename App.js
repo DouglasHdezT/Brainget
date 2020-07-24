@@ -12,7 +12,7 @@ import React, {Component } from 'react';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 import { Provider } from 'react-redux';
-import { AsyncStorage, AppState, View } from 'react-native';
+import { AsyncStorage, AppState, View, KeyboardAvoidingView } from 'react-native';
 import PouchDB from './database/config/builder';
 
 import store from './store/Store';
@@ -235,8 +235,10 @@ export default class App extends Component {
 
 		return (
 			<Provider store = {store}>
-				{ content }
-				{this.state.loading && <LoadingModal visible = { this.state.loading } />}
+				<KeyboardAvoidingView style = {{flex: 1}} behavior = "height">
+					{ content }
+					{this.state.loading && <LoadingModal visible = { this.state.loading } />}
+				</KeyboardAvoidingView>
 			</Provider>	
 		);
 	}

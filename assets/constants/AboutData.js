@@ -27,6 +27,7 @@ export default {
 	appName: Keys.app_title_text,
 	mainLogo: Icons.mainLogo,
 	appVersion: Keys.app_version,
+	ppURL: Keys.privacy_policy_url,
 	sourceCode: Keys.source_code_link,
 	licenseShortText: Keys.license_about_short_text,
 	optionsMenu: [

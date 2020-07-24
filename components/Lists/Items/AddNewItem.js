@@ -14,6 +14,7 @@ import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 
 import Icons from '../../../assets/constants/Icons';
 import Colors from '../../../assets/constants/Colors';
+import Dimens from '../../../assets/constants/Dimens';
 
 import Translation, { Keys } from '../../../translation/TranslationHelper';
 
@@ -63,13 +64,14 @@ const styles = StyleSheet.create({
 		alignItems:'center'
 	},
 	icon:{
-		width:'100%',
-		resizeMode:'contain'
+		width: '100%',
+		height: "100%",
+		resizeMode:'center'
 	},
 	title:{
-		fontFamily: 'roboto-bold',
+		fontFamily: 'roboto',
 		color: 'white',
-		fontSize: 20,
+		fontSize: Dimens.h,
 	},
 })
 

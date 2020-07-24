@@ -24,10 +24,11 @@ export default {
 	"results_info_text": "How much money do I have earned?, How much money do I have spent ?, How much money do I have saved ?. Here you can find, how much money has entered into your account, how much you have spent during every single month, and mainly, how much money you have saved. So this is the \"Budgetometer\" that indicates how you have been responsible in your own money managing.",
 	"stats_title_text": "Statistics",
 	"stats_info_text": "This is a field that has been designed to help you make comparison in the way which you have managed your money in relation with other months of the year. Is very important that you learn why one statistic show you upward statistic in any particular month in relation with other month.",
-	"services_title_text": "My Finantial Services",
+	"services_title_text": "Juan Guardado\nServices",
 	"services_info_text": "It is a pleasure to help you in the construction of your financial goals, that the reason which I give you an idea about the services where I can help you in the way to your financial success. Please feel free to contact with this financial coach and I can tell you we will get there together. My telephone number is +1(702) 326-4499.",
 	"about_title_text": "About...",
 	"about_info_text": "Basic information about the application. Aspects such as version, development, source code, terms and conditions, and attributions to third parties are included.",
+	"services_screen_title_text": "My Finantial Services",
 	
 	/**
 	 * Budget menu strings
@@ -153,8 +154,8 @@ export default {
 	 */
 	"goals_screen_section_1_title": "What is your income?",
 	"goals_screen_section_2_q1": "How much will you spend?",
-	"goals_screen_section_2_q2": "How much should you spend?",
-	"goals_screen_section_2_q3": "How much do you want to save?",
+	"goals_screen_section_2_q2": "How much do you want to save?",
+	"goals_screen_section_2_q3": "What is your financial goal?",
 
 	/**
 	 * Costs screen strings
@@ -401,5 +402,8 @@ export default {
 	"date_report_title": "Date",
 	"total_balance_report_title": "Balance Total",
 	"social_media_message": "My social networks",
-	"current_language": "Current Language: English"
+	"current_language": "Current Language: English",
+	"accept_text": "I Read and Accept the T&C",
+	"privacy_policy_title": "Privacy Policy",
+	"privacy_policy_url": "https://juanguardado2010.github.io/braingetpp/",
 }

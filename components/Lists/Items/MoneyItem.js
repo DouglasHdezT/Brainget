@@ -14,6 +14,7 @@ import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 
 import Icons from '../../../assets/constants/Icons';
 import Colors from '../../../assets/constants/Colors';
+import Dimens from '../../../assets/constants/Dimens';
 
 const MoneyItem = props => {
 	const taxableIcon = (
@@ -66,22 +67,24 @@ const styles = StyleSheet.create({
 	},
 	iconContainer:{
 		width: '10%',
+		maxHeight:32,
 		justifyContent:"center",
 		alignItems:'center',
 	},
 	icon:{
 		width:'100%',
+		height:'100%',
 		resizeMode:'contain'
 	},
 	title:{
 		fontFamily: 'roboto-bold',
 		color: Colors.ItemsTitle,
-		fontSize: 16,
+		fontSize: Dimens.p,
 	},
 	subtitle:{
 		fontFamily: 'roboto',
 		color: Colors.ItemsSubtitles,
-		fontSize: 14,
+		fontSize: Dimens.p - 2,
 	},
 	taxableIcon: {
 		maxWidth: 24,

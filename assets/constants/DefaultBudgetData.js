@@ -12,7 +12,7 @@ import { Keys } from "../../translation/TranslationHelper";
 import TAG from "./ExpensesTags";
 
 export default {
-	incomesKeys: [ Keys.income_op1 ],
+	incomesKeys: [ Keys.income_op1, Keys.income_op2, Keys.income_op4, Keys.income_op6, Keys.income_op7],
 	expensesKeys: [ 
 		{
 			key: Keys.fixed_op1,
@@ -252,10 +252,6 @@ export default {
 		},
 		{
 			key: Keys.health_op2,
-			TAG: TAG.Health
-		},
-		{
-			key: Keys.health_op3,
 			TAG: TAG.Health
 		},
 		{

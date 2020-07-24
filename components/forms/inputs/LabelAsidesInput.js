@@ -12,22 +12,40 @@ import React from 'react';
 
 import { StyleSheet, View, Text, TextInput } from 'react-native';
 import Colors from '../../../assets/constants/Colors';
+import Dimens from '../../../assets/constants/Dimens';
+import OptionsModalButton, {DOWN} from '../../buttons/OptionsModalButton';
+
 
 import Translation, { Keys } from '../../../translation/TranslationHelper'
 
 const LabelAsidesInput = props => {
+
+	const ADD = Translation.getStringValue(Keys.add_modal_field_text);
+	const REPLACE = Translation.getStringValue(Keys.replace_modal_field_text);
+
 	return (
 		<View style={styles.container}>
 			<Text style={styles.title}>{ Translation.getStringValue(Keys.amount_modal_field_text) }</Text>
 			<View style={styles.inputContainer}>
-				<Text style = {{fontFamily: 'roboto'}}>$ </Text>
-				<TextInput
-					onChangeText={text => props.changeHandler(props.id, text)}
-					value={props.value}
-					style={styles.input}
-					placeholder = '00.00'
-					keyboardType='number-pad'
-				/>
+				<View style={{flex: 1, flexDirection: "row"}}>
+					{props.isNew || <OptionsModalButton
+						items = { [ADD, REPLACE] }
+						onChange = { (value, index) => { props.changeHandler('isAdding', index === 0 ? true : false) } }
+						value = { props.isAdding ? "+" : "=" }
+						direction = { DOWN } 
+						small
+						dark
+						leftIcon
+					/>}
+					<TextInput
+						onChangeText={text => props.changeHandler(props.id, text)}
+						value={props.value}
+						style={styles.input}
+						placeholder = '00.00'
+						keyboardType='number-pad'
+					/>
+				</View>
+				<Text style={{ fontFamily: 'roboto', fontSize: Dimens.p }}>$ </Text>
 			</View>
 		</View>
 	);
@@ -48,13 +66,13 @@ const styles = StyleSheet.create({
 
 		color: '#000',
 		fontFamily: 'roboto',
-		fontSize: 16,
+		fontSize: Dimens.p,
 
 		textAlign: "right",
 		textAlignVertical: "center",
 	},
 	inputContainer: {
-		flex: 1,
+		flex: 1.5,
 		flexDirection:'row',
 		alignItems:"center",
 
@@ -75,7 +93,7 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 8,
 
 		fontFamily: 'roboto',
-		fontSize: 16,
+		fontSize: Dimens.p,
 
 		color: Colors.inputText,
 	}

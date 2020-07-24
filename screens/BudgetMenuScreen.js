@@ -18,7 +18,7 @@ import { intToMonth } from '../utils/DateUtils';
 import budgetMenuConf from '../assets/constants/BudgetMenuData'
 import Colors from '../assets/constants/Colors'
 
-import Translation from '../translation/TranslationHelper';
+import Translation, {Keys} from '../translation/TranslationHelper';
 
 import MainMenu from '../components/menus/MainMenu';
 import FootLeftRight from '../components/footers/FootLeftRight';
@@ -50,7 +50,7 @@ const BudgetMenuScreen = props => {
 
 BudgetMenuScreen.navigationOptions = navigationData => {
 	return {
-		headerTitle: navigationData.navigation.getParam('title', 'Budget Menu')
+		headerTitle: navigationData.navigation.getParam('title', Translation.getStringValue(Keys.budget_title_text))
 	}
 }
 

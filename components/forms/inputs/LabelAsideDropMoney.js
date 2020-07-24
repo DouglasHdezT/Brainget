@@ -14,6 +14,7 @@ import { StyleSheet, View, Text, TextInput } from 'react-native';
 import OptionsModalButton, {DOWN} from '../../buttons/OptionsModalButton';
 
 import Colors from '../../../assets/constants/Colors';
+import Dimens from '../../../assets/constants/Dimens';
 
 import Translation, { Keys } from '../../../translation/TranslationHelper';
 import DividerVertical from '../../design/DividerVertical';
@@ -48,8 +49,6 @@ const LabelAsidesInput = props => {
 					keyboardType='numeric'
 				/>
 
-				<DividerVertical/>
-
 				<OptionsModalButton
 					items = { [CASH, PERCENTAGE] }
 					onChange = { (value, index) => { props.changeHandler('isPercent', index === 1 ? true : false) } }
@@ -67,33 +66,31 @@ const LabelAsidesInput = props => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-
 		justifyContent: "center",
 		alignItems: "flex-start",
 	},
 	title: {
-		flex: 1,
 		paddingHorizontal: 16,
+		marginBottom: 4, 
 
 		color: '#000',
 		fontFamily: 'roboto',
-		fontSize: 16,
+		fontSize: Dimens.p,
 
 		textAlign: "right",
 		textAlignVertical: "center",
 	},
 	inputContainer: {
-		flex: 1,
 		flexDirection: 'row',
 		alignItems: "center",
 
 		marginHorizontal: 2,
 		padding: 8,
-		paddingStart: 16,
-		justifyContent: "flex-start",
+		paddingStart: 8,
+		justifyContent: "space-between",
 
 		borderStyle: "solid",
-		borderColor: Colors.gray800,
+		borderColor: Dimens.gray800,
 		borderWidth: 1,
 
 
@@ -101,11 +98,11 @@ const styles = StyleSheet.create({
 		borderBottomEndRadius: 15,
 	},
 	input: {
-		flex: 2,
+		flex: 2.5,
 		paddingHorizontal: 8,
 
 		fontFamily: 'roboto',
-		fontSize: 16,
+		fontSize: Dimens.p ,
 
 		color: Colors.inputText,
 	}

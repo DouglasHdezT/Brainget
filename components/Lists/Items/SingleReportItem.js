@@ -13,6 +13,7 @@ import React from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
 import Colors from '../../../assets/constants/Colors';
 import Icons from '../../../assets/constants/Icons';
+import Dimens from '../../../assets/constants/Dimens';
 
 const SingleReportItem = props => {
 	const taxableIcon = (
@@ -58,14 +59,14 @@ const styles = StyleSheet.create({
 		paddingVertical: 2,
 
 		fontFamily: 'roboto',
-		fontSize: 16,
+		fontSize: Dimens.p,
 		color: "#000",
 	},
 	subtitle:{
 		paddingVertical: 2,
 
 		fontFamily: 'roboto',
-		fontSize: 14,
+		fontSize: Dimens.p-2,
 		color: Colors.gray800,
 	}
 });
